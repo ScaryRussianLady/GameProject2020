@@ -24,3 +24,4 @@ int main()
     std::cin.getline(typeOfClan, 25);
     return 0;
 }
+//just wanted to see if this work
