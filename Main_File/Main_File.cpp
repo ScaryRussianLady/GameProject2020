@@ -17,7 +17,7 @@ int main()
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
 
-    system("color 2A");//changes colour of terminal and text. couldn't get conio to work. use "color %" to view all available colours
+    system("color 8F");//changes colour of terminal and text. couldn't get conio to work. use "color %" to view all available colours
     char nameOfClan[25];
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
