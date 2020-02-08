@@ -23,9 +23,8 @@ int main()
     char typeOfClan[25];
     std::cout << "\nWould you like to pick Attack or Defence?" << std::endl;
     std::cin.getline(typeOfClan, 25);
-    system("CLS");
-    //in
+    system("CLS");//is used to clear the text on the terminal
 
-    time();
+    time();//called the time function for testing
     return 0;
 }

@@ -8,14 +8,14 @@ void time() {
 	int count = 7;
 	while (count >= 0) {
 		if (count > 0) {
-			system("CLS");
+			system("CLS");//clear screen
 			std::cout << "days till next fight: " << count << std::endl;
 			Sleep(3000);//set to three seconds right now just for testing purposes
 		}
 		if (count == 0) {
-			system("CLS");
-			std::cout << "IT'S FIGHT DAY!" << std::endl;
-			break;
+			system("CLS");//clear screen
+			std::cout << "IT'S FIGHT DAY!\n" << std::endl;
+			
 		}
 		count -= 1;
 	}
