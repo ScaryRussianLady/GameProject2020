@@ -10,6 +10,8 @@ void timeTillFight() {
 		if (count > 0) {
 			system("CLS");//clear screen
 			std::cout << "Days Remaining: " << count << std::endl;
+			std::cout << "----------------------------------------------\n";
+			std::cout << "during this countdown we need to figure out a way of being able to train, visit market etc.";
 			Sleep(3000);//set to three seconds right now just for testing purposes
 		}
 		if (count == 0) {
