@@ -13,6 +13,7 @@
 //Slight error with importing SQLite but will fix this later.
 //I hate this project already
 
+
 int main()
 {
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
