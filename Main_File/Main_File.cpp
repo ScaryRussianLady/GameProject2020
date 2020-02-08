@@ -11,6 +11,7 @@
 //#include <sqlite3.h>
 //#include <stdio.h>
 //Slight error with importing SQLite but will fix this later.
+//I hate this project already
 
 int main()
 {
