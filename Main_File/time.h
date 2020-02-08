@@ -19,7 +19,7 @@ void time() {
 		}
 		count -= 1;
 	}
-	std::cout << "\nGREAT! it's time to send your fighters in" << std::endl;
+	std::cout << "\nGREAT! It's time to send your fighters in" << std::endl;
 
 
 }
