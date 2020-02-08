@@ -2,10 +2,9 @@
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
 //Testing
-#include <time.h>
+#include "timeTillFight.h"
 #include <windows.h>
 #include <iostream>
-#include <conio.h> //Functions for console input and output. Can change stuff like the background colour, text colour, etc.
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
 #include <stdlib.h> //Used for getting the input from the user and output the result back to the monitor. 
 //Please try to avoid using 'using namespace std;' if possible in all of your files as this is a bad habit. Avoiding this habit will be more beneficial for the future.
@@ -17,6 +16,7 @@ int main()
 {
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
+
     system("color 2A");//changes colour of terminal and text. couldn't get conio to work. use "color %" to view all available colours
     char nameOfClan[25];
     std::cout << "The Gladiator" << std::endl;
@@ -32,6 +32,6 @@ int main()
 
     system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
-    time();//called the time function for testing
+    timeTillFight();//called the time function for testing
     return 0;
 }

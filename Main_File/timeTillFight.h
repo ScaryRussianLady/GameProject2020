@@ -4,7 +4,7 @@
 //#include "clear.h"
 
 
-void time() {
+void timeTillFight() {
 	int count = 7;
 	while (count >= 0) {
 		if (count > 0) {

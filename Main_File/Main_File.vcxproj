@@ -150,7 +150,7 @@
     <ClCompile Include="Main_File.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="time.h" />
+    <ClInclude Include="timeTillFight.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

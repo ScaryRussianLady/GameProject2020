@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="time.h">
+    <ClInclude Include="timeTillFight.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
