@@ -152,6 +152,9 @@
   <ItemGroup>
     <ClInclude Include="timeTillFight.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SQLScriptTest.sql" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
