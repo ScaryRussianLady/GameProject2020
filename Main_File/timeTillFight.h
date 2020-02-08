@@ -9,7 +9,7 @@ void timeTillFight() {
 	while (count >= 0) {
 		if (count > 0) {
 			system("CLS");//clear screen
-			std::cout << "days till next fight: " << count << std::endl;
+			std::cout << "Days Remaining: " << count << std::endl;
 			Sleep(3000);//set to three seconds right now just for testing purposes
 		}
 		if (count == 0) {
@@ -19,7 +19,7 @@ void timeTillFight() {
 		}
 		count -= 1;
 	}
-	std::cout << "\nGREAT! It's time to send your fighters in" << std::endl;
+	std::cout << "\nGREAT! It's time to send your fighters in!" << std::endl;
 
 
 }
