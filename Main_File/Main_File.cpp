@@ -2,13 +2,16 @@
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
 //Testing
-#include "time.h"
+#include <time.h>
 #include <windows.h>
 #include <iostream>
 #include <conio.h> //Functions for console input and output. Can change stuff like the background colour, text colour, etc.
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
 #include <stdlib.h> //Used for getting the input from the user and output the result back to the monitor. 
 //Please try to avoid using 'using namespace std;' if possible in all of your files as this is a bad habit. Avoiding this habit will be more beneficial for the future.
+//#include <sqlite3.h>
+//#include <stdio.h>
+//Slight error with importing SQLite but will fix this later.
 
 int main()
 {
