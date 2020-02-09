@@ -17,8 +17,8 @@ void timeTillFight() {
 		if (count == 0) {
 			system("CLS");//clear screen
 			std::cout << "IT'S FIGHT DAY!\n" << std::endl;
-			
 		}
+		
 		count -= 1;
 	}
 	std::cout << "\nGREAT! It's time to send your fighters in!" << std::endl;
