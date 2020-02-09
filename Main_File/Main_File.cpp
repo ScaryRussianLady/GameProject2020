@@ -25,6 +25,8 @@ int main()
     char nameOfClan[25];
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "Sir! Emperor Macrinus is setting up New camps for Gladiators to train in!" << std::endl;
+    std::cout << "It says on this rock here that he has put you in charge of this camp,\nyour first order is to give it a name... so" << std::endl;
     std::cout << "\nWhat would you like to name your clan, Chief?" << std::endl;
     std::cin.getline(nameOfClan, 25);
     std::cout << "\nAs the Chief of " << nameOfClan << " you must decide whether you will be Attack or Defence." << std::endl;
