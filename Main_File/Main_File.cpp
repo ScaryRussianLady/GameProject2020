@@ -2,7 +2,7 @@
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
 //Testing
-#include "IntroToType.h"
+
 #include "timeTillFight.h"
 #include <windows.h>
 #include <iostream>
@@ -31,8 +31,7 @@ int main()
     char typeOfClan[25];
     std::cout << "\nWould you like to pick Attack or Defence?" << std::endl;
     std::cin.getline(typeOfClan, 25);
-    IntroToType(typeOfClan);
-   //h
+
 
     system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 

@@ -23,9 +23,6 @@
     <ClInclude Include="timeTillFight.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="IntroToType.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SQLScriptTest.sql">

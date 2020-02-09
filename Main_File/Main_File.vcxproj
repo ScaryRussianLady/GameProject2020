@@ -150,7 +150,6 @@
     <ClCompile Include="Main_File.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IntroToType.h" />
     <ClInclude Include="timeTillFight.h" />
   </ItemGroup>
   <ItemGroup>
