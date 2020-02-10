@@ -7,14 +7,14 @@
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
 #include <stdlib.h> //Used for getting the input from the user and output the result back to the monitor. 
 //Please try to avoid using 'using namespace std;' if possible in all of your files as this is a bad habit. Avoiding this habit will be more beneficial for the future.
-//#include <sqlite3.h>
+#include <sqlite3.h>
 #include <stdio.h>
 #include <thread>
 #include <conio.h>
 #include <locale>
 
 //Please ignore this section of the code for now.
-/*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
+static int callback(void* NotUsed, int argc, char** argv, char** azColName)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -23,7 +23,7 @@
     }
     std::cout << "\n";
     return 0;
-}*/
+}
 
 void singularWordOutput(const std::string& text)
 {
@@ -43,7 +43,7 @@ void singularWordOutput(const std::string& text)
 int main()
 {
     //Ignore this section of code that has been commented out for now please.
-    /*const int STATEMENTS = 8;
+    const int STATEMENTS = 8;
     sqlite3* db;
     char* zErrMsg = 0;
     int rc;
@@ -59,7 +59,6 @@ int main()
         std::cout << "Open database successfully\n\n";
     }
     sqlite3_close(db);
-    */
 
 
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
