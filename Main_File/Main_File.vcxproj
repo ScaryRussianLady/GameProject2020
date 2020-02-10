@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main_File.cpp" />
+    <ClCompile Include="TestOfDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="timeTillFight.h" />
