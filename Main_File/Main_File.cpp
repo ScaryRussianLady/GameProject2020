@@ -1,15 +1,13 @@
 //Main_File.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
-//Testing
-
 #include "timeTillFight.h"
 #include <windows.h>
 #include <iostream>
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
 #include <stdlib.h> //Used for getting the input from the user and output the result back to the monitor. 
 //Please try to avoid using 'using namespace std;' if possible in all of your files as this is a bad habit. Avoiding this habit will be more beneficial for the future.
-#include <sqlite3.h>
+//#include <sqlite3.h>
 //#include <stdio.h>
 #include <thread>
 
@@ -35,7 +33,7 @@ void singularWordOutput(const std::string& text)
         std::cout << text[i] << std::flush;
 
         // sleep 60 milliseconds
-        std::this_thread::sleep_for(std::chrono::milliseconds(80));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
 
@@ -80,10 +78,10 @@ int main()
     std::cin.getline(nameOfClan, 25);
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
-    singularWordOutput("\nWould you like to be Attack or Defence?\n");
+    singularWordOutput("\nWhich one will it be?\n");
     std::cin.getline(typeOfClan, 25);
-    singularWordOutput("Before you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
-    singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, you don't want your clan to die of starvation or dehydration!");
+    singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
+    singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
     singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
     singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
 
