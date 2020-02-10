@@ -18,9 +18,6 @@
     <ClCompile Include="Main_File.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestOfDatabase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="timeTillFight.h">
@@ -28,7 +25,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SQLScriptTest.sql">
+    <None Include="packages.config" />
+    <None Include="GladiatorDatabase.db">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

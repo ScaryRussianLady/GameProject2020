@@ -9,9 +9,21 @@
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
 #include <stdlib.h> //Used for getting the input from the user and output the result back to the monitor. 
 //Please try to avoid using 'using namespace std;' if possible in all of your files as this is a bad habit. Avoiding this habit will be more beneficial for the future.
-//#include <sqlite3.h>
+#include <sqlite3.h>
 //#include <stdio.h>
 #include <thread>
+
+//Please ignore this section of the code for now.
+/*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
+{
+    int i;
+    for (i = 0; i < argc; i++)
+    {
+        std::cout << azColName[i] << " = " << (argv[i] ? argv[i] : "NULL") << "\n";
+    }
+    std::cout << "\n";
+    return 0;
+}*/ 
 
 void singularWordOutput(const std::string& text)
 {
@@ -30,6 +42,30 @@ void singularWordOutput(const std::string& text)
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 {
+    //Ignore this section of code that has been commented out for now please.
+    /*const int STATEMENTS = 8;
+    sqlite3* db;
+    char* zErrMsg = 0;
+    const char* pSQL[STATEMENTS];
+    int rc;
+
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+
+    if (rc)
+    {
+        std::cout << "Can't open database: " << sqlite3_errmsg(db) << "\n";
+    }
+    else
+    {
+        std::cout << "Open database successfully\n\n";
+    }
+    sqlite3_close(db);
+
+    return 0;
+    */ 
+
+
+
 
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
