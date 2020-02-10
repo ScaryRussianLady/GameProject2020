@@ -101,7 +101,7 @@ int main()
 
     //This gives time for the user to read everything they want and begin when they want to.
     std::cout << "\n\nPress any key to begin your journey...";
-    getch();
+    _getch();
 
     system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 

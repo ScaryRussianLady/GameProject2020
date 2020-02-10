@@ -21,7 +21,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="timeTillFight.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clanFood.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

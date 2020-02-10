@@ -155,6 +155,7 @@
     <ClCompile Include="Main_File.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clanFood.h" />
     <ClInclude Include="timeTillFight.h" />
   </ItemGroup>
   <ItemGroup>
