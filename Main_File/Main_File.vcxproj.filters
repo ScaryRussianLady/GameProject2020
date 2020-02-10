@@ -18,6 +18,9 @@
     <ClCompile Include="Main_File.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libsqlite3-master\sqlite3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="timeTillFight.h">
@@ -27,6 +30,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="GladiatorDatabase.db">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\sqlite\SQLiteStudio\sqlite3.dll">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

@@ -23,7 +23,7 @@
     }
     std::cout << "\n";
     return 0;
-}*/ 
+}*/
 
 void singularWordOutput(const std::string& text)
 {
@@ -46,7 +46,6 @@ int main()
     /*const int STATEMENTS = 8;
     sqlite3* db;
     char* zErrMsg = 0;
-    const char* pSQL[STATEMENTS];
     int rc;
 
     rc = sqlite3_open("GladiatorDatabase.db", &db);
@@ -60,11 +59,7 @@ int main()
         std::cout << "Open database successfully\n\n";
     }
     sqlite3_close(db);
-
-    return 0;
-    */ 
-
-
+    */
 
 
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.

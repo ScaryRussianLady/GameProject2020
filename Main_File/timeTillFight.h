@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Windows.h> //include windows.h to use the sleep function. takes innput as milliseconds
 #include <stdlib.h>
+#include <sqlite3.h>
 //#include "clear.h"
 
 
