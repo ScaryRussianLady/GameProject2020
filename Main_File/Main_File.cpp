@@ -82,7 +82,10 @@ int main()
     char typeOfClan[25];
     singularWordOutput("\nWould you like to be Attack or Defence?\n");
     std::cin.getline(typeOfClan, 25);
-
+    singularWordOutput("Before you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
+    singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, you don't want your clan to die of starvation or dehydration!");
+    singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
+    singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
 
 
     system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
