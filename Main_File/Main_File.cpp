@@ -8,8 +8,10 @@
 #include <stdlib.h> //Used for getting the input from the user and output the result back to the monitor. 
 //Please try to avoid using 'using namespace std;' if possible in all of your files as this is a bad habit. Avoiding this habit will be more beneficial for the future.
 //#include <sqlite3.h>
-//#include <stdio.h>
+#include <stdio.h>
 #include <thread>
+#include <conio.h>
+#include <locale>
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
@@ -32,8 +34,8 @@ void singularWordOutput(const std::string& text)
         // flush to make sure the output is not delayed
         std::cout << text[i] << std::flush;
 
-        // sleep 60 milliseconds
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // sleep 40 milliseconds
+        std::this_thread::sleep_for(std::chrono::milliseconds(40));
     }
 }
 
@@ -80,11 +82,26 @@ int main()
     char typeOfClan[25];
     singularWordOutput("\nWhich one will it be?\n");
     std::cin.getline(typeOfClan, 25);
+
+    /*
+    //This is the kinda thing you will need to be using, this does not fully work but it gives you an idea Kaz.
+    if ( typeOfClan == "attack" || typeOfClan == "Attack" || typeOfClan == "ATTACK")
+    {
+        singularWordOutput("Good STRONG choice!");
+    }
+    else
+    {
+        singularWordOutput("All nations need a Defence!");
+    }
+    */
     singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
     singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
     singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
     singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
 
+    //This gives time for the user to read everything they want and begin when they want to.
+    std::cout << "\n\nPress any key to begin your journey...";
+    getch();
 
     system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
