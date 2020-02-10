@@ -40,14 +40,7 @@ int main()
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
     singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
-    //char str[] = { "Welcome to The Gladiator\nWhat is your name, Chief?\n" };
-    //int length = strlen(str);
-    //for (int i = 0; i < length; i++)
-    //{
-    //    putchar(str[i]);
-      //  Sleep(70);
-    //}
-
+  
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
     std::cin.getline(userName, 25);
     singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
@@ -56,7 +49,7 @@ int main()
     std::cin.getline(nameOfClan, 25);
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
-    singularWordOutput("\nWould you like to be Attack or Defence?");
+    singularWordOutput("\nWould you like to be Attack or Defence?\n");
     std::cin.getline(typeOfClan, 25);
 
 
