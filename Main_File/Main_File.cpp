@@ -1,7 +1,7 @@
 //Main_File.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
-//#include "timeTillFight.h"
+#include "timeTillFight.h"
 #include "ClanFood.h"
 #include <windows.h>
 #include <iostream>
@@ -159,11 +159,11 @@ int main()
 
         system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
-        //timeTillFight();//called the time function for testing
+        timeTillFight();//called the time function for testing
     // Water & Food starting levels
         int CurrentFoodLevel = 50;
         int CurrentWaterLevel = 50;
 
-        ClanFood(CurrentFoodLevel, CurrentWaterLevel);
+        //ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
 }
