@@ -62,6 +62,21 @@ int main()
     sqlite3_close(db);
     */
 
+
+    sqlite3* db;
+    int fd = sqlite3_open("GladiatorDatabase.db", &db);
+
+    if (fd == SQLITE_OK)
+    {
+        std::cout << "SUCESS OPENING THE DATABASE.\n\n\n";
+    }
+    else
+    {
+        std::cerr << "ERROR:\n\n\n";
+        std::cerr << sqlite3_errmsg(db) << '\n';
+        exit(1);
+    }
+    sqlite3_close(db);
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
 

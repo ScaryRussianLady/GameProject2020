@@ -33,4 +33,7 @@
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="packages\sqlite3.3.8.8.3\build\native\lib\Win32\v120\Release\sqlite3.lib" />
+  </ItemGroup>
 </Project>
