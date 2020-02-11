@@ -14,7 +14,7 @@
 #include <locale>
 
 //Please ignore this section of the code for now.
-static int callback(void* NotUsed, int argc, char** argv, char** azColName)
+/*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -23,7 +23,7 @@ static int callback(void* NotUsed, int argc, char** argv, char** azColName)
     }
     std::cout << "\n";
     return 0;
-}
+}*/
 
 void singularWordOutput(const std::string& text)
 {
@@ -42,8 +42,9 @@ void singularWordOutput(const std::string& text)
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 {
+    
     //Ignore this section of code that has been commented out for now please.
-    const int STATEMENTS = 8;
+    /*const int STATEMENTS = 8;
     sqlite3* db;
     char* zErrMsg = 0;
     int rc;
@@ -59,7 +60,7 @@ int main()
         std::cout << "Open database successfully\n\n";
     }
     sqlite3_close(db);
-
+    */
 
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
