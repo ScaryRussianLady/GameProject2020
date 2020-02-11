@@ -17,8 +17,3 @@ void ClanLvls(){
 			std::cin >> choice;
 			std::cout << "*action depending on user choice*" << std::endl;
 		}
-			
-		if (c == "levels" && MC == 1) {
-			std::cout << "\nYour Water level is " << W << std::endl;
-			std::cout << "Your Hunger level is " << F << std::endl;
-		}
