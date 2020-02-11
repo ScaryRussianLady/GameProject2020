@@ -2,7 +2,7 @@
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
 #include "timeTillFight.h"
-#include <ClanFood.h>
+#include "ClanFood.h"
 #include <windows.h>
 #include <iostream>
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
@@ -148,10 +148,10 @@ int main()
 
         timeTillFight();//called the time function for testing
     // Water & Food starting levels
-int CurrentFoodLevel = 50
-int CurrentWaterLevel = 50
+        int CurrentFoodLevel = 50;
+        int CurrentWaterLevel = 50;
 
-            ClanFood(CurrentFoodLevel, CurrentWaterLevel);
+        ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
     }
 }
