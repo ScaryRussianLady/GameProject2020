@@ -1,3 +1,6 @@
+#include <iostream>
+#include <Windows.h>
+#include <stdlib.h>
 void ClanLvls(){
 int W = 100, F = 100 
     while (F >= 0) {
