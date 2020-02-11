@@ -99,17 +99,25 @@ int main()
     singularWordOutput("\nWhich one will it be?\n");
     std::cin.getline(typeOfClan, 25);
 
-    /*
-    //This is the kinda thing you will need to be using, this does not fully work but it gives you an idea Kaz.
-    if ( typeOfClan == "attack" || typeOfClan == "Attack" || typeOfClan == "ATTACK")
-    {
+    if (strcmp(typeOfClan,"attack") == 0) {
         singularWordOutput("Good STRONG choice!");
-    }
-    else
-    {
+        
+    } else if (strcmp(typeOfClan,"Attack") == 0){
+        singularWordOutput("Good STRONG choice!");
+        } else if (strcmp(typeOfClan,"ATTACK") == 0){
+            singularWordOutput("Good STRONG choice!");
+        }
+        
+        
+    if (strcmp(typeOfClan,"defence") == 0) {
         singularWordOutput("All nations need a Defence!");
-    }
-    */
+        }else if (strcmp(typeOfClan,"Defence") == 0){
+        singularWordOutput("All nations need a Defence!");
+        } else if (strcmp(typeOfClan,"DEFENCE") == 0){
+            singularWordOutput("All nations need a Defence!");
+        }
+
+
     singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
     singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
     singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
