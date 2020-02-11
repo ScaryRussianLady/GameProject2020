@@ -32,7 +32,6 @@ void timeTillFight() {
 void timeTillFight() {
 	Sleep(2000);
 	int count = 7;
-	system("color 8F");
 	while (count >= 0) {
 		if (count > 0) {
 			system("CLS");//clear screen
@@ -57,6 +56,7 @@ void timeTillFight() {
 		count -= 1;
 	}
 	std::cout << "\nGREAT! It's time to send your fighters in!" << std::endl;
+	return;
 
 
 }
