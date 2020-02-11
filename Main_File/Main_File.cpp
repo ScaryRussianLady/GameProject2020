@@ -62,7 +62,7 @@ int main()
     sqlite3_close(db);
     */
 
-
+    //https://www.youtube.com/watch?v=wRnjahwxZ8A
     sqlite3* db;
     int fd = sqlite3_open("GladiatorDatabase.db", &db);
 
