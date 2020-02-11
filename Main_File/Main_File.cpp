@@ -130,5 +130,6 @@ int main()
     system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
     timeTillFight();//called the time function for testing
+    ClanFood();//called the time function for testing
     return (0);
 }
