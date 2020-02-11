@@ -148,8 +148,8 @@ int main()
 
         timeTillFight();//called the time function for testing
     // Water & Food starting levels
-int CurrentFoodLevel = 50
-int CurrentWaterLevel = 50
+        int CurrentFoodLevel = 50;
+        int CurrentWaterLevel = 50;
 
         ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
