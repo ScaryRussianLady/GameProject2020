@@ -13,6 +13,7 @@
 #include <thread>
 #include <conio.h>
 #include <locale>
+#include <string.h>
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
