@@ -44,7 +44,7 @@ void singularWordOutput(const std::string& text)
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 {
-    
+
     //Ignore this section of code that has been commented out for now please.
     /*const int STATEMENTS = 8;
     sqlite3* db;
@@ -88,7 +88,7 @@ int main()
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
     singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
-  
+
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
     std::cin.getline(userName, 25);
     singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
@@ -97,52 +97,57 @@ int main()
     std::cin.getline(nameOfClan, 25);
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
-    
-    while (true) 
-     { 
-         singularWordOutput("\nWhich one will it be?\n");
-         std::cin.getline(typeOfClan, 25);
-         if (strcmp(typeOfClan,"attack") == 0) {
+
+    while (true)
+    {
+        singularWordOutput("\nWhich one will it be?\n");
+        std::cin.getline(typeOfClan, 25);
+        if (strcmp(typeOfClan, "attack") == 0) {
             singularWordOutput("Good STRONG choice!");
             break;
-         } else if (strcmp(typeOfClan,"Attack") == 0){
-             singularWordOutput("Good STRONG choice!");
-             break;
-            } else if (strcmp(typeOfClan,"ATTACK") == 0){
-                singularWordOutput("Good STRONG choice!");
-                break;
-         }
-         
-        
-         if (strcmp(typeOfClan,"defence") == 0) {
+        }
+        else if (strcmp(typeOfClan, "Attack") == 0) {
+            singularWordOutput("Good STRONG choice!");
+            break;
+        }
+        else if (strcmp(typeOfClan, "ATTACK") == 0) {
+            singularWordOutput("Good STRONG choice!");
+            break;
+        }
+
+
+        if (strcmp(typeOfClan, "defence") == 0) {
             singularWordOutput("All nations need a Defence!");
             break;
-            }else if (strcmp(typeOfClan,"Defence") == 0){
+        }
+        else if (strcmp(typeOfClan, "Defence") == 0) {
             singularWordOutput("All nations need a Defence!");
             break;
-            } else if (strcmp(typeOfClan,"DEFENCE") == 0){
-                    singularWordOutput("All nations need a Defence!");
-                    break;
-            }
-        else{
+        }
+        else if (strcmp(typeOfClan, "DEFENCE") == 0) {
+            singularWordOutput("All nations need a Defence!");
+            break;
+        }
+        else {
             singularWordOutput("Sorry that was not an option, please try again.");
             singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
             char typeOfClan[25];
         }
 
 
-    singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
-    singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
-    singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
-    singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
+        singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
+        singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
+        singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
+        singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
 
-    //This gives time for the user to read everything they want and begin when they want to.
-    std::cout << "\n\nPress any key to begin your journey...";
-    _getch();
+        //This gives time for the user to read everything they want and begin when they want to.
+        std::cout << "\n\nPress any key to begin your journey...";
+        _getch();
 
-    system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
+        system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
-    timeTillFight();//called the time function for testing
+        timeTillFight();//called the time function for testing
     //ClanFood();//called the time function for testing
-    return (0);
+        return (0);
+    }
 }
