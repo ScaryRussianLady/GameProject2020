@@ -17,8 +17,8 @@ int W = 100, F = 100
 			std::cout << "*action depending on user choice*";
 		}
 			
-		if (c == "levels" && MC == 1) {
-			cout << "\n";
-			cout << "Your Water level is " << W << endl;
-			cout << "Your Hunger level is " << F << endl;
-		}
+		//if (c == "levels" && MC == 1) {
+			//cout << "\n";
+			//cout << "Your Water level is " << W << endl;
+			//cout << "Your Hunger level is " << F << endl;
+		
