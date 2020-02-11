@@ -32,19 +32,27 @@ void ClanFood( int &CurrentFoodLevel, int &CurrentWaterLevel ) {
 		//std::cout << "*action depending on user choice*" << std::endl;
 
 		if (choice.compare("1") == 0 ) {
-			if ( (CurrentFoodLevel +  food_addition ) >= food_max )
-				CurrentFoodLevel = food_max
+			if ((CurrentFoodLevel + food_addition) >= food_max)
+			{
+				CurrentFoodLevel = food_max;
 				std::cout << "Max food allowed is " << food_max << std::endl;
+			}
 			else
+			{
 				CurrentFoodLevel += food_addition;
+			}
 		}
 
 		if (choice.compare("2") == 0 ) {
-			if ( (CurrentWaterLevel +  water_addition ) >= water_max )
-				CurrentWaterLevel = water_max
+			if ((CurrentWaterLevel + water_addition) >= water_max)
+			{
+				CurrentWaterLevel = water_max;
 				std::cout << "Max Water allowed is " << water_max << std::endl;
+			}
 			else
+			{
 				CurrentWaterLevel += water_addition;
+			}
 		}
     }
 }
