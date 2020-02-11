@@ -99,42 +99,54 @@ int main()
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
 
-    /*while (true)
+    while (true)
     {
         singularWordOutput("\nWhich one will it be?\n");
         std::cin.getline(typeOfClan, 25);
         if (strcmp(typeOfClan, "attack") == 0) {
             singularWordOutput("Good STRONG choice!");
+            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
             break;
         }
         else if (strcmp(typeOfClan, "Attack") == 0) {
             singularWordOutput("Good STRONG choice!");
+            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
             break;
         }
         else if (strcmp(typeOfClan, "ATTACK") == 0) {
             singularWordOutput("Good STRONG choice!");
+            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
             break;
         }
 
 
         if (strcmp(typeOfClan, "defence") == 0) {
             singularWordOutput("All nations need a Defence!");
+            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
             break;
         }
         else if (strcmp(typeOfClan, "Defence") == 0) {
             singularWordOutput("All nations need a Defence!");
+            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
             break;
         }
         else if (strcmp(typeOfClan, "DEFENCE") == 0) {
             singularWordOutput("All nations need a Defence!");
+            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
             break;
         }
         else {
             singularWordOutput("Sorry that was not an option, please try again.");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
             char typeOfClan[25];
+            continue;
         }
-        */
+    }
 
         singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
         singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
@@ -154,4 +166,4 @@ int main()
 
         ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
-    }
+}
