@@ -88,6 +88,7 @@ int main()
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
     singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
+   
 
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
     std::cin.getline(userName, 25);

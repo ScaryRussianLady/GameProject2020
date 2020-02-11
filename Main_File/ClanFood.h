@@ -6,16 +6,16 @@
 	// & Here makes this function take parameters by reference ie, function will change these values
 
 void ClanFood( int &CurrentFoodLevel, int &CurrentWaterLevel ) {
-	const int food_addition  = 20;
-	const int water_addition = 20;
+	const int food_addition  = 5;
+	const int water_addition = 5;
 
 	const int food_max  = 100;
 	const int water_max = 100;
 
-    if ( CurrentFoodLevel <= 0 )
-	std::cout << "Current Food level is < 0 , ie dead?" << std::endl;
-	return;
-
+	if (CurrentFoodLevel <= 0) {
+		std::cout << "Current Food level is < 0 , ie dead?" << std::endl;
+		return;
+	}
 	std::string choice;
     choice = "0";
 
