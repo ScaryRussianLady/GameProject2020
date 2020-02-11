@@ -100,22 +100,36 @@ int main()
     singularWordOutput("\nWhich one will it be?\n");
     std::cin.getline(typeOfClan, 25);
 
-    if (strcmp(typeOfClan,"attack") == 0) {
-        singularWordOutput("Good STRONG choice!");
-        
-    } else if (strcmp(typeOfClan,"Attack") == 0){
-        singularWordOutput("Good STRONG choice!");
-        } else if (strcmp(typeOfClan,"ATTACK") == 0){
+    while (true) 
+     { 
+         singularWordOutput("\nWhich one will it be?\n");
+         std::cin.getline(typeOfClan, 25);
+         if (strcmp(typeOfClan,"attack") == 0) {
             singularWordOutput("Good STRONG choice!");
-        }
+            break;
+         } else if (strcmp(typeOfClan,"Attack") == 0){
+             singularWordOutput("Good STRONG choice!");
+             break;
+            } else if (strcmp(typeOfClan,"ATTACK") == 0){
+                singularWordOutput("Good STRONG choice!");
+                break;
+         }
+         
         
-        
-    if (strcmp(typeOfClan,"defence") == 0) {
-        singularWordOutput("All nations need a Defence!");
-        }else if (strcmp(typeOfClan,"Defence") == 0){
-        singularWordOutput("All nations need a Defence!");
-        } else if (strcmp(typeOfClan,"DEFENCE") == 0){
+         if (strcmp(typeOfClan,"defence") == 0) {
             singularWordOutput("All nations need a Defence!");
+            break;
+            }else if (strcmp(typeOfClan,"Defence") == 0){
+            singularWordOutput("All nations need a Defence!");
+            break;
+            } else if (strcmp(typeOfClan,"DEFENCE") == 0){
+                    singularWordOutput("All nations need a Defence!");
+                    break;
+            }
+        else{
+            singularWordOutput("Sorry that was not an option, please try again.");
+            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            char typeOfClan[25];
         }
 
 
