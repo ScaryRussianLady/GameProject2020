@@ -2,19 +2,20 @@
 #include <Windows.h>
 #include <stdlib.h>
 void ClanLvls(){
-int W = 100, F = 100 
+	//Annija fixed some of the code for this header file.
+	int W = 100, F = 100;
     while (F >= 0) {
 		if (c == "levels") {
 			system("CLS");//clear screen
-			cout << "Your Water level is " << W << endl;
-			cout << "Your Hunger level is " << F << endl;
+			std::cout << "Your Water level is " << W << std::endl;
+			std::cout << "Your Hunger level is " << F << std::endl;
 			std::cout << "Available options: " << std::endl;
-			std::cout << "\n1. Eat Food";
+			std::cout << "\n1. Eat Food" << std::endl;
 			std::cout << "\n2. Drink" << std::endl;
-			std::cout << "\nUser choice: ";
+			std::cout << "\nUser choice: " << std::endl;
 			std::string choice;
 			std::cin >> choice;
-			std::cout << "*action depending on user choice*";
+			std::cout << "*action depending on user choice*" << std::endl;
 		}
 			
 		//if (c == "levels" && MC == 1) {
