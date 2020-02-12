@@ -37,15 +37,14 @@ void singularWordOutput(const std::string& text)
         // flush to make sure the output is not delayed
         std::cout << text[i] << std::flush;
 
-        // sleep 40 milliseconds
-        std::this_thread::sleep_for(std::chrono::milliseconds(40));
+        // sleep 30 milliseconds
+        std::this_thread::sleep_for(std::chrono::milliseconds(30));
     }
 }
 
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 {
-    healthManagement();
 
     //Ignore this section of code that has been commented out for now please.
     /*const int STATEMENTS = 8;
@@ -107,45 +106,39 @@ int main()
         singularWordOutput("\nWhich one will it be?\n");
         std::cin.getline(typeOfClan, 25);
         if (strcmp(typeOfClan, "attack") == 0) {
-            singularWordOutput("Good STRONG choice!");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            singularWordOutput("Good, strong choice!");
 
             break;
         }
         else if (strcmp(typeOfClan, "Attack") == 0) {
-            singularWordOutput("Good STRONG choice!");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            singularWordOutput("Good, strong choice!");
 
             break;
         }
         else if (strcmp(typeOfClan, "ATTACK") == 0) {
-            singularWordOutput("Good STRONG choice!");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            singularWordOutput("Good, strong choice!");
 
             break;
         }
 
 
         if (strcmp(typeOfClan, "defence") == 0) {
-            singularWordOutput("All nations need a Defence!");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            singularWordOutput("All nations need defending!");
 
             break;
         }
         else if (strcmp(typeOfClan, "Defence") == 0) {
-            singularWordOutput("All nations need a Defence!");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            singularWordOutput("All nations need defending!");
 
             break;
         }
         else if (strcmp(typeOfClan, "DEFENCE") == 0) {
-            singularWordOutput("All nations need a Defence!");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            singularWordOutput("All nations need defending!");
 
             break;
         }
         else {
-            singularWordOutput("Sorry that was not an option, please try again.");
+            singularWordOutput("Sorry that was not an option, please try again.\n");
             char typeOfClan[25];
             continue;
         }
