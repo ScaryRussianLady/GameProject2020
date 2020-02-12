@@ -26,6 +26,12 @@
     <ClInclude Include="clanFood.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="goldManagement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="healthManagement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

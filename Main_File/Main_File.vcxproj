@@ -160,6 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clanFood.h" />
+    <ClInclude Include="goldManagement.h" />
+    <ClInclude Include="healthManagement.h" />
     <ClInclude Include="timeTillFight.h" />
   </ItemGroup>
   <ItemGroup>
