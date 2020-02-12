@@ -28,6 +28,8 @@
     return 0;
 }*/
 
+//https://stackoverflow.com/questions/33882822/output-letters-one-at-a-time-in-c
+
 void singularWordOutput(const std::string& text)
 {
     // loop through each character in the text
@@ -71,7 +73,7 @@ int main()
 
     if (fd == SQLITE_OK)
     {
-        std::cout << "SUCESS OPENING THE DATABASE.\n\n\n";
+        std::cout << "SUCCESSULLY OPENED THE DATABASE.\n\n\n";
     }
     else
     {
@@ -143,7 +145,7 @@ int main()
             continue;
         }
     }
-
+        std::cout << "\n-----------------------------------------------------------------------------------------------------" << std::endl;
         singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
         singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
         singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
