@@ -14,6 +14,7 @@
 #include <conio.h>
 #include <locale>
 #include <string.h>
+#include "healthManagement.h"
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
@@ -44,6 +45,7 @@ void singularWordOutput(const std::string& text)
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 {
+    healthManagement();
 
     //Ignore this section of code that has been commented out for now please.
     /*const int STATEMENTS = 8;
