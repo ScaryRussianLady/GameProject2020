@@ -68,7 +68,7 @@ int main()
     */
 
     //https://www.youtube.com/watch?v=wRnjahwxZ8A
-    sqlite3* db;
+    /*sqlite3* db;
     int fd = sqlite3_open("GladiatorDatabase.db", &db);
 
     if (fd == SQLITE_OK)
@@ -81,7 +81,7 @@ int main()
         std::cerr << sqlite3_errmsg(db) << '\n';
         exit(1);
     }
-    sqlite3_close(db);
+    sqlite3_close(db);*/
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
 
@@ -91,10 +91,29 @@ int main()
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
     singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
-   
+
 
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
     std::cin.getline(userName, 25);
+    std::string users_name = userName;
+    sqlite3* db;
+    sqlite3_stmt* stmt;
+
+    std::string sqlstatement = "INSERT INTO User(users_name) VALUES ('" + users_name + "')";
+    if (sqlite3_open("GladiatorDatabase.db", &db) == SQLITE_OK)
+    {
+        sqlite3_prepare(db, sqlstatement.c_str(), -1, &stmt, NULL);//preparing the statement
+        sqlite3_step(stmt);//executing the statement
+    }
+    else
+    {
+        std::cout << "Failed to open db\n";
+    }
+
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+
+
     singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
     singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
     singularWordOutput("\nWhat would you like to name your clan, Chief " + std::string(userName) + "?\n");
