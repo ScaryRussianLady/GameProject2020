@@ -32,6 +32,9 @@
     <ClInclude Include="healthManagement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UserIDGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
