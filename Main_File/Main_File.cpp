@@ -1,7 +1,7 @@
 //Main_File.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
-//#include "timeTillFight.h"
+#include "timeTillFight.h"
 #include "ClanFood.h"
 #include <windows.h>
 #include <iostream>
@@ -14,6 +14,7 @@
 #include <conio.h>
 #include <locale>
 #include <string.h>
+#include "healthManagement.h"
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
@@ -27,6 +28,8 @@
     return 0;
 }*/
 
+//https://stackoverflow.com/questions/33882822/output-letters-one-at-a-time-in-c
+
 void singularWordOutput(const std::string& text)
 {
     // loop through each character in the text
@@ -36,8 +39,8 @@ void singularWordOutput(const std::string& text)
         // flush to make sure the output is not delayed
         std::cout << text[i] << std::flush;
 
-        // sleep 40 milliseconds
-        std::this_thread::sleep_for(std::chrono::milliseconds(40));
+        // sleep 30 milliseconds
+        std::this_thread::sleep_for(std::chrono::milliseconds(30));
     }
 }
 
@@ -65,12 +68,12 @@ int main()
     */
 
     //https://www.youtube.com/watch?v=wRnjahwxZ8A
-    sqlite3* db;
+    /*sqlite3* db;
     int fd = sqlite3_open("GladiatorDatabase.db", &db);
 
     if (fd == SQLITE_OK)
     {
-        std::cout << "SUCESS OPENING THE DATABASE.\n\n\n";
+        std::cout << "SUCCESSULLY OPENED THE DATABASE.\n\n\n";
     }
     else
     {
@@ -78,7 +81,7 @@ int main()
         std::cerr << sqlite3_errmsg(db) << '\n';
         exit(1);
     }
-    sqlite3_close(db);
+    sqlite3_close(db);*/
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
 
@@ -88,10 +91,29 @@ int main()
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
     singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
-   
+
 
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
     std::cin.getline(userName, 25);
+    std::string users_name = userName;
+    sqlite3* db;
+    sqlite3_stmt* stmt;
+
+    std::string sqlstatement = "INSERT INTO User(users_name) VALUES ('" + users_name + "')";
+    if (sqlite3_open("GladiatorDatabase.db", &db) == SQLITE_OK)
+    {
+        sqlite3_prepare(db, sqlstatement.c_str(), -1, &stmt, NULL);//preparing the statement
+        sqlite3_step(stmt);//executing the statement
+    }
+    else
+    {
+        std::cout << "Failed to open db\n";
+    }
+
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+
+
     singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
     singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
     singularWordOutput("\nWhat would you like to name your clan, Chief " + std::string(userName) + "?\n");
@@ -99,43 +121,50 @@ int main()
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
 
-    /*while (true)
+    //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
+    while (true)
     {
         singularWordOutput("\nWhich one will it be?\n");
         std::cin.getline(typeOfClan, 25);
         if (strcmp(typeOfClan, "attack") == 0) {
-            singularWordOutput("Good STRONG choice!");
+            singularWordOutput("Good, strong choice!");
+
             break;
         }
         else if (strcmp(typeOfClan, "Attack") == 0) {
-            singularWordOutput("Good STRONG choice!");
+            singularWordOutput("Good, strong choice!");
+
             break;
         }
         else if (strcmp(typeOfClan, "ATTACK") == 0) {
-            singularWordOutput("Good STRONG choice!");
+            singularWordOutput("Good, strong choice!");
+
             break;
         }
 
 
         if (strcmp(typeOfClan, "defence") == 0) {
-            singularWordOutput("All nations need a Defence!");
+            singularWordOutput("All nations need defending!");
+
             break;
         }
         else if (strcmp(typeOfClan, "Defence") == 0) {
-            singularWordOutput("All nations need a Defence!");
+            singularWordOutput("All nations need defending!");
+
             break;
         }
         else if (strcmp(typeOfClan, "DEFENCE") == 0) {
-            singularWordOutput("All nations need a Defence!");
+            singularWordOutput("All nations need defending!");
+
             break;
         }
         else {
-            singularWordOutput("Sorry that was not an option, please try again.");
-            singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+            singularWordOutput("Sorry that was not an option, please try again.\n");
             char typeOfClan[25];
+            continue;
         }
-        */
-
+    }
+        std::cout << "\n-----------------------------------------------------------------------------------------------------" << std::endl;
         singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
         singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
         singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
@@ -147,11 +176,11 @@ int main()
 
         system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
-        //timeTillFight();//called the time function for testing
+        timeTillFight();//called the time function for testing
     // Water & Food starting levels
         int CurrentFoodLevel = 50;
         int CurrentWaterLevel = 50;
 
-        ClanFood(CurrentFoodLevel, CurrentWaterLevel);
+        //ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
-    }
+}
