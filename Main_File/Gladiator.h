@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <windows.h>
 
 class gladiator {
 public:
@@ -28,18 +29,29 @@ public:
 
 };
 //just testing around with the gladiator class
-int gladStats() {
-	gladiator gladiator1;
-	std::cout << "Please choose a name for your gladiator: ";
-	std::cin >> gladiator1.allias;
-	gladiator1.hp = 100;
-	gladiator1.hunger = 50;
-	gladiator1.thirst = 50;
+int firstGlads() {
+	gladiator gladiator[3];
 
 
-	std::cout << "Curernt hp: " << gladiator1.hp << std::endl;
-	std::cout << "Food level: " << gladiator1.hunger << std::endl;
-	std::cout << "Water level: " << gladiator1.thirst << std::endl;
+	for (int i = 0; i < 3; i++) {
+		std::cout << "Please choose a name for your gladiator: ";
+		std::cin >> gladiator[i].allias;
+		gladiator[i].hp = 100;
+		gladiator[i].hunger = 50;
+		gladiator[i].thirst = 50;
 
+		std::cout << "Curernt hp: " << gladiator[i].hp << std::endl;
+		std::cout << "Food level: " << gladiator[i].hunger << std::endl;
+		std::cout << "Water level: " << gladiator[i].thirst << std::endl;
+		}
+	system("CLS");
+	std::cout << "Your Gladiators \n----------------------------\n";
+	for (int i = 0; i < 3; i++) {
+		std::cout << gladiator[i].allias << " | " << "HP: " << gladiator[i].hp;
+		std::cout << "/" << gladiator[i].hpMax << std::endl;
+		std::cout << gladiator[i].hunger << "/100" << std::endl;
+		std::cout << gladiator[i] .thirst << "/100" << std::endl;
+		std::cout << "--------------------------------------------------\n";
+		}
 	return 1;
 }
