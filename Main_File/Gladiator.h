@@ -49,9 +49,13 @@ int firstGlads() {
 	for (int i = 0; i < 3; i++) {
 		std::cout << gladiator[i].allias << " | " << "HP: " << gladiator[i].hp;
 		std::cout << "/" << gladiator[i].hpMax << std::endl;
-		std::cout << gladiator[i].hunger << "/100" << std::endl;
-		std::cout << gladiator[i] .thirst << "/100" << std::endl;
+		std::cout << "Hunger: " << gladiator[i].hunger << "/100" << std::endl;
+		std::cout << "Thirst: " << gladiator[i] .thirst << "/100" << std::endl;
 		std::cout << "--------------------------------------------------\n";
 		}
 	return 1;
+}
+
+int seeGlads() {
+
 }
