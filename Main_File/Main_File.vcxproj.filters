@@ -35,6 +35,9 @@
     <ClInclude Include="UserIDGen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Gladiator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
