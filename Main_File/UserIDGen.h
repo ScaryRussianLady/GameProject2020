@@ -18,6 +18,8 @@ int IdGen(int &PrevID)
 	
 }*/
 
+
+//https://www.oreilly.com/library/view/c-cookbook/0596007612/ch08s09.html
 #include <iostream>
 
 class UniqueID {
