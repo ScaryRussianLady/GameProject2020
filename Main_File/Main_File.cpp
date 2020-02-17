@@ -167,7 +167,7 @@ int main()
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
     //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','Annijaaa');";
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES ('123456','" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES ('234567','" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     std::cout << rc << std::endl;
