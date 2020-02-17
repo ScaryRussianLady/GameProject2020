@@ -98,17 +98,17 @@ int main()
         return(1);
     }
 
-    sql = "CREATE TABLE USERINFO (" \
+    //sql = "CREATE TABLE USERINFO (" \
         "USERID INT PRIMARY KEY NOT NULL," \
         "USERNAME TEXT NOT NULL);";
 
-    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    sql = "UPDATE STATS SET STRENGTH = '20' WHERE PLAYERNAME = 'Jeff'";
        // Run the SQL (convert the string to a C-String with c_str() )
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('1234','Annija');";
-     // Save SQL insert data
+    //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','Annijaaa');";
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','" + users_name + "');";
+
+    // Save SQL insert data
     //sql = "SELECT * FROM 'USERINFO';";
     // Run the SQL (convert the string to a C-String with c_str() )
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
