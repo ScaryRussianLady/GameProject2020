@@ -160,7 +160,7 @@ int main()
         return(1);
     }
 
-   sql = "CREATE TABLE USERINFO (" \
+   //sql = "CREATE TABLE USERINFO (" \
         "USERID INTEGER PRIMARY KEY AUTOINCREMENT," \
         "USERNAME TEXT NOT NULL, " \
         "CLANTYPE TEXT NOT NULL, " \
