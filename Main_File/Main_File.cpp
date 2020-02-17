@@ -162,11 +162,12 @@ int main()
         "USERID INTEGER PRIMARY KEY AUTOINCREMENT," \
         "USERNAME TEXT NOT NULL, " \
         "CLANTYPE TEXT NOT NULL, " \
-        "CLANNAME TEXT NOT NULL);";
+        "CLANNAME TEXT NOT NULL, " \
+        "NUM_GLADIATORS INTEGER);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES (NULL, '" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + clan_type + "', '" + clan_name + "', NULL);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     //std::cout << rc << std::endl;
