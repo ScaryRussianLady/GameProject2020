@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
+#include <conio.h>
 //#include "clear.h"
 
 /*
@@ -34,7 +34,7 @@ void timeTillFight() {
 */
 
 // the function below is broken atm
-
+/*
 void timeTillFight() {
 	int count = 7;
 	while (count >= 0) {
@@ -92,12 +92,12 @@ void timeTillFight() {
 
 	}
 }
-
+*/
 
 //A working timer in taking key presses whilst counting. It's not working
 //reference: https://www.youtube.com/watch?v=Kddn0MUbn4k 
 
-/*
+
 int second = 0, minute = 0, flag = 0;
 
 void printData();
@@ -140,7 +140,7 @@ void printData() {   //print data to screen
 int selection() {      // menu selection
 	switch (_getch()) {    //collect input from user
 	case 49: flag = 0; break;        //press 1 set flag to 0 means start
-	case 50: flag = 0; test();  break;        //press 2 set flag to 1 means stop
+	case 50: flag = 0; test(); break;        //press 2 set flag to 1 means stop
 	case 51:
 		minute = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		printData();                //print the new data after reset
@@ -156,4 +156,3 @@ int timeTillFight()
 		counter();
 	}
 }
-*/
