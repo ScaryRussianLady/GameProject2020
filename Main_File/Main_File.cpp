@@ -15,7 +15,6 @@
 #include <locale>
 #include <string>
 #include "healthManagement.h"
-#include "UserIDGen.h"
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
@@ -171,7 +170,7 @@ int main()
     sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES (NULL, '" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    std::cout << rc << std::endl;
+    //std::cout << rc << std::endl;
     sqlite3_close(db);
 
 
