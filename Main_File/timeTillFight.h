@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#define _getch()
 //#include "clear.h"
 
 /*
@@ -33,7 +34,7 @@ void timeTillFight() {
 */
 
 // the function below is broken atm
-/*
+
 void timeTillFight() {
 	int count = 7;
 	while (count >= 0) {
@@ -91,12 +92,12 @@ void timeTillFight() {
 
 	}
 }
-*/
 
-//A working timer in taking key presses whilst counting. Well, it should work
+
+//A working timer in taking key presses whilst counting. It's not working
 //reference: https://www.youtube.com/watch?v=Kddn0MUbn4k 
 
-
+/*
 int second = 0, minute = 0, flag = 0;
 
 void printData();
@@ -155,3 +156,4 @@ int timeTillFight()
 		counter();
 	}
 }
+*/
