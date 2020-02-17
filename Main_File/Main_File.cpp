@@ -110,7 +110,7 @@ int main()
         std::cout << "Failed to open db\n";
     }
 
-    sqlite3_finalize(stmt);
+    //sqlite3_finalize(stmt);
     sqlite3_close(db);
 
 
@@ -180,7 +180,7 @@ int main()
     // Water & Food starting levels
         int CurrentFoodLevel = 50;
         int CurrentWaterLevel = 50;
-
+        std::cout << "good job jay pat on the back";
         //ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
 }

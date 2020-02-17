@@ -99,6 +99,7 @@ void timeTillFight() {
 
 
 int second = 0, minute = 0, flag = 0;
+bool snap = true;
 
 void printData();
 int selection();
@@ -145,14 +146,15 @@ int selection() {      // menu selection
 		minute = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		printData();                //print the new data after reset
 		break;
-	case 52: exit(0);; break;        //press 4, exit the program
+	case 52: snap = false;  return snap;; break;        //press 4, exit the program
 	}
 }
 
 
 int timeTillFight()
 {
-	while (1) {             //keep the program running and never end
+	while (snap == true) {             //keep the program running end only if snap is false
 		counter();
 	}
+	return 1;
 }
