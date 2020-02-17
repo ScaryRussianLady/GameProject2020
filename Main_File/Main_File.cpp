@@ -44,44 +44,33 @@ void singularWordOutput(const std::string& text)
     }
 }
 
+int callback(void* NotUsed, int argc, char** argv, char** azColName) {
+
+    // int argc: holds the number of results
+    // (array) azColName: holds each column returned
+    // (array) argv: holds each value
+
+    for (int i = 0; i < argc; i++) {
+
+        // Show column name, value, and newline
+        std::cout << azColName[i] << ": " << argv[i] << std::endl;
+
+    }
+
+    // Insert a newline
+    std::cout << std::endl;
+
+    // Return successful
+    return 0;
+}
+
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 {
 
-    //Ignore this section of code that has been commented out for now please.
-    /*const int STATEMENTS = 8;
-    sqlite3* db;
-    char* zErrMsg = 0;
-    int rc;
-
-    rc = sqlite3_open("GladiatorDatabase.db", &db);
-
-    if (rc)
-    {
-        std::cout << "Can't open database: " << sqlite3_errmsg(db) << "\n";
-    }
-    else
-    {
-        std::cout << "Open database successfully\n\n";
-    }
-    sqlite3_close(db);
-    */
-
     //https://www.youtube.com/watch?v=wRnjahwxZ8A
-    /*sqlite3* db;
-    int fd = sqlite3_open("GladiatorDatabase.db", &db);
+ 
 
-    if (fd == SQLITE_OK)
-    {
-        std::cout << "SUCCESSULLY OPENED THE DATABASE.\n\n\n";
-    }
-    else
-    {
-        std::cerr << "ERROR:\n\n\n";
-        std::cerr << sqlite3_errmsg(db) << '\n';
-        exit(1);
-    }
-    sqlite3_close(db);*/
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
 
@@ -96,7 +85,40 @@ int main()
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
     std::cin.getline(userName, 25);
     std::string users_name = userName;
+
     sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+    if (rc)
+    {
+        std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return(1);
+    }
+
+    sql = "CREATE TABLE USERINFO (" \
+        "USERID INT PRIMARY KEY NOT NULL," \
+        "USERNAME TEXT NOT NULL);";
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    sql = "UPDATE STATS SET STRENGTH = '20' WHERE PLAYERNAME = 'Jeff'";
+       // Run the SQL (convert the string to a C-String with c_str() )
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('1234','Annija');";
+     // Save SQL insert data
+    //sql = "SELECT * FROM 'USERINFO';";
+    // Run the SQL (convert the string to a C-String with c_str() )
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    std::cout << rc << std::endl;
+    //    // Close the SQL connection
+    sqlite3_close(db);
+    //
+    return (0);
+
+    /*sqlite3* db;
     sqlite3_stmt* stmt;
 
     std::string sqlstatement = "INSERT INTO User(users_name) VALUES ('" + users_name + "')";
@@ -108,9 +130,21 @@ int main()
     else
     {
         std::cout << "Failed to open db\n";
-    }
+    }*/
 
     //sqlite3_finalize(stmt);
+    /*int fd = sqlite3_open("GladiatorDatabase.db", &db);
+
+    if (fd == SQLITE_OK)
+    {
+        std::cout << "SUCCESSULLY OPENED THE DATABASE.\n\n\n";
+    }
+    else
+    {
+        std::cerr << "ERROR:\n\n\n";
+        std::cerr << sqlite3_errmsg(db) << '\n';
+        exit(1);
+    }*/
     sqlite3_close(db);
 
 
