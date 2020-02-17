@@ -95,7 +95,6 @@ int main()
     std::cin.getline(nameOfClan, 25);
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
-    
 
    
     //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
