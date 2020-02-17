@@ -32,9 +32,6 @@
     <ClInclude Include="healthManagement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserIDGen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Gladiator.h">
       <Filter>Header Files</Filter>
     </ClInclude>

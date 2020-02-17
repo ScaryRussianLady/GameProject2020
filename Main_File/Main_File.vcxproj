@@ -162,7 +162,6 @@
     <ClInclude Include="clanFood.h" />
     <ClInclude Include="Gladiator.h" />
     <ClInclude Include="goldManagement.h" />
-    <ClInclude Include="UserIDGen.h" />
     <ClInclude Include="healthManagement.h" />
     <ClInclude Include="timeTillFight.h" />
   </ItemGroup>

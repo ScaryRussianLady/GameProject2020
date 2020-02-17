@@ -145,9 +145,7 @@ int main()
 
     std::string clan_name = nameOfClan;
     std::string clan_type = typeOfClan;
-    UniqueID unique_id;
-    int unique = unique_id.id;
-    std::string unique_string = std::to_string(unique);
+
 
 
     sqlite3* db;
@@ -168,10 +166,8 @@ int main()
         "CLANTYPE TEXT NOT NULL, " \
         "CLANNAME TEXT NOT NULL);";
 
-    // Run the SQL (convert the string to a C-String with c_str() )
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
-    //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','Annijaaa');";
     sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES (NULL, '" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
