@@ -149,7 +149,7 @@ int selection() {      // menu selection
 }
 
 
-int main()
+int timeTillFight()
 {
 	while (1) {             //keep the program running and never end
 		counter();
