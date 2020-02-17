@@ -13,8 +13,9 @@
 #include <thread>
 #include <conio.h>
 #include <locale>
-#include <string.h>
+#include <string>
 #include "healthManagement.h"
+#include "UserIDGen.h"
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
@@ -144,6 +145,10 @@ int main()
 
     std::string clan_name = nameOfClan;
     std::string clan_type = typeOfClan;
+    UniqueID unique_id;
+    int unique = unique_id.id;
+    std::string unique_string = std::to_string(unique);
+
 
     sqlite3* db;
     char* zErrMsg = 0;
@@ -167,12 +172,11 @@ int main()
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
     //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','Annijaaa');";
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES ('234567','" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES ('" + unique_string + "', '" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     std::cout << rc << std::endl;
     sqlite3_close(db);
-    return (0);
 
 
         std::cout << "\n-----------------------------------------------------------------------------------------------------" << std::endl;
