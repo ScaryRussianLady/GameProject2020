@@ -97,7 +97,7 @@ void timeTillFight() {
 //A working timer in taking key presses whilst counting. It's not working
 //reference: https://www.youtube.com/watch?v=Kddn0MUbn4k 
 
-
+/*
 int second = 0, minute = 0, flag = 0;
 
 void printData();
@@ -156,3 +156,4 @@ int timeTillFight()
 		counter();
 	}
 }
+*/
