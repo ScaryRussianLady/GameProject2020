@@ -86,66 +86,7 @@ int main()
     std::cin.getline(userName, 25);
     std::string users_name = userName;
 
-    sqlite3* db;
-    char* zErrMsg = 0;
-    int rc;
-    std::string sql;
-    rc = sqlite3_open("GladiatorDatabase.db", &db);
-    if (rc)
-    {
-        std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
-        sqlite3_close(db);
-        return(1);
-    }
 
-    //sql = "CREATE TABLE USERINFO (" \
-        "USERID INT PRIMARY KEY NOT NULL," \
-        "USERNAME TEXT NOT NULL);";
-
-       // Run the SQL (convert the string to a C-String with c_str() )
-    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    
-    //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','Annijaaa');";
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','" + users_name + "');";
-
-    // Save SQL insert data
-    //sql = "SELECT * FROM 'USERINFO';";
-    // Run the SQL (convert the string to a C-String with c_str() )
-    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    std::cout << rc << std::endl;
-    //    // Close the SQL connection
-    sqlite3_close(db);
-    //
-    return (0);
-
-    /*sqlite3* db;
-    sqlite3_stmt* stmt;
-
-    std::string sqlstatement = "INSERT INTO User(users_name) VALUES ('" + users_name + "')";
-    if (sqlite3_open("GladiatorDatabase.db", &db) == SQLITE_OK)
-    {
-        sqlite3_prepare(db, sqlstatement.c_str(), -1, &stmt, NULL);//preparing the statement
-        sqlite3_step(stmt);//executing the statement
-    }
-    else
-    {
-        std::cout << "Failed to open db\n";
-    }*/
-
-    //sqlite3_finalize(stmt);
-    /*int fd = sqlite3_open("GladiatorDatabase.db", &db);
-
-    if (fd == SQLITE_OK)
-    {
-        std::cout << "SUCCESSULLY OPENED THE DATABASE.\n\n\n";
-    }
-    else
-    {
-        std::cerr << "ERROR:\n\n\n";
-        std::cerr << sqlite3_errmsg(db) << '\n';
-        exit(1);
-    }*/
-    sqlite3_close(db);
 
 
     singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
@@ -154,7 +95,9 @@ int main()
     std::cin.getline(nameOfClan, 25);
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
+    
 
+   
     //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
     while (true)
     {
@@ -198,6 +141,40 @@ int main()
             continue;
         }
     }
+
+    std::string clan_name = nameOfClan;
+    std::string clan_type = typeOfClan;
+
+    sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+    if (rc)
+    {
+        std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return(1);
+    }
+
+    sql = "CREATE TABLE USERINFO (" \
+        "USERID INT PRIMARY KEY NOT NULL," \
+        "USERNAME TEXT NOT NULL, " \
+        "CLANTYPE TEXT NOT NULL, " \
+        "CLANNAME TEXT NOT NULL);";
+
+    // Run the SQL (convert the string to a C-String with c_str() )
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+
+    //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME') VALUES ('12345','Annijaaa');";
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME') VALUES ('12345','" + users_name + "', '" + clan_type + "', '" + clan_name + "');";
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    std::cout << rc << std::endl;
+    sqlite3_close(db);
+    return (0);
+
+
         std::cout << "\n-----------------------------------------------------------------------------------------------------" << std::endl;
         singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
         singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
