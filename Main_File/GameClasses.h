@@ -7,10 +7,16 @@
 class Player {
 private:
 
+	// Variable for the database
+	int userID;
+
 	// These variables are private so that they cannot be changed and break something
 	char name[25];
 	char clanType[25];
 	char clanName[50];
+
+	// The number of gladiators the player has
+	unsigned int numOfGladiators;
 
 	// This function sets these player variables up
 	void setUp() {
@@ -54,13 +60,26 @@ public:
 
 	// Initialisation of the function which calls for the private setup and gives starting gold, food and water
 	// You can change these starting gold, food and water if need be.
-	Player()
+	Player(int ID)
 	{
 		gold = 100; //starting golden
 		food = 100; //starting food
 		water = 100; //starting water
 
+		userID = ID;
+		numOfGladiators = 0;
+
 		setUp();
+	}
+
+	// Adds another gladiator to the number of gladiators variable
+	void addGladiator() {
+		numOfGladiators = numOfGladiators + 1;
+	}
+
+	// Since name is a private variable, this will be used to get the name from this class
+	unsigned int getGladiatorNum() {
+		return numOfGladiators;
 	}
 
 	// Since name is a private variable, this will be used to get the name from this class
