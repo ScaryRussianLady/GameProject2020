@@ -98,7 +98,8 @@ void timeTillFight() {
 //reference: https://www.youtube.com/watch?v=Kddn0MUbn4k 
 
 
-int second = 0, minute = 0, flag = 0;
+
+int second = 0, day = 7, flag = 0, deadline = 7;
 bool snap = true;
 
 void printData();
@@ -111,6 +112,15 @@ int test() {
 	std::cin >> tester;
 	return 1;
 }
+int FightDayTest() {
+	std::string choice;
+	std::cout << "++++++++++++++++++++++++++++++\n";
+	std::cout << "it's time for your Gladiators to prove themselves in battle\n";
+	std::cout << "++++++++++++++++++++++++++++++\n";
+	std::cout << "please select your gladiator:";
+	std::cin >> choice;
+	return 1;
+}
 
 void delay(int ms)  //delay function
 {
@@ -121,8 +131,13 @@ void delay(int ms)  //delay function
 void counter() {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
-		if (second > 59) {         //after second is greater than 59, reset second and increase 1 minute
-			second = 0; ++minute;
+		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
+			second = 0; day -= 1;
+		}
+		if (day < 1) {
+			system("CLS");
+			FightDayTest();
+			day = 7;
 		}
 		printData();           //print out the new data, delay for 1000 millisecond and increase 1 second.
 		delay(1000); second += 1;
@@ -134,7 +149,7 @@ void printData() {   //print data to screen
 	system("cls");      //clear the screen
 	printf("1.Start  2.testFunc  3.Reset  4. End\n");       //menu for user
 	printf("***********************************\n");
-	printf("            %d:%d\n", minute, second);      //output the data
+	printf("        days till fight: %d \n", day);      //output the data
 	printf("***********************************\n");
 }
 
@@ -143,7 +158,7 @@ int selection() {      // menu selection
 	case 49: flag = 0; break;        //press 1 set flag to 0 means start
 	case 50: flag = 0; test(); break;        //press 2 set flag to 1 means stop
 	case 51:
-		minute = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
+		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		printData();                //print the new data after reset
 		break;
 	case 52: snap = false;  return snap;; break;        //press 4, exit the program
