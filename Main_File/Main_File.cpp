@@ -15,6 +15,7 @@
 #include <locale>
 #include <string>
 #include "healthManagement.h"
+#include <cctype>
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
@@ -96,9 +97,17 @@ int main()
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
 
-   
+
+    singularWordOutput("\nWhich one will it be?\n");
+    std::cin.getline(typeOfClan, 25);
+    int toupper(int typeOfClan);
+
+    if (typeOfClan == "ATTACK")
+    {
+        std::cout << "Strong choice" << std::endl;
+    }
     //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
-    while (true)
+    /*while (true)
     {
         singularWordOutput("\nWhich one will it be?\n");
         std::cin.getline(typeOfClan, 25);
@@ -139,12 +148,11 @@ int main()
             char typeOfClan[25];
             continue;
         }
-    }
+    }*/
 
     std::string clan_name = nameOfClan;
     std::string clan_type = typeOfClan;
-
-
+  
 
     sqlite3* db;
     char* zErrMsg = 0;
