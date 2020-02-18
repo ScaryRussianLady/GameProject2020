@@ -14,6 +14,10 @@ public:
 	int hp;
 	int hunger;
 	int thirst;
+	int strength;
+	int agility;
+	int dexterity;
+
 
 	//some other stats probably will be implemented
 
@@ -26,9 +30,9 @@ public:
 	int hpMax = 100;
 	int maxHung = 100;
 	int maxThirst = 100;
-	int strength = 10;
-	float agility = 0.1;
-	float dexterity = 0.1;
+	int strengthMax = 50;
+	float agilityMax = 1;
+	float dexterityMax = 1;
 
 };
 //just testing around with the gladiator class
@@ -61,6 +65,7 @@ int firstGlads() {
 
 // [Callum Jones 9406128] Function to train the basic stats of a gladiator
 int trainGladiator() {
+	bool trained = false;
 	int gladChoice = 0;
 	int statChoice = 0;
 	gladiator gladiator[3];
@@ -87,14 +92,21 @@ int trainGladiator() {
 	if (statChoice == 1) {
 		gladiator[gladChoice].strength + 2;
 		std::cout << "This gladiators strength stat is now" << gladiator[gladChoice].strength;
+		trained = true;
 	}
 	else if (statChoice == 2) {
 		gladiator[gladChoice].agility + 0.05;
 		std::cout << "This gladiators agility stat is now" << gladiator[gladChoice].agility;
+		trained = true;
 	}
 	else if (statChoice == 3) {
 		gladiator[gladChoice].dexterity + 0.05;
 		std::cout << "This gladiators dexterity stat is now" << gladiator[gladChoice].dexterity;
+		trained = true;
+	}
+	if (trained = true) {
+		gladiator[gladChoice].hunger - 10;
+		gladiator[gladChoice].thirst - 15;
 	}
 	return 1;
 	
