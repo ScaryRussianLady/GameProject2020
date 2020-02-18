@@ -111,7 +111,6 @@ int main()
         int c = type_string[i];
         type_string[i] = toupper(c);
 
-        std::cout << "That's not an option Chief! Try again." << std::endl;
         if (type_string == "ATTACK")
             {
                 std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
