@@ -104,7 +104,7 @@ int trainGladiator() {
 		std::cout << "This gladiators dexterity stat is now" << gladiator[gladChoice].dexterity;
 		trained = true;
 	}
-	if (trained = true) {
+	if (trained == true) {
 		gladiator[gladChoice].hunger - 10;
 		gladiator[gladChoice].thirst - 15;
 	}
