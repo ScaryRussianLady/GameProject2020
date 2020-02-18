@@ -110,18 +110,31 @@ int main()
     {
         int c = type_string[i];
         type_string[i] = toupper(c);
-
+        
+       
+    }
+    do {
         if (type_string == "ATTACK")
-            {
-                std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
-            }
+        {
+            std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
+            break;
+        }
 
         if (type_string == "DEFENCE")
         {
             std::cout << "All nations need defending!" << std::endl;
+            break;
 
         }
-    }
+
+        else
+        {
+            std::cout << "Try again" << std::endl;
+            continue;
+        }
+    } while (true);
+
+
     
 
  
