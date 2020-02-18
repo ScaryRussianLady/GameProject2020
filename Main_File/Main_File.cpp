@@ -98,22 +98,22 @@ int main()
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
 
-
-    singularWordOutput("\nWhich one will it be?\n");
-    std::cin.getline(typeOfClan, 25);
-
     //Improved version of Gerald's code by Annija.
-    std::string type_string = typeOfClan;
-    int length = type_string.length();
-    
-    for (int i = 0; i < length; i++) 
+
+    while (true)
     {
-        int c = type_string[i];
-        type_string[i] = toupper(c);
-        
-       
-    }
-    do {
+
+        singularWordOutput("\nWhich one will it be?\n");
+        std::cin.getline(typeOfClan, 25);
+        std::string type_string = typeOfClan;
+        int length = type_string.length();
+
+        for (int i = 0; i < length; i++)
+        {
+            int c = type_string[i];
+            type_string[i] = toupper(c);
+        }
+
         if (type_string == "ATTACK")
         {
             std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
@@ -126,17 +126,16 @@ int main()
             break;
 
         }
-
+        
         else
         {
-            std::cout << "Try again" << std::endl;
+            std::cout << "Try again!" << std::endl;
+            char typeOfClan[25];
             continue;
         }
-    } while (true);
-
-
+    }
     
-
+    std::string type_clan = typeOfClan;
  
   
     //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
@@ -206,7 +205,7 @@ int main()
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + type_string + "', '" + clan_name + "', NULL);";
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + type_clan + "', '" + clan_name + "', NULL);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     //std::cout << rc << std::endl;
