@@ -106,29 +106,23 @@ int main()
     std::string type_string = typeOfClan;
     int length = type_string.length();
     
-        for (int i = 0; i < length; i++) 
+    for (int i = 0; i < length; i++) 
+    {
+        int c = type_string[i];
+        type_string[i] = toupper(c);
+
+        std::cout << "That's not an option Chief! Try again." << std::endl;
+        if (type_string == "ATTACK")
+            {
+                std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
+            }
+
+        if (type_string == "DEFENCE")
         {
-            int c = type_string[i];
-            type_string[i] = toupper(c);
-                if (type_string == "ATTACK")
-                {
-                    std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
-                    break;
-                }
-
-                if (type_string == "DEFENCE")
-                {
-                    std::cout << "All nations need defending!" << std::endl;
-                    break;
-                }
-
-                else
-                {
-                    std::cout << "That's not an option Chief! Try again." << std::endl;
-                    continue;
-                }
+            std::cout << "All nations need defending!" << std::endl;
 
         }
+    }
     
 
  
