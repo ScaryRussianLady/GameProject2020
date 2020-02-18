@@ -14,6 +14,7 @@
 #include <conio.h>
 #include <locale>
 #include <string>
+#include <cstring>
 #include "healthManagement.h"
 #include <cctype>
 
@@ -100,12 +101,38 @@ int main()
 
     singularWordOutput("\nWhich one will it be?\n");
     std::cin.getline(typeOfClan, 25);
-    int toupper(int typeOfClan);
 
-    if (typeOfClan == "ATTACK")
-    {
-        std::cout << "Strong choice" << std::endl;
-    }
+    //Improved version of Gerald's code by Annija.
+    std::string type_string = typeOfClan;
+    int length = type_string.length();
+    
+        for (int i = 0; i < length; i++) 
+        {
+            int c = type_string[i];
+            type_string[i] = toupper(c);
+                if (type_string == "ATTACK")
+                {
+                    std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
+                    break;
+                }
+
+                if (type_string == "DEFENCE")
+                {
+                    std::cout << "All nations need defending!" << std::endl;
+                    break;
+                }
+
+                else
+                {
+                    std::cout << "That's not an option Chief! Try again." << std::endl;
+                    continue;
+                }
+
+        }
+    
+
+ 
+  
     //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
     /*while (true)
     {
@@ -151,8 +178,6 @@ int main()
     }*/
 
     std::string clan_name = nameOfClan;
-    std::string clan_type = typeOfClan;
-  
 
     sqlite3* db;
     char* zErrMsg = 0;
@@ -175,7 +200,7 @@ int main()
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + clan_type + "', '" + clan_name + "', NULL);";
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + type_string + "', '" + clan_name + "', NULL);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     //std::cout << rc << std::endl;
