@@ -13,12 +13,26 @@ private:
 	void setUp() {
 		std::cout << "Hello Chief, what name would you like to be addressed by? >> ";
 		std::cin.getline(name, 25);
+		name[0] = toupper(name[0]);
 
-		std::cout << "What type of clan would you like to lead? (Attack or Defence?) >> ";
-		std::cin.getline(clanType, 25);
+		while (true) {
+			std::cout << "What type of clan would you like to lead? (Attack or Defence?) >> ";
+			std::cin.getline(clanType, 25);
+
+			for (unsigned char i = 0; i < strlen(clanType); i++) {
+				clanType[i] = (tolower(clanType[i]));
+			}
+
+			if (std::string(clanType) == std::string("attack") || std::string(clanType) == std::string("defence")) {
+				break;
+			}
+			else {
+				std::cout << "You need to choose either ATTACK or DEFENCE!" << std::endl;
+			}
+		}
 
 		std::cout << "And what would you like to name this " << clanType << " type clan of yours, Chief " << name << "? >> ";
-		std::cin.getline(clanType, 25);
+		std::cin.getline(clanName, 25);
 	}
 
 public:
