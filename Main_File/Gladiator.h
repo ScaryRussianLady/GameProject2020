@@ -59,9 +59,6 @@ int firstGlads() {
 	return 1;
 }
 
-int seeGlads() {
-
-}
 // [Callum Jones 9406128] Function to train the basic stats of a gladiator
 int trainGladiator() {
 	int gladChoice = 0;
@@ -87,20 +84,19 @@ int trainGladiator() {
 		std::cin >> statChoice;
 	}
 	std::cout << "Ok your chosen stat will be trained";
-	if (statChoice = 1) {
+	if (statChoice == 1) {
 		gladiator[gladChoice].strength + 2;
 		std::cout << "This gladiators strength stat is now" << gladiator[gladChoice].strength;
 	}
-	else if (statChoice = 2) {
+	else if (statChoice == 2) {
 		gladiator[gladChoice].agility + 0.05;
 		std::cout << "This gladiators agility stat is now" << gladiator[gladChoice].agility;
 	}
-	else if (statChoice = 3) {
+	else if (statChoice == 3) {
 		gladiator[gladChoice].dexterity + 0.05;
 		std::cout << "This gladiators dexterity stat is now" << gladiator[gladChoice].dexterity;
-
-
-
+	}
+	return 1;
 	
 
 }
