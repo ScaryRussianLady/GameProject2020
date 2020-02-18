@@ -4,7 +4,7 @@
 // Required headerfiles to calculate the fighters
 #include "Gladiator.h"
 
-// [START OF CODE BY: CHRISTIAN SHAW]
+// [START OF CODE BY: CHRISTIAN ]
 
 // This function will store the results of the fight calculations
 class fightResults {
@@ -24,20 +24,22 @@ public:
 	unsigned char comp_thirstLost;
 };
 
-// [END OF CODE BY: CHRISTIAN SHAW]
+// [END OF CODE BY: CHRISTIAN ]
 
-// [START OF CODE BY: CHRISTIAN SHAW]
+// [START OF CODE BY: CHRISTIAN ]
 
 // This function will do the fight calculation and return and object the results
 fightResults fightCalculation(gladiator plr_fighter, gladiator comp_fighter, unsigned char minHealth) {
 	
 	// Can't write more code without knowing how the weapons work
 
+
+
 }
 
-// [END OF CODE BY: CHRISTIAN SHAW]
+// [END OF CODE BY: CHRISTIAN ]
 
-// [START OF CODE BY: CHRISTIAN SHAW]
+// [START OF CODE BY: CHRISTIAN ]
 
 bool battleOver(unsigned char hp, unsigned char minHealth, int dmg){
 	
@@ -50,4 +52,4 @@ bool battleOver(unsigned char hp, unsigned char minHealth, int dmg){
 
 }
 
-// [END OF CODE BY: CHRISTIAN SHAW]
+// [END OF CODE BY: CHRISTIAN ]
