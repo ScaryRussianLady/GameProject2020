@@ -287,8 +287,10 @@ public:
 		// If not, increase the quality by one and then begin the improvement scaling calculations
 		quality = quality + 1;
 
-		// Weapon improvement scaling done here
-
+		// Weapon improvement scaling done here (Make these values more suitable if need be)
+		damage = damage + 2;
+		attackSpeed = attackSpeed + 2;
+		critChance = critChance + 1;
 
 	}
 
