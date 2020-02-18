@@ -2,6 +2,8 @@
 #include <Windows.h> //include windows.h to use the sleep function. takes innput as milliseconds
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <conio.h>
 //#include "clear.h"
 
 /*
@@ -30,6 +32,9 @@ void timeTillFight() {
 
 }
 */
+
+// the function below is broken atm
+/*
 void timeTillFight() {
 	int count = 7;
 	while (count >= 0) {
@@ -86,4 +91,70 @@ void timeTillFight() {
 
 
 	}
+}
+*/
+
+//A working timer in taking key presses whilst counting. It's not working
+//reference: https://www.youtube.com/watch?v=Kddn0MUbn4k 
+
+
+int second = 0, minute = 0, flag = 0;
+bool snap = true;
+
+void printData();
+int selection();
+
+
+int test() {
+	std::string tester;
+	std::cout << "hope and pray for me\n";
+	std::cin >> tester;
+	return 1;
+}
+
+void delay(int ms)  //delay function
+{
+	clock_t timeDelay = ms + clock();    //Step up the difference from clock delay
+	while (timeDelay > clock());         //stop when the clock is higher than time delay
+}
+
+void counter() {
+	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
+
+		if (second > 59) {         //after second is greater than 59, reset second and increase 1 minute
+			second = 0; ++minute;
+		}
+		printData();           //print out the new data, delay for 1000 millisecond and increase 1 second.
+		delay(1000); second += 1;
+	}
+	selection();    //after the user hit the keyboard, call the menu selection
+}
+
+void printData() {   //print data to screen
+	system("cls");      //clear the screen
+	printf("1.Start  2.testFunc  3.Reset  4. End\n");       //menu for user
+	printf("***********************************\n");
+	printf("            %d:%d\n", minute, second);      //output the data
+	printf("***********************************\n");
+}
+
+int selection() {      // menu selection
+	switch (_getch()) {    //collect input from user
+	case 49: flag = 0; break;        //press 1 set flag to 0 means start
+	case 50: flag = 0; test(); break;        //press 2 set flag to 1 means stop
+	case 51:
+		minute = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
+		printData();                //print the new data after reset
+		break;
+	case 52: snap = false;  return snap;; break;        //press 4, exit the program
+	}
+}
+
+
+int timeTillFight()
+{
+	while (snap == true) {             //keep the program running end only if snap is false
+		counter();
+	}
+	return 1;
 }

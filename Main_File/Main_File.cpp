@@ -13,7 +13,7 @@
 #include <thread>
 #include <conio.h>
 #include <locale>
-#include <string.h>
+#include <string>
 #include "healthManagement.h"
 
 //Please ignore this section of the code for now.
@@ -44,44 +44,33 @@ void singularWordOutput(const std::string& text)
     }
 }
 
+int callback(void* NotUsed, int argc, char** argv, char** azColName) {
+
+    // int argc: holds the number of results
+    // (array) azColName: holds each column returned
+    // (array) argv: holds each value
+
+    for (int i = 0; i < argc; i++) {
+
+        // Show column name, value, and newline
+        std::cout << azColName[i] << ": " << argv[i] << std::endl;
+
+    }
+
+    // Insert a newline
+    std::cout << std::endl;
+
+    // Return successful
+    return 0;
+}
+
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 {
 
-    //Ignore this section of code that has been commented out for now please.
-    /*const int STATEMENTS = 8;
-    sqlite3* db;
-    char* zErrMsg = 0;
-    int rc;
-
-    rc = sqlite3_open("GladiatorDatabase.db", &db);
-
-    if (rc)
-    {
-        std::cout << "Can't open database: " << sqlite3_errmsg(db) << "\n";
-    }
-    else
-    {
-        std::cout << "Open database successfully\n\n";
-    }
-    sqlite3_close(db);
-    */
-
     //https://www.youtube.com/watch?v=wRnjahwxZ8A
-    /*sqlite3* db;
-    int fd = sqlite3_open("GladiatorDatabase.db", &db);
+ 
 
-    if (fd == SQLITE_OK)
-    {
-        std::cout << "SUCCESSULLY OPENED THE DATABASE.\n\n\n";
-    }
-    else
-    {
-        std::cerr << "ERROR:\n\n\n";
-        std::cerr << sqlite3_errmsg(db) << '\n';
-        exit(1);
-    }
-    sqlite3_close(db);*/
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
 
@@ -96,22 +85,8 @@ int main()
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
     std::cin.getline(userName, 25);
     std::string users_name = userName;
-    sqlite3* db;
-    sqlite3_stmt* stmt;
 
-    std::string sqlstatement = "INSERT INTO User(users_name) VALUES ('" + users_name + "')";
-    if (sqlite3_open("GladiatorDatabase.db", &db) == SQLITE_OK)
-    {
-        sqlite3_prepare(db, sqlstatement.c_str(), -1, &stmt, NULL);//preparing the statement
-        sqlite3_step(stmt);//executing the statement
-    }
-    else
-    {
-        std::cout << "Failed to open db\n";
-    }
 
-    sqlite3_finalize(stmt);
-    sqlite3_close(db);
 
 
     singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
@@ -121,6 +96,7 @@ int main()
     singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
     char typeOfClan[25];
 
+   
     //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
     while (true)
     {
@@ -164,6 +140,40 @@ int main()
             continue;
         }
     }
+
+    std::string clan_name = nameOfClan;
+    std::string clan_type = typeOfClan;
+
+
+
+    sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+    if (rc)
+    {
+        std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return(1);
+    }
+
+   //sql = "CREATE TABLE USERINFO (" \
+        "USERID INTEGER PRIMARY KEY AUTOINCREMENT," \
+        "USERNAME TEXT NOT NULL, " \
+        "CLANTYPE TEXT NOT NULL, " \
+        "CLANNAME TEXT NOT NULL, " \
+        "NUM_GLADIATORS INTEGER);";
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + clan_type + "', '" + clan_name + "', NULL);";
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    //std::cout << rc << std::endl;
+    sqlite3_close(db);
+
+
         std::cout << "\n-----------------------------------------------------------------------------------------------------" << std::endl;
         singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
         singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
@@ -180,7 +190,7 @@ int main()
     // Water & Food starting levels
         int CurrentFoodLevel = 50;
         int CurrentWaterLevel = 50;
-
+        std::cout << "good job jay pat on the back";
         //ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
 }
