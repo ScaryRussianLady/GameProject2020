@@ -37,4 +37,4 @@ int trainGladiator(Gladiator& gladiator) {
 		gladiator.adjustHunger(-10);
 		gladiator.adjustThirst(-15);
 	}
-	return gla;
+}
