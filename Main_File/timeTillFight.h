@@ -106,10 +106,17 @@ void printData();
 int selection();
 
 
-int test() {
-	std::string tester;
-	std::cout << "hope and pray for me\n";
-	std::cin >> tester;
+int testCase1() {		//this function is here for display purposes only
+	std::cout << "*Will eventially link this with other function*\n";
+	std::cout << "this is just to show that the time is working.";
+	Sleep(3000);
+	return 1;
+}
+
+int testCase2() {		//this function is here for display purposes only
+	std::cout << "*Will eventially link this with other function*\n";
+	std::cout << "this is just to show that the time is working.";
+	Sleep(3000);
 	return 1;
 }
 int FightDayTest() {
@@ -147,7 +154,7 @@ void counter() {
 
 void printData() {   //print data to screen
 	system("cls");      //clear the screen
-	printf("1.Start  2.testFunc  3.Reset  4. End\n");       //menu for user
+	printf("1.View Market  2.View Fighters  3.See Inventory  4. End\n");       //menu for user
 	printf("***********************************\n");
 	printf("        days till fight: %d \n", day);      //output the data
 	printf("***********************************\n");
@@ -155,8 +162,9 @@ void printData() {   //print data to screen
 
 int selection() {      // menu selection
 	switch (_getch()) {    //collect input from user
-	case 49: flag = 0; break;        //press 1 set flag to 0 means start
-	case 50: flag = 0; test(); break;        //press 2 set flag to 1 means stop
+	case 48: flag = 0; break;        //press 0 set flag to 0 means start incase clock stops for some reason. it shouldn't
+	case 49: flag = 0; testCase1(); break;
+	case 50: flag = 0; testCase2(); break;        //press 2 set flag to 1 means stop
 	case 51:
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		printData();                //print the new data after reset
