@@ -32,6 +32,7 @@
 
 //https://stackoverflow.com/questions/33882822/output-letters-one-at-a-time-in-c
 
+//Annija Balode
 void singularWordOutput(const std::string& text)
 {
     // loop through each character in the text
@@ -46,6 +47,7 @@ void singularWordOutput(const std::string& text)
     }
 }
 
+//Annija Balode
 int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 
     // int argc: holds the number of results
@@ -99,7 +101,6 @@ int main()
     char typeOfClan[25];
 
     //Improved version of Gerald's code by Annija.
-
     while (true)
     {
 
@@ -182,6 +183,7 @@ int main()
         }
     }*/
 
+    //Annija Balode
     std::string clan_name = nameOfClan;
 
     sqlite3* db;
