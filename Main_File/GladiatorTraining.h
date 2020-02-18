@@ -4,6 +4,8 @@
 
 #include "Gladiator.h"
 
+// [START OF CODE BY: CHRISTIAN ]
+
 void trainGladiator() {
 
 	// Introductory dialogue
@@ -22,6 +24,8 @@ void trainGladiator() {
 	std::cin.getline(Skill, 10);
 	
 }
+
+// [END OF CODE BY: CHRISTIAN ]
 
 void giveTraining() {
 	
