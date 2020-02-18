@@ -84,15 +84,15 @@ int trainGladiator() {
 		std::cin >> statChoice;
 	}
 	std::cout << "Ok your chosen stat will be trained";
-	if (statChoice = 1) {
+	if (statChoice == 1) {
 		gladiator[gladChoice].strength + 2;
 		std::cout << "This gladiators strength stat is now" << gladiator[gladChoice].strength;
 	}
-	else if (statChoice = 2) {
+	else if (statChoice == 2) {
 		gladiator[gladChoice].agility + 0.05;
 		std::cout << "This gladiators agility stat is now" << gladiator[gladChoice].agility;
 	}
-	else if (statChoice = 3) {
+	else if (statChoice == 3) {
 		gladiator[gladChoice].dexterity + 0.05;
 		std::cout << "This gladiators dexterity stat is now" << gladiator[gladChoice].dexterity;
 	}
