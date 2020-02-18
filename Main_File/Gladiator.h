@@ -62,7 +62,7 @@ int firstGlads() {
 int seeGlads() {
 
 }
-
+// [Callum Jones 9406128] Function to train the basic stats of a gladiator
 int trainGladiator() {
 	int gladChoice = 0;
 	int statChoice = 0;
