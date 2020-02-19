@@ -159,7 +159,7 @@
     <ClCompile Include="Main_File.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libsqlite3\sqlite3.h" />
+    <ClInclude Include="..\..\..\..\Downloads\sqlite3.h" />
     <ClInclude Include="clanFood.h" />
     <ClInclude Include="fightCalc.h" />
     <ClInclude Include="GameClasses.h" />
