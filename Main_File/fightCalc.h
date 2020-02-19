@@ -51,5 +51,4 @@ bool battleOver(unsigned char hp, unsigned char minHealth, int dmg){
 	}
 
 }
-
 // [END OF CODE BY: CHRISTIAN ]

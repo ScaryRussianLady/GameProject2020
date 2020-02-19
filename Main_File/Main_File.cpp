@@ -17,6 +17,8 @@
 #include <cstring>
 #include "healthManagement.h"
 #include <cctype>
+#include "GameClasses.h"
+
 
 //Please ignore this section of the code for now.
 /*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
@@ -70,10 +72,8 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
-{
-   
+{ 
     //https://www.youtube.com/watch?v=wRnjahwxZ8A
- 
 
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
     //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
@@ -125,7 +125,6 @@ int main()
         {
             std::cout << "All nations need defending!" << std::endl;
             break;
-
         }
         
         else
@@ -226,11 +225,12 @@ int main()
 
         system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
-        timeTillFight();//called the time function for testing
+        //timeTillFight();//called the time function for testing
     // Water & Food starting levels
         int CurrentFoodLevel = 50;
         int CurrentWaterLevel = 50;
-        std::cout << "good job jay pat on the back";
+        Player(setUp());
+        //std::cout << "good job jay pat on the back";
         //ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
 }

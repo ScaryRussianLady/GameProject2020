@@ -235,7 +235,7 @@ public:
 
 // [END OF CODE BY: CHRISTIAN ]
 
-// [START OF CODE BY: CHRISTIAN ]
+// [START OF CODE BY: CHRISTIAN & ANNIJA]
 
 class Weapon {
 

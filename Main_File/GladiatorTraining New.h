@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h> 
-#include <GameClasses.h>
+#include "GameClasses.h"
 
 // [Callum Jones 9406128] Function to train the basic stats of a gladiator
 int trainGladiator(Gladiator& gladiator) {

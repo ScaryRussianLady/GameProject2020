@@ -160,7 +160,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clanFood.h" />
+    <ClInclude Include="fightCalc.h" />
+    <ClInclude Include="GameClasses.h" />
     <ClInclude Include="Gladiator.h" />
+    <ClInclude Include="GladiatorTraining New.h" />
     <ClInclude Include="goldManagement.h" />
     <ClInclude Include="gameTime.h" />
     <ClInclude Include="healthManagement.h" />
