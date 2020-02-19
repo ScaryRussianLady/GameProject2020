@@ -34,6 +34,7 @@
 
 //https://stackoverflow.com/questions/33882822/output-letters-one-at-a-time-in-c
 
+
 //Annija Balode
 void singularWordOutput(const std::string& text)
 {
@@ -73,6 +74,7 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
 { 
+
     //https://www.youtube.com/watch?v=wRnjahwxZ8A
 
     //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
@@ -229,8 +231,9 @@ int main()
     // Water & Food starting levels
         int CurrentFoodLevel = 50;
         int CurrentWaterLevel = 50;
-        Player(setUp());
+
         //std::cout << "good job jay pat on the back";
         //ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
 }
+
