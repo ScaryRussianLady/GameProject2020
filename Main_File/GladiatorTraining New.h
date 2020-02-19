@@ -19,17 +19,17 @@ int trainGladiator(Gladiator& gladiator) {
 	std::cout << "Ok your chosen stat will be trained";
 
 	if (statChoice == 1) {
-		gladiator.increaseStrength(2);
+		gladiator.strength + 2;
 		std::cout << "This gladiators strength stat is now" << gladiator.strength;
 		trained = true;
 	}
 	else if (statChoice == 2) {
-		gladiator.increaseAgility + 0.05;
+		gladiator.agility + 0.05;
 		std::cout << "This gladiators agility stat is now" << gladiator.agility;
 		trained = true;
 	}
 	else if (statChoice == 3) {
-		gladiator.increaseDexterity + 0.05;
+		gladiator.dexterity + 0.05;
 		std::cout << "This gladiators dexterity stat is now" << gladiator.dexterity;
 		trained = true;
 	}
