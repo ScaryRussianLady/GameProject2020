@@ -1,43 +1,115 @@
 #pragma once
 #include <iostream>
-#include <stdlib.h> 
+#include <stdlib.h>
+#include <sqlite3.h>
+#include <stdio.h>
+#include <thread>
+#include <conio.h>
+#include <locale>
+#include <string>
+#include <cstring>
+#include "healthManagement.h"
+#include <cctype>
+#include "GameClasses.h"
 
-// [START OF CODE BY: CHRISTIAN ]
+// [START OF CODE BY: CHRISTIAN & ANNIJA]
 
 class Player {
 private:
 
 	// Variable for the database
-	int userID;
+	//int userID;
+
+	char userName[25];
+	char typeOfClan[25];
+	char nameOfClan[25];
 
 	// These variables are private so that they cannot be changed and break something
-	char name[25];
-	char clanType[25];
-	char clanName[50];
+
 
 	// The number of gladiators the player has
 	unsigned int numOfGladiators;
 
+	//Function for spelling out words letter by letter.
+	void singularWordOutput(const std::string& text)
+	{
+		// loop through each character in the text
+		for (std::size_t i = 0; i < text.size(); ++i)
+		{
+			// output one character
+			// flush to make sure the output is not delayed
+			std::cout << text[i] << std::flush;
+
+			// sleep 30 milliseconds
+			std::this_thread::sleep_for(std::chrono::milliseconds(30));
+		}
+	}
+
 	// This function sets these player variables up
 	void setUp() {
+	
 
 		// This will take the name that the player would like to go by and save it in the player variable
-		std::cout << "Hello Chief, what name would you like to be addressed by? >> ";
-		std::cin.getline(name, 25);
-		name[0] = toupper(name[0]);
+		std::cout << "The Gladiator" << std::endl;
+		std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
+		singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
+		std::cin.getline(userName, 25);
+		std::string users_name = userName;
+		userName[0] = toupper(userName[0]);
+
+		singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
+		singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
+		singularWordOutput("\nWhat would you like to name your clan, Chief " + std::string(userName) + "?\n");
+		std::cin.getline(nameOfClan, 25);
+		singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
+
+		while (true)
+		{
+			singularWordOutput("\nWhich one will it be?\n");
+			std::cin.getline(typeOfClan, 25);
+			std::string type_string = typeOfClan;
+			int length = type_string.length();
+
+			for (int i = 0; i < length; i++)
+			{
+				int c = type_string[i];
+				type_string[i] = toupper(c);
+			}
+
+			if (type_string == "ATTACK")
+			{
+				std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
+				break;
+			}
+
+			if (type_string == "DEFENCE")
+			{
+				std::cout << "All nations need defending!" << std::endl;
+				break;
+			}
+
+			else
+			{
+				std::cout << "Try again!" << std::endl;
+				char typeOfClan[25];
+				continue;
+			}
+		}
 
 		// This will get the player's clan type and it will make sure it's either attack of defence
-		while (true) {
+		/*while (true) {
+
 			std::cout << "What type of clan would you like to lead? (Attack or Defence?) >> ";
-			std::cin.getline(clanType, 25);
+			std::cin.getline(typeOfClan, 25);
 
 			// Turns the user's input into all lowercase so it can be checked to see if it's the correct value
-			for (unsigned char i = 0; i < strlen(clanType); i++) {
-				clanType[i] = (tolower(clanType[i]));
+			for (unsigned char i = 0; i < strlen(typeOfClan); i++) {
+				typeOfClan[i] = (tolower(typeOfClan[i]));
 			}
 
 			// Checks if the user's input is correct. If it is, the while loop will break. If not, the user will be asked to do it again
-			if (std::string(clanType) == std::string("attack") || std::string(clanType) == std::string("defence")) {
+			if (std::string(typeOfClan) == std::string("attack") || std::string(typeOfClan) == std::string("defence")) {
 				break;
 			}
 			else {
@@ -46,8 +118,8 @@ private:
 		}
 
 		// This allows for the player to name their clan.
-		std::cout << "And what would you like to name this " << clanType << " type clan of yours, Chief " << name << "? >> ";
-		std::cin.getline(clanName, 25);
+		std::cout << "And what would you like to name this " << typeOfClan << " type clan of yours, Chief " << userName << "? >> ";
+		std::cin.getline(nameOfClan, 25);*/
 	}
 
 public:
@@ -66,7 +138,7 @@ public:
 		food = 100; //starting food
 		water = 100; //starting water
 
-		userID = ID;
+		//userID = ID;
 		numOfGladiators = 0;
 
 		setUp();
@@ -84,17 +156,18 @@ public:
 
 	// Since name is a private variable, this will be used to get the name from this class
 	char* getName() {
-		return name;
+
+		return userName;
 	}
 
 	// Since clan type is a private variable, this will be used to get the name from this class
 	char* getClanType() {
-		return clanType;
+		return typeOfClan;
 	}
 
 	// Since clan name is a private variable, this will be used to get the name from this class
 	char* getClanName() {
-		return clanName;
+		return nameOfClan;
 	}
 };
 

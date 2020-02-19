@@ -83,9 +83,10 @@ int main()
 
     system("color 8F");//changes colour of terminal and text. couldn't get conio to work. use "color %" to view all available colours
 
-    Player yeetus(123);
+    Player test(1);
+    test.getName();
 
-    char nameOfClan[25];
+    /*char nameOfClan[25];
     char userName[25];
     std::cout << "The Gladiator" << std::endl;
     std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
@@ -93,13 +94,15 @@ int main()
 
 
     //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
-    std::cin.getline(userName, 25);
-    std::string users_name = userName;
+    std::cin.getline(userName, 25);*/
+    //std::string users_name = userName;
+    //*********
+    //std::string users_name = test.getName;
 
 
 
 
-    singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
+    /*singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
     singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
     singularWordOutput("\nWhat would you like to name your clan, Chief " + std::string(userName) + "?\n");
     std::cin.getline(nameOfClan, 25);
@@ -139,9 +142,11 @@ int main()
             char typeOfClan[25];
             continue;
         }
-    }
+    }*/
     
-    std::string type_clan = typeOfClan;
+    //std::string type_clan = typeOfClan;
+    //*********
+    //std::string type_clan = test.getClanType;
  
   
     //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
@@ -189,7 +194,9 @@ int main()
     }*/
 
     //Annija Balode
-    std::string clan_name = nameOfClan;
+    //std::string clan_name = nameOfClan;
+    //*********
+    //std::string clan_name = test.getClanName();
 
     sqlite3* db;
     char* zErrMsg = 0;
@@ -212,18 +219,17 @@ int main()
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
-    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + type_clan + "', '" + clan_name + "', NULL);";
+    //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + users_name + "', '" + type_clan + "', '" + clan_name + "', NULL);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    //std::cout << rc << std::endl;
     sqlite3_close(db);
 
 
-        std::cout << "\n-----------------------------------------------------------------------------------------------------" << std::endl;
+       /* std::cout << "\n-----------------------------------------------------------------------------------------------------" << std::endl;
         singularWordOutput("\nBefore you can begin training your clan, Chief " + std::string(userName) + ", you must first be informed on what is expected of you.");
         singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
         singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
-        singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
+        singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");*/
 
         //This gives time for the user to read everything they want and begin when they want to.
         std::cout << "\n\nPress any key to begin your journey...";
