@@ -99,7 +99,7 @@ void timeTillFight() {
 
 
 
-int second = 0, day = 7, flag = 0, deadline = 7;
+int second = 0, day = 7, flag = 0;
 bool snap = true;
 
 void printData();
@@ -107,23 +107,25 @@ int selection();
 
 
 int testCase1() {		//this function is here for display purposes only
+	std::cout << "----------------Market----------------\n ";
 	std::cout << "*Will eventially link this with other function*\n";
-	std::cout << "this is just to show that the time is working.";
+	std::cout << "this is just to show that other functions can be called.";
 	Sleep(3000);
 	return 1;
 }
 
 int testCase2() {		//this function is here for display purposes only
+	std::cout << "----------------Fighers----------------\n ";
 	std::cout << "*Will eventially link this with other function*\n";
-	std::cout << "this is just to show that the time is working.";
+	std::cout << "this is just to show that other functions can be called.";
 	Sleep(3000);
 	return 1;
 }
-int FightDayTest() {
+int FightDayTest() {		//this function is a placeholder for testing only
 	std::string choice;
-	std::cout << "++++++++++++++++++++++++++++++\n";
-	std::cout << "it's time for your Gladiators to prove themselves in battle\n";
-	std::cout << "++++++++++++++++++++++++++++++\n";
+	std::cout << "+++++++++++++++FIGHT DAY+++++++++++++++\n";
+	std::cout << "it's time for your Gladiators to prove themselves in battle\n\n";
+
 	std::cout << "please select your gladiator:";
 	std::cin >> choice;
 	return 1;
@@ -147,7 +149,7 @@ void counter() {
 			day = 7;
 		}
 		printData();           //print out the new data, delay for 1000 millisecond and increase 1 second.
-		delay(1000); second += 1;
+		Sleep(1000); second += 1;
 	}
 	selection();    //after the user hit the keyboard, call the menu selection
 }
@@ -162,15 +164,16 @@ void printData() {   //print data to screen
 
 int selection() {      // menu selection
 	switch (_getch()) {    //collect input from user
-	case 48: flag = 0; break;        //press 0 set flag to 0 means start incase clock stops for some reason. it shouldn't
-	case 49: flag = 0; testCase1(); break;
-	case 50: flag = 0; testCase2(); break;        //press 2 set flag to 1 means stop
+	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't
+	case 49: flag = 0; testCase1(); break;		  //press 1 to see testCase1	
+	case 50: flag = 0; testCase2(); break;        //press 2 to see testCase2
 	case 51:
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		printData();                //print the new data after reset
 		break;
 	case 52: snap = false;  return snap;; break;        //press 4, exit the program
 	}
+	return 1;
 }
 
 
