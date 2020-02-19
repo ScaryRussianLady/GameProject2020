@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void healthManagement()
+int healthManagement()
 {
 	const int healthLevel = 100;
 

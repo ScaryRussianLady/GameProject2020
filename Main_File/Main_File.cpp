@@ -84,7 +84,6 @@ int main()
     system("color 8F");//changes colour of terminal and text. couldn't get conio to work. use "color %" to view all available colours
 
     Player test(1);
-    test.getName();
 
     /*char nameOfClan[25];
     char userName[25];

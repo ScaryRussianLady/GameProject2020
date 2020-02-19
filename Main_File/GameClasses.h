@@ -11,6 +11,9 @@
 #include "healthManagement.h"
 #include <cctype>
 #include "GameClasses.h"
+#include "goldManagement.h"
+#include "clanFood.h"
+#include "healthManagement.h"
 
 // [START OF CODE BY: CHRISTIAN & ANNIJA]
 
@@ -130,13 +133,16 @@ public:
 	unsigned int food;
 	unsigned int water;
 
+	unsigned int health;
+
 	// Initialisation of the function which calls for the private setup and gives starting gold, food and water
 	// You can change these starting gold, food and water if need be.
 	Player(int ID)
 	{
-		gold = 100; //starting golden
+		gold = playerGold(); //starting gold.
 		food = 100; //starting food
 		water = 100; //starting water
+		health = healthManagement(); //starting health
 
 		//userID = ID;
 		numOfGladiators = 0;
