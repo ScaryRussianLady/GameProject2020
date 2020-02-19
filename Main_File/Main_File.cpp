@@ -73,9 +73,7 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 
 //[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
 int main()
-{ 
-  
-
+{   
 
     //https://www.youtube.com/watch?v=wRnjahwxZ8A
 
