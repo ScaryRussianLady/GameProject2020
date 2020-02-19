@@ -12,7 +12,7 @@ int trainGladiator(Gladiator& gladiator) {
 	std::cout << gladiator.agility;
 	std::cout << gladiator.dexterity;
 
-	while (statChoice < 1 & statChoice > 3) {
+	while (statChoice < 1 && statChoice > 3) {
 		std::cout << "Please choose a stat to train from 1:Strength 2:agility 3:Dexterity" << std::endl;
 		std::cin >> statChoice;
 	}
