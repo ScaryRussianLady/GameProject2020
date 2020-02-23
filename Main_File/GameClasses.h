@@ -26,6 +26,10 @@ private:
 	char userName[25];
 	char typeOfClan[25];
 	char nameOfClan[25];
+	std::string stringClan = nameOfClan;
+	std::string stringName = userName;
+	std::string stringTypeClan = typeOfClan;
+
 
 	// These variables are private so that they cannot be changed and break something
 
@@ -55,7 +59,8 @@ private:
 
 
 	// This function sets these player variables up
-	void setUp() {
+	void setUp() 
+	{
 	
 		//#########################################################################
 		//Beginning of code by [Annija Balode 9102828]
@@ -106,6 +111,8 @@ private:
 				continue;
 			}
 		}
+
+
 		//End of code by [Annija Balode 9102828]
 		//#########################################################################
 
@@ -149,10 +156,11 @@ public:
 	// You can change these starting gold, food and water if need be.
 	Player(int ID)
 	{
+		setUp();
 		//#########################################################################
 		//Beginning of code by [Annija Balode 9102828]
 		//Imports the function which manages the amount of gold the user currently has.
-		amountGold = playerGold(); 
+		//amountGold = playerGold(); 
 		//Imports the function which manages the amount of food and water the user currently has.
 		amountFood = 100;
 		amountWater = 100;
@@ -165,7 +173,7 @@ public:
 		//userID = ID;
 		numOfGladiators = 0;
 
-		setUp();
+		
 
 		
 	}

@@ -3,9 +3,8 @@
 
 //IMPORTANT NOTICE: This is a link to how to install vcpkg, if you are unable to follow it, drop me a message (Annija) https://www.youtube.com/watch?v=wRnjahwxZ8A.
 
-
 #include "timeTillFight.h"
-#include "ClanFood.h"
+#include "clanFood.h"
 #include <windows.h>
 #include <iostream>
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
@@ -21,21 +20,6 @@
 #include "healthManagement.h"
 #include <cctype>
 #include "GameClasses.h"
-
-
-//Please ignore this section of the code for now.
-/*static int callback(void* NotUsed, int argc, char** argv, char** azColName)
-{
-    int i;
-    for (i = 0; i < argc; i++)
-    {
-        std::cout << azColName[i] << " = " << (argv[i] ? argv[i] : "NULL") << "\n";
-    }
-    std::cout << "\n";
-    return 0;
-}*/
-
-//https://stackoverflow.com/questions/33882822/output-letters-one-at-a-time-in-c
 
 
 //Annija Balode
@@ -74,15 +58,28 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
+#include <fstream>
+#include <iostream>
+#include <limits>
+#include <string>
+
+template <typename T>
+T get_input(const std::string& strQuery);
+
+std::string get_username();
+std::string get_password();
+void save_user(const std::string& username, const std::string& password);
+
+void login();
+void register_user();
+void main_menu();
+
 //#########################################################################
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {   
+    main_menu();
     system("color 8F");//changes colour of terminal and text.
-
-    
-
-    Player test(1);
 
     /*char nameOfClan[25];
     char userName[25];
@@ -146,8 +143,8 @@ int main()
     //*********
     //std::string type_clan = test.getClanType;
  
-  
-    //fixed gerald's while statement to ensure that it can come out of the loop and print the necessary stuff.
+    //#########################################################################
+    //Beginning of code by [Gerald] with help from [Annija Balode 9102828].
     /*while (true)
     {
         singularWordOutput("\nWhich one will it be?\n");
@@ -190,11 +187,18 @@ int main()
             continue;
         }
     }*/
+    //End of code by [Gerald] with help from [Annija Balode 9102828].
+    //#########################################################################
 
     //Annija Balode
     //std::string clan_name = nameOfClan;
     //*********
     //std::string clan_name = test.getClanName();
+
+    Player test(1);
+
+    test.getName();
+    std::cout << test.getName() << std::endl;
 
     sqlite3* db;
     char* zErrMsg = 0;
@@ -208,12 +212,7 @@ int main()
         return(1);
     }
 
-   //sql = "CREATE TABLE USERINFO (" \
-        "USERID INTEGER PRIMARY KEY AUTOINCREMENT," \
-        "USERNAME TEXT NOT NULL, " \
-        "CLANTYPE TEXT NOT NULL, " \
-        "CLANNAME TEXT NOT NULL, " \
-        "NUM_GLADIATORS INTEGER);";
+   //sql = "CREATE TABLE USERINFO (" \"USERID INTEGER PRIMARY KEY AUTOINCREMENT," \"USERNAME TEXT NOT NULL, " \"CLANTYPE TEXT NOT NULL, " \"CLANNAME TEXT NOT NULL, " \"NUM_GLADIATORS INTEGER);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
@@ -235,13 +234,86 @@ int main()
 
         system("CLS");//is used to clear the text on the terminal. conio's clrscn() did not work
 
-        //timeTillFight();//called the time function for testing
-    // Water & Food starting levels
-        int CurrentFoodLevel = 50;
-        int CurrentWaterLevel = 50;
-
-        //std::cout << "good job jay pat on the back";
-        //ClanFood(CurrentFoodLevel, CurrentWaterLevel);
         return (0);
 }
 
+template <typename T>
+T get_input(const std::string& strQuery)
+{
+    std::cout << strQuery << "\n> ";
+    T out = T();
+
+    while (!(std::cin >> out)) {
+        std::cin.clear();
+        //std::cin.ignore(std::numeric_limits <std::streamsize>::max(), '\n');
+        std::cout << "Error!" "\n";
+        std::cout << strQuery << "\n> ";
+    }
+
+    return out;
+}
+
+std::string get_password()
+{
+    std::string password1 = get_input <std::string>("Please enter your password.");
+    std::string password2 = get_input <std::string>("Please re-enter your password.");
+
+    while (password1 != password2) {
+        std::cout << "Error! Passwords do not match." "\n";
+        password1 = get_input <std::string>("Please enter your password.");
+        password2 = get_input <std::string>("Please re-enter your password.");
+    }
+
+    return password1;
+}
+
+std::string get_username()
+{
+    std::string username = get_input <std::string>("Please enter a username.");
+    std::cout << "Username: \"" << username << "\"\n";
+
+    while (get_input <int>("Confirm? [0 (NO) | 1 (YES)]") != 1) {
+        username = get_input <std::string>("Please enter a username.");
+        std::cout << "Username: \"" << username << "\"\n";
+    }
+
+    return username;
+}
+
+void login()
+{
+    std::cout << "You are being logged in!" "\n";
+}
+
+void main_menu()
+{
+    int choice = get_input <int>(
+        "Hello, Would you like to log in or register?" "\n"
+        "[1] Login" "\n"
+        "[2] Register" "\n"
+        "[3] Exit");
+
+    switch (choice)
+    {
+    case 1:
+        login();
+        break;
+    case 2:
+        register_user();
+        break;
+    }
+}
+
+void register_user()
+{
+    std::string username = get_username();
+    std::string password = get_password();
+    save_user(username, password);
+}
+
+void save_user(const std::string& username, const std::string& password)
+{
+    std::string filename = username + ".txt";
+    std::ofstream file(filename);
+    file << password << "\n";
+}
