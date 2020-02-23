@@ -58,6 +58,7 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
+
 #include <fstream>
 #include <iostream>
 #include <limits>
@@ -79,6 +80,7 @@ void main_menu();
 int main()
 {   
     main_menu();
+    system("CLS");
     system("color 8F");//changes colour of terminal and text.
 
     /*char nameOfClan[25];
@@ -269,11 +271,11 @@ std::string get_password()
 
 std::string get_username()
 {
-    std::string username = get_input <std::string>("Please enter a username.");
+    std::string username = get_input <std::string>("Please enter your username:");
     std::cout << "Username: \"" << username << "\"\n";
 
     while (get_input <int>("Confirm? [0 (NO) | 1 (YES)]") != 1) {
-        username = get_input <std::string>("Please enter a username.");
+        username = get_input <std::string>("Please enter your username:");
         std::cout << "Username: \"" << username << "\"\n";
     }
 
@@ -287,11 +289,11 @@ void login()
 
 void main_menu()
 {
+    system("color 0F");
     int choice = get_input <int>(
-        "Hello, Would you like to log in or register?" "\n"
+        "Welcome to The Gladiator!\nFirst of all, would you like to Login or Register Chief?" "\n"
         "[1] Login" "\n"
-        "[2] Register" "\n"
-        "[3] Exit");
+        "[2] Register");
 
     switch (choice)
     {
@@ -302,6 +304,7 @@ void main_menu()
         register_user();
         break;
     }
+
 }
 
 void register_user()
@@ -317,3 +320,5 @@ void save_user(const std::string& username, const std::string& password)
     std::ofstream file(filename);
     file << password << "\n";
 }
+
+//https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program

@@ -57,11 +57,10 @@ private:
 	//#########################################################################
 
 
-
 	// This function sets these player variables up
 	void setUp() 
 	{
-	
+
 		//#########################################################################
 		//Beginning of code by [Annija Balode 9102828]
 		// This will take the name that the player would like to go by and save it in the player variable
