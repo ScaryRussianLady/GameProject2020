@@ -15,7 +15,7 @@
 #include "clanFood.h"
 #include "healthManagement.h"
 
-// [START OF CODE BY: CHRISTIAN & ANNIJA]
+// [START OF CODE BY: CHRISTIAN]
 
 class Player {
 private:
@@ -33,6 +33,8 @@ private:
 	// The number of gladiators the player has
 	unsigned int numOfGladiators;
 
+	//#########################################################################
+	//Beginning of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
 	//Function for spelling out words letter by letter.
 	void singularWordOutput(const std::string& text)
 	{
@@ -47,11 +49,16 @@ private:
 			std::this_thread::sleep_for(std::chrono::milliseconds(30));
 		}
 	}
+	//End of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
+	//#########################################################################
+
+
 
 	// This function sets these player variables up
 	void setUp() {
 	
-
+		//#########################################################################
+		//Beginning of code by [Annija Balode 9102828]
 		// This will take the name that the player would like to go by and save it in the player variable
 		std::cout << "The Gladiator" << std::endl;
 		std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
@@ -76,8 +83,8 @@ private:
 
 			for (int i = 0; i < length; i++)
 			{
-				int c = type_string[i];
-				type_string[i] = toupper(c);
+				int upperCase = type_string[i];
+				type_string[i] = toupper(upperCase);
 			}
 
 			if (type_string == "ATTACK")
@@ -99,6 +106,9 @@ private:
 				continue;
 			}
 		}
+		//End of code by [Annija Balode 9102828]
+		//#########################################################################
+
 
 		// This will get the player's clan type and it will make sure it's either attack of defence
 		/*while (true) {
@@ -128,26 +138,36 @@ private:
 public:
 
 	// Public variables because it makes sense for them to be changed by other's code
-	unsigned int gold;
+	unsigned int amountGold;
 
-	unsigned int food;
-	unsigned int water;
+	unsigned int amountFood;
+	unsigned int amountWater;
 
-	unsigned int health;
+	unsigned int amountHealth;
 
 	// Initialisation of the function which calls for the private setup and gives starting gold, food and water
 	// You can change these starting gold, food and water if need be.
 	Player(int ID)
 	{
-		gold = playerGold(); //starting gold.
-		food = 100; //starting food
-		water = 100; //starting water
-		health = healthManagement(); //starting health
+		//#########################################################################
+		//Beginning of code by [Annija Balode 9102828]
+		//Imports the function which manages the amount of gold the user currently has.
+		amountGold = playerGold(); 
+		//Imports the function which manages the amount of food and water the user currently has.
+		amountFood = 100;
+		amountWater = 100;
+		//Imports the function which manages the amount of health the user currently has.
+		amountHealth = healthManagement();
+
+		//#########################################################################
+		//End of code by [Annija Balode 9102828]
 
 		//userID = ID;
 		numOfGladiators = 0;
 
 		setUp();
+
+		
 	}
 
 	// Adds another gladiator to the number of gladiators variable

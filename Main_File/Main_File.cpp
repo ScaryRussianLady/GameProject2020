@@ -1,6 +1,9 @@
 //Main_File.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //If you want to run the file just press Ctrl + F5. Debugging can be found in the tabs above.
 
+//IMPORTANT NOTICE: This is a link to how to install vcpkg, if you are unable to follow it, drop me a message (Annija) https://www.youtube.com/watch?v=wRnjahwxZ8A.
+
+
 #include "timeTillFight.h"
 #include "ClanFood.h"
 #include <windows.h>
@@ -71,17 +74,13 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
-//[Annija Balode 9102828] and referenced from https://www.dreamincode.net/forums/topic/228382-make-text-to-appear-letter-by-letter-in-console/
+//#########################################################################
+//Beginning of code by [Annija Balode 9102828].
 int main()
 {   
+    system("color 8F");//changes colour of terminal and text.
 
-
-    //https://www.youtube.com/watch?v=wRnjahwxZ8A
-
-    //I produced a very simple function where the player is able to give the name of their clan and which side they want to be on.
-    //This should be used as a template to begin the game and give everyone a sense of how this shoud be structured.
-
-    system("color 8F");//changes colour of terminal and text. couldn't get conio to work. use "color %" to view all available colours
+    
 
     Player test(1);
 
