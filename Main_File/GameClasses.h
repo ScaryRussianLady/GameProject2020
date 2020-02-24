@@ -337,6 +337,18 @@ public:
 	unsigned int getThrist() {
 		return thirst;
 	}
+
+	// This section of the code handles attacking conducted by the gladiator
+
+	void gladiatorAttack(Gladiator target) {
+		
+		unsigned int damage; // this will be how much damage the gladiator will deal
+
+
+		target.adjustHP(-damage); // this will deal the damage to the gladiator
+
+	}
+
 };
 
 // [END OF CODE BY: CHRISTIAN ]
