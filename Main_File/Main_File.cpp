@@ -282,10 +282,7 @@ std::string get_username()
     return username;
 }
 
-void login()
-{
-    std::cout << "You are being logged in!" "\n";
-}
+
 
 void main_menu()
 {
@@ -319,6 +316,15 @@ void save_user(const std::string& username, const std::string& password)
     std::string filename = username + ".txt";
     std::ofstream file(filename);
     file << password << "\n";
+}
+
+std::string temp;
+
+void login()
+{
+    std::string username = get_username();
+    std::string password = get_password();
+    std::cout << "You are being logged in!\n" << std::endl;
 }
 
 //https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
