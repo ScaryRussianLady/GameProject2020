@@ -340,16 +340,14 @@ public:
 
 	// This section of the code handles attacking conducted by the gladiator
 
-	//void gladiatorAttack(Gladiator target, Weapon wpn) {
+	void gladiatorAttack(Gladiator target) {
 		
-		//unsigned int damage; // this will be how much damage the gladiator will deal
-		// This section will handle damage calculation (taking into consideration weapons, stats etc)
+		unsigned int damage; // this will be how much damage the gladiator will deal
 
 
+		target.adjustHP(-damage); // this will deal the damage to the gladiator
 
-		//target.adjustHP(-damage); // this will deal the damage to the gladiator
-
-	//}
+	}
 
 };
 
