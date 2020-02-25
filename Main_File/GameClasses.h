@@ -37,6 +37,7 @@ private:
 	// The number of gladiators the player has
 	unsigned int numOfGladiators;
 
+
 	//#########################################################################
 	//Beginning of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
 	//Function for spelling out words letter by letter.
@@ -448,8 +449,36 @@ public:
 };
 
 class PlayerGladiator : public Gladiator {
+	unsigned int gladiatorsCreated = 0;
+
+private:
+
+	// We don't want this variable touched AT ALL. Let the code it it's thing.
+	unsigned int gladiatorID;
+
 public:
-	unsigned int gladID;
+	PlayerGladiator() {
+
+		// When a plyaer gladiator is created, the number of gladiators created goes up by one
+		gladiatorsCreated = gladiatorsCreated + 1;
+
+		// Assigns the gladiator with a unique identifier for later identification
+		gladiatorID = gladiatorsCreated;
+	}
+
+	// This function is for verifying if this object has the ID that the programmer wants
+	bool hasID(unsigned int ID) {
+		if (ID == gladiatorID) {
+			return true;
+		}
+		return false;
+	}
+
+	// This function is obsolete to the function above, but here for those who want it
+	// This function will directly return the gladiatorID
+	unsigned int getGladiatorID(){
+		return gladiatorID;
+	}
 
 };
 
