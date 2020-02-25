@@ -206,6 +206,88 @@ public:
 
 // [END OF CODE BY: CHRISTIAN ]
 
+// [START OF CODE BY: CHRISTIAN & ANNIJA]
+
+class Weapon {
+
+private:
+
+	// Name of the weapon
+	std::string name;
+	// Bool indicates the type of weapon this is. If it's an attack type weapon, it's TRUE, if it's defence, it's FALSE
+	bool TypeAttack;
+
+	// These are the weapon stats that will be used in battle calculations
+	unsigned char quality;
+	unsigned char damage;
+	unsigned char attackSpeed;
+	unsigned char critChance;
+
+	// This is the limit to which weapons can be improved to
+	const unsigned char MaxQuality = 10;
+
+public:
+
+	// Initialises the weapon using the input provided by the programmer. After this, the programmer can't change these variables directly
+	Weapon(std::string weaponName, bool isWeaponTypeAttack, unsigned char weaponQuality, unsigned char weaponBaseDamage,
+		unsigned char weaponAttackSpeed, unsigned char weaponCritChance) {
+
+		name = weaponName;
+		TypeAttack = isWeaponTypeAttack;
+
+		quality = weaponQuality;
+		damage = weaponBaseDamage;
+		attackSpeed = weaponAttackSpeed;
+		critChance = weaponCritChance;
+	}
+
+	// The following Getter functions get the private variables and returns it to the programmer
+	std::string getName() {
+		return name;
+	}
+
+	bool getType() {
+		return TypeAttack;
+	}
+
+	unsigned char getQuality() {
+		return quality;
+	}
+
+	unsigned char getDamage() {
+		return damage;
+	}
+
+	unsigned char getAttackSpeed() {
+		return attackSpeed;
+	}
+
+	unsigned char getCritChance() {
+		return critChance;
+	}
+
+	// Restricts weapons from being improved beyond the limit and scales the weapon stats accordingly
+	void improveWeapon() {
+
+		// If the weapon quality is already at it's limit, return and don't go any further
+		if (quality == MaxQuality) {
+			std::cout << "Sorry, this weapon cannot be improved any further!" << std::endl;
+			return;
+		}
+		// If not, increase the quality by one and then begin the improvement scaling calculations
+		quality = quality + 1;
+
+		// Weapon improvement scaling done here (Make these values more suitable if need be)
+		damage = damage + 2;
+		attackSpeed = attackSpeed + 2;
+		critChance = critChance + 1;
+
+	}
+
+};
+
+// [END OF CODE BY: CHRISTIAN ]
+
 // [START OF CODE BY: CHRISTIAN ]
 
 class Gladiator {
@@ -343,101 +425,20 @@ public:
 	// This section of the code handles attacking conducted by the gladiator
 
 	void gladiatorAttack(Gladiator target, Weapon wpn) {
-		
+
 		unsigned int damage; // this will be how much damage the gladiator will deal
 
 		// Damage calculation is done here (this can be alerted to suit the needs of the game)
 		unsigned int baseDamage = strength + wpn.getDamage; // This calculates damage on strength and weapon damage alone
-		
-		// If a crit is successful
-		if ((rand() % 100 + 0) < wpn.getCritChance) {
+
+		// If a crit is successful, then add 20% damage to the base damage
+		if ((rand() % 100 + 0) < wpn.getCritChance + dexterity * dexterity) {
 			baseDamage = baseDamage * 1.2;
 		}
 
+		damage = baseDamage - target.defence;
 
 		target.adjustHP(-damage); // this will deal the damage to the gladiator
-
-	}
-
-};
-
-// [END OF CODE BY: CHRISTIAN ]
-
-// [START OF CODE BY: CHRISTIAN & ANNIJA]
-
-class Weapon {
-
-private:
-
-	// Name of the weapon
-	std::string name;
-	// Bool indicates the type of weapon this is. If it's an attack type weapon, it's TRUE, if it's defence, it's FALSE
-	bool TypeAttack;
-
-	// These are the weapon stats that will be used in battle calculations
-	unsigned char quality;
-	unsigned char damage;
-	unsigned char attackSpeed;
-	unsigned char critChance;
-
-	// This is the limit to which weapons can be improved to
-	const unsigned char MaxQuality = 10;
-
-public:
-
-	// Initialises the weapon using the input provided by the programmer. After this, the programmer can't change these variables directly
-	Weapon(std::string weaponName, bool isWeaponTypeAttack, unsigned char weaponQuality, unsigned char weaponBaseDamage,
-		unsigned char weaponAttackSpeed, unsigned char weaponCritChance) {
-
-		name = weaponName;
-		TypeAttack = isWeaponTypeAttack;
-
-		quality = weaponQuality;
-		damage = weaponBaseDamage;
-		attackSpeed = weaponAttackSpeed;
-		critChance = weaponCritChance;
-	}
-
-	// The following Getter functions get the private variables and returns it to the programmer
-	std::string getName() {
-		return name;
-	}
-
-	bool getType() {
-		return TypeAttack;
-	}
-
-	unsigned char getQuality() {
-		return quality;
-	}
-
-	unsigned char getDamage() {
-		return damage;
-	}
-
-	unsigned char getAttackSpeed() {
-		return attackSpeed;
-	}
-
-	unsigned char getCritChance() {
-		return critChance;
-	}
-
-	// Restricts weapons from being improved beyond the limit and scales the weapon stats accordingly
-	void improveWeapon() {
-
-		// If the weapon quality is already at it's limit, return and don't go any further
-		if (quality == MaxQuality) {
-			std::cout << "Sorry, this weapon cannot be improved any further!" << std::endl;
-			return;
-		}
-		// If not, increase the quality by one and then begin the improvement scaling calculations
-		quality = quality + 1;
-
-		// Weapon improvement scaling done here (Make these values more suitable if need be)
-		damage = damage + 2;
-		attackSpeed = attackSpeed + 2;
-		critChance = critChance + 1;
 
 	}
 
