@@ -32,7 +32,34 @@ T get_input(const std::string& strQuery)
     return out;
 }
 
-std::string get_password()
+std::string getDesiredPassword()
+{
+    std::string password1 = get_input <std::string>("Please enter your desired password.");
+    std::string password2 = get_input <std::string>("Please re-enter your desired password.");
+
+    while (password1 != password2) {
+        std::cout << "Error! Passwords do not match." "\n";
+        password1 = get_input <std::string>("Please enter your desired password.");
+        password2 = get_input <std::string>("Please re-enter your desired password.");
+    }
+
+    return password1;
+}
+
+std::string getDesiredUsername()
+{
+    std::string username = get_input <std::string>("\nPlease enter your desired username:");
+    std::cout << "Username: \"" << username << "\"\n";
+
+    while (get_input <int>("\n Confirm? [0 (NO) | 1 (YES)]") != 1) {
+        username = get_input <std::string>("Please enter your desired username:");
+        std::cout << "Username: \"" << username << "\"\n";
+    }
+
+    return username;
+}
+
+std::string getNewPassword()
 {
     std::string password1 = get_input <std::string>("Please enter your password.");
     std::string password2 = get_input <std::string>("Please re-enter your password.");
@@ -46,12 +73,12 @@ std::string get_password()
     return password1;
 }
 
-std::string get_username()
+std::string getNewUsername()
 {
     std::string username = get_input <std::string>("\nPlease enter your username:");
     std::cout << "Username: \"" << username << "\"\n";
 
-    while (get_input <int>("Confirm? [0 (NO) | 1 (YES)]") != 1) {
+    while (get_input <int>("\nConfirm? [0 (NO) | 1 (YES)]") != 1) {
         username = get_input <std::string>("Please enter your username:");
         std::cout << "Username: \"" << username << "\"\n";
     }
@@ -60,14 +87,13 @@ std::string get_username()
 }
 
 
-
 void main_menu()
 {
     system("color 0F");
+    std::cout << "The Gladiator" << std::endl;
+    std::cout << std::setfill('+') << std::setw(120) << "+";
     int choice = get_input <int>(
-        "The Gladiator\n"
-        "-----------------------------------------------------------------------------------------------------\n"
-        "Welcome to The Gladiator!\nFirst of all, would you like to Login or Register Chief?" "\n"
+        "Welcome to The Gladiator!\n\nFirst of all, would you like to Login or Register, Chief?" "\n"
         "[1] Login" "\n"
         "[2] Register");
 
@@ -103,18 +129,18 @@ void setUp()
     //#########################################################################
     //Beginning of code by [Annija Balode 9102828]
     // This will take the name that the player would like to go by and save it in the player variable
-    std::string usersName = get_input <std::string>("Let's get you registered! First things first though, what is your name, Chief?");
+    std::string usersName = get_input <std::string>("Let's get you registered! First things first though, what is your name, Chief?\n");
     //userName[0] = toupper(userName[0]);
 
     singularWordOutput(usersName + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
     singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
-    std::string nameOfClan = get_input <std::string>("\nWhat would you like to name your clan, Chief " + usersName + "?");
+    std::string nameOfClan = get_input <std::string>("\nWhat would you like to name your clan, Chief " + usersName + "?\n");
     singularWordOutput("\nAs the official Chief of " + nameOfClan + " you must decide whether you will be Attack or Defence.\n");
 
 
     while (true)
     {
-        std::string typeOfClan = get_input <std::string>("\nWhich one will it be?");
+        std::string typeOfClan = get_input <std::string>("\nWhich one will it be?\n");
         std::string type_string = typeOfClan;
         int length = type_string.length();
 
@@ -126,13 +152,13 @@ void setUp()
 
         if (type_string == "ATTACK")
         {
-            std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
+            std::cout << "\nGood, strong choice, all nations need muscle!" << std::endl;
             break;
         }
 
         if (type_string == "DEFENCE")
         {
-            std::cout << "All nations need defending!" << std::endl;
+            std::cout << "\nAll nations need defending!" << std::endl;
             break;
         }
 
@@ -148,8 +174,8 @@ void setUp()
 void register_user()
 {
     setUp();
-    std::string username = get_username();
-    std::string password = get_password();
+    std::string username = getDesiredUsername();
+    std::string password = getDesiredPassword();
     save_user(username, password);
 }
 
@@ -164,8 +190,8 @@ std::string temp;
 
 void login()
 {
-    std::string username = get_username();
-    std::string password = get_password();
+    std::string username = getNewUsername();
+    std::string password = getNewPassword();
     std::cout << "You are being logged in!\n" << std::endl;
 }
 
