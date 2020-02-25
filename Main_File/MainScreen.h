@@ -3,8 +3,8 @@
 #include "Indicators.h"
 #include "timeTillFight.h"
 
+
 void MainScreen()
 {
-	output();
-	timeTillFight();
+	std::cout << "Days Left: " << timeTillFight() << std::endl;
 }

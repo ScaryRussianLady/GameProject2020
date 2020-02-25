@@ -6,6 +6,7 @@
 #include <conio.h>
 //#include "clear.h"
 #include "Indicators.h"
+#include <iomanip>
 
 /*
 void timeTillFight() {
@@ -126,8 +127,8 @@ int testCase2() {		//this function is here for display purposes only
 }
 int FightDayTest() {		//this function is a placeholder for testing only
 	std::string choice;
-	std::cout << "+++++++++++++++FIGHT DAY+++++++++++++++\n";
-	std::cout << "it's time for your Gladiators to prove themselves in battle\n\n";
+	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
+	std::cout << "\nit's time for your Gladiators to prove themselves in battle\n\n";
 
 	std::cout << "please select your gladiator:";
 	std::cin >> choice;
@@ -154,18 +155,19 @@ void counter() {
 		}
 		system("cls");
 		output();
-		std::cout << day << std::endl;           //print out the new data, delay for 1000 millisecond and increase 1 second.
+		printData();          //print out the new data, delay for 1000 millisecond and increase 1 second.
 		Sleep(1000); second += 1;
 	}
 	selection();    //after the user hit the keyboard, call the menu selection
 }
 
 void printData() {   //print data to screen
-	system("cls");      //clear the screen
+	system("CLS");      //clear the screen
 	
 	output();
-	printf("1.View Market  2.View Fighters  3.See Inventory  4. End\n");       //menu for user
-	printf("Days till fight: %d \n", day);      //output the data
+	std::cout << std::setfill('+') << std::setw(120) << "+";
+	printf("\nDays Till Fight: %d \n", day);      //output the data
+	printf("[1] View Market | [2] View Fighters | [3] See Inventory | [4] End\n");       //menu for user
 }
 
 int selection() {      // menu selection
@@ -175,6 +177,7 @@ int selection() {      // menu selection
 	case 50: flag = 0; testCase2(); break;        //press 2 to see testCase2
 	case 51:
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
+		output();
 		printData();                //print the new data after reset
 		break;
 	case 52: snap = false;  return snap;; break;        //press 4, exit the program
@@ -185,7 +188,8 @@ int selection() {      // menu selection
 
 int timeTillFight()
 {
-	while (snap == true) {             //keep the program running end only if snap is false
+	while (snap == true) 
+	{             //keep the program running end only if snap is false
 		counter();
 	}
 	return 1;

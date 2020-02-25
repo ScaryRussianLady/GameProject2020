@@ -91,7 +91,7 @@ int main()
    // main_menu();
    // system("CLS");
     MainScreen();
-    system("color 8F");//changes colour of terminal and text.
+    //changes colour of terminal and text.
 
     /*char nameOfClan[25];
     char userName[25];
