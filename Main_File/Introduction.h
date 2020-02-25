@@ -199,6 +199,15 @@ int setUp()
 
     std::string username = getDesiredUsername();
     std::string password = getDesiredPassword();
+    system("CLS");
+
+    singularWordOutput("\nBefore you can begin training your clan, Chief " + usersName + ", you must first be informed on what is expected of you.");
+    singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
+    singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
+    singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
+
+    std::cout << "\n\nPress any key to begin your journey...";
+    _getch();
     //saveUser(username, password);
 
     sqlite3* db;
@@ -229,6 +238,7 @@ int setUp()
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     sqlite3_close(db);
     return (0);
+
 
 }
 

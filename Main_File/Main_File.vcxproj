@@ -163,6 +163,7 @@
     <ClInclude Include="clanFood.h" />
     <ClInclude Include="fightCalc.h" />
     <ClInclude Include="GameClasses.h" />
+    <ClInclude Include="GeraldsCode.h" />
     <ClInclude Include="Gladiator.h" />
     <ClInclude Include="GladiatorTraining New.h" />
     <ClInclude Include="goldManagement.h" />
