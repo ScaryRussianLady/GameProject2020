@@ -368,6 +368,8 @@ public:
 	void adjustHP(int changeValue) {
 		if (hp + changeValue < 0) {
 			hp = 0;
+			// Deconstructs the gladiator class when it dies
+			Gladiator::~Gladiator();
 			return;
 		}
 
@@ -446,10 +448,13 @@ public:
 };
 
 class PlayerGladiator : public Gladiator {
+public:
+	unsigned int gladID;
 
 };
 
 class npcGladiator : public Gladiator {
+public:
 
 };
 
