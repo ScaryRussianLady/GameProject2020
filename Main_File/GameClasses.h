@@ -165,7 +165,7 @@ public:
 		amountFood = 100;
 		amountWater = 100;
 		//Imports the function which manages the amount of health the user currently has.
-		amountHealth = healthManagement();
+		//amountHealth = healthManagement();
 
 		//#########################################################################
 		//End of code by [Annija Balode 9102828]

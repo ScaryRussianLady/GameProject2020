@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int healthManagement()
+/*int healthManagement()
 {
 	const int healthLevel = 100;
 
@@ -15,4 +15,4 @@ int healthManagement()
 	}
 
 	std::cout << "Health: " << healthLevel << "/100\n" << std::endl;
-}
+}*/

@@ -20,6 +20,7 @@
 #include "healthManagement.h"
 #include <cctype>
 #include "GameClasses.h"
+#include <sstream>
 
 
 //Annija Balode
@@ -63,6 +64,7 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 #include <iostream>
 #include <limits>
 #include <string>
+#include "Indicators.h"
 
 template <typename T>
 T get_input(const std::string& strQuery);
@@ -75,10 +77,20 @@ void login();
 void register_user();
 void main_menu();
 
+void centerstring(char* s)
+{
+    int l = strlen(s);
+    int pos = (int)((80 - l) / 2);
+    for (int i = 0; i < pos; i++)
+        std::cout << " " << std::endl;
+    std::cout << s << std::endl;
+}
+
 //#########################################################################
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {   
+    output();
     main_menu();
     system("CLS");
     system("color 8F");//changes colour of terminal and text.

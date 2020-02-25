@@ -53,6 +53,12 @@
     <ClInclude Include="test_header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MainScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Indicators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
