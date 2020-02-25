@@ -94,7 +94,9 @@ void timeTillFight() {
 }
 */
 
-//A working timer in taking key presses whilst counting. It's not working
+//A working timer in taking key presses whilst counting.
+
+//Start of code [Jamie warnock: ID 9328082]
 //reference: https://www.youtube.com/watch?v=Kddn0MUbn4k 
 
 
@@ -130,13 +132,13 @@ int FightDayTest() {		//this function is a placeholder for testing only
 	std::cin >> choice;
 	return 1;
 }
-
+/* Decided to just use the Sleep function instead
 void delay(int ms)  //delay function
 {
 	clock_t timeDelay = ms + clock();    //Step up the difference from clock delay
 	while (timeDelay > clock());         //stop when the clock is higher than time delay
 }
-
+*/
 void counter() {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
@@ -184,3 +186,4 @@ int timeTillFight()
 	}
 	return 1;
 }
+//End of block [Jamie Warnock: ID 9328082]
