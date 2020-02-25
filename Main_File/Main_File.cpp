@@ -21,7 +21,6 @@
 #include <sstream>
 #include <fstream>
 #include <limits>
-#include "Indicators.h"
 #include "MainScreen.h"
 #include "Introduction.h"
 
@@ -75,7 +74,7 @@ void centerstring(char* s)
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {   
-    main_menu();
+    mainMenu();
     system("CLS");
     MainScreen();
 
