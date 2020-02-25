@@ -3,6 +3,8 @@
 #include <fstream>
 #include <limits>
 #include <iostream>
+#include <sqlite3.h>
+
 
 //Beginning of code by [Annija Balode 9102828]
 template <typename T>
@@ -15,7 +17,7 @@ std::string getNewPassword();
 void saveUser(const std::string& username, const std::string& password);
 
 void login();
-void registerUser();
+int registerUser();
 void mainMenu();
 
 
@@ -126,24 +128,46 @@ void singularWordOutput(const std::string& text)
     }
 }
 
-void setUp()
+int callback(void* NotUsed, int argc, char** argv, char** azColName) {
+
+    // int argc: holds the number of results
+    // (array) azColName: holds each column returned
+    // (array) argv: holds each value
+
+    for (int i = 0; i < argc; i++) {
+
+        // Show column name, value, and newline
+        std::cout << azColName[i] << ": " << argv[i] << std::endl;
+
+    }
+
+    // Insert a newline
+    std::cout << std::endl;
+
+    // Return successful
+    return 0;
+}
+
+
+int setUp()
 {
     system("CLS");
     //#########################################################################
     //Beginning of code by [Annija Balode 9102828]
     // This will take the name that the player would like to go by and save it in the player variable
     std::string usersName = getInput <std::string>("Let's get you registered! First things first though, what is your name, Chief?\n");
-    //userName[0] = toupper(userName[0]);
+    usersName[0] = toupper(usersName[0]);
 
     singularWordOutput(usersName + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
     singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
     std::string nameOfClan = getInput <std::string>("\nWhat would you like to name your clan, Chief " + usersName + "?\n");
+    nameOfClan[0] = toupper(nameOfClan[0]);
     singularWordOutput("\nAs the official Chief of " + nameOfClan + " you must decide whether you will be Attack or Defence.\n");
-
+    std::string typeOfClan = getInput <std::string>("\nWhich one will it be?\n");
 
     while (true)
     {
-        std::string typeOfClan = getInput <std::string>("\nWhich one will it be?\n");
+        
         std::string type_string = typeOfClan;
         int length = type_string.length();
 
@@ -168,18 +192,50 @@ void setUp()
         else
         {
             std::cout << "Try again!" << std::endl;
-            char typeOfClan[25];
+            std::string typeOfClan = getInput <std::string>("\nWhich one will it be?\n");
             continue;
         }
     }
-}
 
-void registerUser()
-{
-    setUp();
     std::string username = getDesiredUsername();
     std::string password = getDesiredPassword();
-    saveUser(username, password);
+    //saveUser(username, password);
+
+    sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+    if (rc)
+    {
+        std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return (1);
+    }
+
+    //sql = "CREATE TABLE USERINFO (" \
+        "USERID INTEGER PRIMARY KEY AUTOINCREMENT," \
+        "USERNAME TEXT NOT NULL," \
+        "PASSWORD TEXT NOT NULL," \
+        "USERFIRSTNAME TEXT NOT NULL, " \
+        "CLANTYPE TEXT NOT NULL, " \
+        "CLANNAME TEXT NOT NULL, " \
+        "NUM_GLADIATORS INTEGER);";
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+
+    sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'PASSWORD', 'USERFIRSTNAME' , 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + username + "', '" + password + "' ,'" + usersName + "', '" + typeOfClan + "', '" + nameOfClan + "', NULL);";
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    sqlite3_close(db);
+    return (0);
+
+}
+
+int registerUser()
+{
+    setUp();
+    return(0);
 }
 
 void saveUser(const std::string& username, const std::string& password)
@@ -201,3 +257,6 @@ void login()
 //https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
 
 //End of code by [Annija Balode 9102828]
+
+
+

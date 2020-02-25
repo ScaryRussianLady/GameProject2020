@@ -26,22 +26,7 @@
 
 
 //Annija Balode
-/*void singularWordOutput(const std::string& text)
-{
-    // loop through each character in the text
-    for (std::size_t i = 0; i < text.size(); ++i)
-    {
-        // output one character
-        // flush to make sure the output is not delayed
-        std::cout << text[i] << std::flush;
-
-        // sleep 30 milliseconds
-        std::this_thread::sleep_for(std::chrono::milliseconds(30));
-    }
-}*/
-
-//Annija Balode
-int callback(void* NotUsed, int argc, char** argv, char** azColName) {
+/*int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 
     // int argc: holds the number of results
     // (array) azColName: holds each column returned
@@ -59,7 +44,7 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 
     // Return successful
     return 0;
-}
+}*/
 
 void centerstring(char* s)
 {
@@ -78,69 +63,7 @@ int main()
     system("CLS");
     MainScreen();
 
-    /*char nameOfClan[25];
-    char userName[25];
-    std::cout << "The Gladiator" << std::endl;
-    std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
-    singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
-
-
-    //std::cout << "Welcome to The Gladiator.\nWhat is your name, Chief?" << std::endl;
-    std::cin.getline(userName, 25);*/
-    //std::string users_name = userName;
-    //*********
-    //std::string users_name = test.getName;
-
-
-
-
-    /*singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
-    singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
-    singularWordOutput("\nWhat would you like to name your clan, Chief " + std::string(userName) + "?\n");
-    std::cin.getline(nameOfClan, 25);
-    singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
-    char typeOfClan[25];
-
-    //Improved version of Gerald's code by Annija.
-    while (true)
-    {
-
-        singularWordOutput("\nWhich one will it be?\n");
-        std::cin.getline(typeOfClan, 25);
-        std::string type_string = typeOfClan;
-        int length = type_string.length();
-
-        for (int i = 0; i < length; i++)
-        {
-            int c = type_string[i];
-            type_string[i] = toupper(c);
-        }
-
-        if (type_string == "ATTACK")
-        {
-            std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
-            break;
-        }
-
-        if (type_string == "DEFENCE")
-        {
-            std::cout << "All nations need defending!" << std::endl;
-            break;
-        }
-        
-        else
-        {
-            std::cout << "Try again!" << std::endl;
-            char typeOfClan[25];
-            continue;
-        }
-    }*/
     
-    //std::string type_clan = typeOfClan;
-    //*********
-    //std::string type_clan = test.getClanType;
- 
-    //#########################################################################
     //Beginning of code by [Gerald] with help from [Annija Balode 9102828].
     /*while (true)
     {
@@ -197,7 +120,7 @@ int main()
    // test.getName();
     //std::cout << test.getName() << std::endl;
 
-    sqlite3* db;
+    /*sqlite3* db;
     char* zErrMsg = 0;
     int rc;
     std::string sql;
