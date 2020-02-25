@@ -327,6 +327,8 @@ void login()
     std::cout << "You are being logged in!\n" << std::endl;
 }
 
+//https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
+
 /*std::string save_data()
 {
     //attempt
@@ -377,4 +379,3 @@ std::string load_data()
 }
 */
 
-//https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
