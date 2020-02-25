@@ -75,11 +75,9 @@ void centerstring(char* s)
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {   
-    //MainScreen();
     main_menu();
     system("CLS");
     MainScreen();
-    //changes colour of terminal and text.
 
     /*char nameOfClan[25];
     char userName[25];
