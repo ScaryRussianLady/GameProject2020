@@ -327,4 +327,54 @@ void login()
     std::cout << "You are being logged in!\n" << std::endl;
 }
 
+/*std::string save_data()
+{
+    //attempt
+    std::cout << "saving game progress...please finalise details" << std::endl;
+    std::string clan_name2;
+    std::cout << "Enter Clan name?" << std::endl;
+    std::cin >> clan_name2;
+
+    std:: string typeOfClan2;
+    std::cout << "Choose Attack or Defence";
+    std::cin >> typeOfClan2;
+
+    std::ofstream file_("PlayerData.txt");
+
+    if(file_.is_open()){
+
+    file_<< clan_name2;
+    file_<< typeOfClan2;
+    }
+    std::cin.get();
+    return 0;
+}
+
+std::string load_data()
+{
+    std::ifstream file_("PlayerData.txt");
+    std::string clan_name = test.getClanName;
+    std::string type_clan = test.getClanType;
+
+    if (file_.is_open())
+    {
+
+        while(file_>> nameOfClan >>typeOfClan)
+            {
+                std::cout << " Current saved progress: ";
+                std::cout<<nameOfClan<<" " typeOfClan<<'\n';
+            }
+        file_.close();
+    }
+
+    else
+    {
+        std::cout<<"file is not open"<< '\n';
+        std::cin.get();
+        return 0;
+    }
+
+}
+*/
+
 //https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
