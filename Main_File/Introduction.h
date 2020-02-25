@@ -7,8 +7,10 @@
 template <typename T>
 T get_input(const std::string& strQuery);
 
-std::string get_username();
-std::string get_password();
+std::string getDesiredUsername();
+std::string getDesiredPassword();
+std::string getNewUsername();
+std::string getNewPassword();
 void save_user(const std::string& username, const std::string& password);
 
 void login();
