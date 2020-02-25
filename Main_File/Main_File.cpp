@@ -22,6 +22,7 @@
 #include <fstream>
 #include <limits>
 #include "Indicators.h"
+#include "MainScreen.h"
 
 
 //Annija Balode
@@ -86,9 +87,10 @@ void centerstring(char* s)
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {   
-    output();
+    //MainScreen();
     main_menu();
     system("CLS");
+    MainScreen();
     system("color 8F");//changes colour of terminal and text.
 
     /*char nameOfClan[25];
