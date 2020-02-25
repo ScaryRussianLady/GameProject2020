@@ -128,6 +128,7 @@ int testCase2() {		//this function is here for display purposes only
 int FightDayTest() {		//this function is a placeholder for testing only
 	std::string choice;
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
+	std::cout << std::setfill('+') << std::setw(59) << "+";
 	std::cout << "\nit's time for your Gladiators to prove themselves in battle\n\n";
 
 	std::cout << "please select your gladiator:";

@@ -5,12 +5,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sstream>
-#include <time.h>
 #include <conio.h>
 #include <string.h>
 
 
-
+//Beginning of code by [Annija Balode 9102828]
 void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::istream& is4, std::size_t width)
 {
 	std::string line1;
@@ -65,7 +64,8 @@ int healthManagement(std::ostream& os)
 
 	if (healthLevel <= 0)
 	{
-		os << "You are dead!";
+		system("CLS");
+		std::cout << "You are dead!" << std::endl;
 		return (0);
 	}
 
@@ -138,3 +138,4 @@ int output()
 };
 
 //https://stackoverflow.com/questions/38893113/how-to-display-two-functions-next-to-each-other-in-c
+//End of code by [Annija Balode 9102828]

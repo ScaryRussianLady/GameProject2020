@@ -62,6 +62,9 @@
     <ClInclude Include="healthManagement.h">
       <Filter>Old Header Files %28Expired%29</Filter>
     </ClInclude>
+    <ClInclude Include="Introduction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

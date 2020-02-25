@@ -169,6 +169,7 @@
     <ClInclude Include="gameTime.h" />
     <ClInclude Include="healthManagement.h" />
     <ClInclude Include="Indicators.h" />
+    <ClInclude Include="Introduction.h" />
     <ClInclude Include="MainScreen.h" />
     <ClInclude Include="test_header.h" />
     <ClInclude Include="timeTillFight.h" />
