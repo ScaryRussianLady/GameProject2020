@@ -9,12 +9,15 @@
 #include <conio.h>
 #include <string.h>
 
+
+
 void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::istream& is4, std::size_t width)
 {
 	std::string line1;
 	std::string line2;
 	std::string line3;
 	std::string line4;
+
 
 	while (std::getline(is1, line1))
 	{
@@ -31,7 +34,7 @@ void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::
 		std::getline(is4, line4);
 
 		// print them side by the side the correct distance (pad)
-		std::cout << line1 << pad << line2 << pad << line3 << pad << line4 <<'\n';
+		std::cout << line1 << pad << line2 << pad << line3 << pad << line4 << '\n';
 	}
 
 	// in case second stream has more line than the first
@@ -52,7 +55,9 @@ void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::
 		auto pad = std::string(width, ' ');
 		std::cout << pad << line4;
 	}
+
 }
+
 
 int healthManagement(std::ostream& os)
 {
@@ -67,6 +72,7 @@ int healthManagement(std::ostream& os)
 	os << "Health: " << healthLevel << "/100";
 	return (0);
 };
+
 
 int playerGold(std::ostream& os) {
 	int currentGold = 500;
@@ -94,6 +100,7 @@ int playerGold(std::ostream& os) {
 	}*/
 };
 
+
 int foodManagement(std::ostream& os)
 {
 	int currentFoodLevel = 50;
@@ -101,6 +108,7 @@ int foodManagement(std::ostream& os)
 	os << "Hunger: " << currentFoodLevel << "/100";
 	return(0);
 };
+
 
 int waterManagement(std::ostream& os)
 {
@@ -116,6 +124,7 @@ int output()
 	std::stringstream ss2;
 	std::stringstream ss3;
 	std::stringstream ss4;
+	std::stringstream ss5;
 
 	// capture output in stream objects
 	healthManagement(ss1);

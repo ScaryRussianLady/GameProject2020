@@ -5,6 +5,7 @@
 #include <time.h>
 #include <conio.h>
 //#include "clear.h"
+#include "Indicators.h"
 
 /*
 void timeTillFight() {
@@ -146,9 +147,12 @@ void counter() {
 		if (day < 1) {
 			system("CLS");
 			FightDayTest();
+			output();
 			day = 7;
 		}
-		printData();           //print out the new data, delay for 1000 millisecond and increase 1 second.
+		system("cls");
+		output();
+		std::cout << day << std::endl;           //print out the new data, delay for 1000 millisecond and increase 1 second.
 		Sleep(1000); second += 1;
 	}
 	selection();    //after the user hit the keyboard, call the menu selection
@@ -156,10 +160,10 @@ void counter() {
 
 void printData() {   //print data to screen
 	system("cls");      //clear the screen
+	
+	output();
 	printf("1.View Market  2.View Fighters  3.See Inventory  4. End\n");       //menu for user
-	printf("***********************************\n");
-	printf("        days till fight: %d \n", day);      //output the data
-	printf("***********************************\n");
+	printf("Days till fight: %d \n", day);      //output the data
 }
 
 int selection() {      // menu selection

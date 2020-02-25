@@ -3,7 +3,7 @@
 
 //IMPORTANT NOTICE: This is a link to how to install vcpkg, if you are unable to follow it, drop me a message (Annija) https://www.youtube.com/watch?v=wRnjahwxZ8A.
 
-#include "timeTillFight.h"
+//#include "timeTillFight.h"
 #include <windows.h>
 #include <iostream>
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
@@ -88,8 +88,8 @@ void centerstring(char* s)
 int main()
 {   
     //MainScreen();
-    main_menu();
-    system("CLS");
+   // main_menu();
+   // system("CLS");
     MainScreen();
     system("color 8F");//changes colour of terminal and text.
 
