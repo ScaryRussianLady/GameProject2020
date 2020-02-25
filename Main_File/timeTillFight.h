@@ -133,6 +133,8 @@ int FightDayTest() {		//this function is a placeholder for testing only
 
 	std::cout << "please select your gladiator:";
 	std::cin >> choice;
+	day = 7;
+	printData();
 	return 1;
 }
 /* Decided to just use the Sleep function instead
@@ -147,16 +149,16 @@ void counter() {
 
 		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
 			second = 0; day -= 1;
+			system("cls");
+			printData();
 		}
 		if (day < 1) {
 			system("CLS");
 			FightDayTest();
-			output();
 			day = 7;
 		}
-		system("cls");
-		output();
-		printData();          //print out the new data, delay for 1000 millisecond and increase 1 second.
+
+      //print out the new data, delay for 1000 millisecond and increase 1 second.
 		Sleep(1000); second += 1;
 	}
 	selection();    //after the user hit the keyboard, call the menu selection
@@ -189,6 +191,7 @@ int selection() {      // menu selection
 
 int timeTillFight()
 {
+	printData();
 	while (snap == true) 
 	{             //keep the program running end only if snap is false
 		counter();
