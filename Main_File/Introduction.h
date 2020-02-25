@@ -4,6 +4,7 @@
 #include <limits>
 #include <iostream>
 
+//Beginning of code by [Annija Balode 9102828]
 template <typename T>
 T get_input(const std::string& strQuery);
 
@@ -198,3 +199,5 @@ void login()
 }
 
 //https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
+
+//End of code by [Annija Balode 9102828]
