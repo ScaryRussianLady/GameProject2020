@@ -41,7 +41,7 @@ private:
 	//#########################################################################
 	//Beginning of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
 	//Function for spelling out words letter by letter.
-	void singularWordOutput(const std::string& text)
+	/*void singularWordOutput(const std::string& text)
 	{
 		// loop through each character in the text
 		for (std::size_t i = 0; i < text.size(); ++i)
@@ -53,13 +53,13 @@ private:
 			// sleep 30 milliseconds
 			std::this_thread::sleep_for(std::chrono::milliseconds(30));
 		}
-	}
+	}*/
 	//End of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
 	//#########################################################################
 
 
 	// This function sets these player variables up
-	void setUp() 
+	/*void setUp() 
 	{
 
 		//#########################################################################
@@ -139,8 +139,8 @@ private:
 
 		// This allows for the player to name their clan.
 		std::cout << "And what would you like to name this " << typeOfClan << " type clan of yours, Chief " << userName << "? >> ";
-		std::cin.getline(nameOfClan, 25);*/
-	}
+		std::cin.getline(nameOfClan, 25);
+	}*/
 
 public:
 
@@ -156,7 +156,7 @@ public:
 	// You can change these starting gold, food and water if need be.
 	Player(int ID)
 	{
-		setUp();
+		//setUp();
 		//#########################################################################
 		//Beginning of code by [Annija Balode 9102828]
 		//Imports the function which manages the amount of gold the user currently has.

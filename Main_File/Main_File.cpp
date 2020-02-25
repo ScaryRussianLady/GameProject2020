@@ -27,7 +27,7 @@
 
 
 //Annija Balode
-void singularWordOutput(const std::string& text)
+/*void singularWordOutput(const std::string& text)
 {
     // loop through each character in the text
     for (std::size_t i = 0; i < text.size(); ++i)
@@ -39,7 +39,7 @@ void singularWordOutput(const std::string& text)
         // sleep 30 milliseconds
         std::this_thread::sleep_for(std::chrono::milliseconds(30));
     }
-}
+}*/
 
 //Annija Balode
 int callback(void* NotUsed, int argc, char** argv, char** azColName) {
@@ -193,10 +193,10 @@ int main()
     //*********
     //std::string clan_name = test.getClanName();
 
-    Player test(1);
+    //Player test(1);
 
-    test.getName();
-    std::cout << test.getName() << std::endl;
+   // test.getName();
+    //std::cout << test.getName() << std::endl;
 
     sqlite3* db;
     char* zErrMsg = 0;
