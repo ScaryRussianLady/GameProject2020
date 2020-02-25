@@ -429,13 +429,13 @@ public:
 
 	void gladiatorAttack(Gladiator target, Weapon wpn) {
 
-		unsigned int damage; // this will be how much damage the gladiator will deal
+		int damage; // this will be how much damage the gladiator will deal
 
 		// Damage calculation is done here (this can be alerted to suit the needs of the game)
-		unsigned int baseDamage = strength + wpn.getDamage; // This calculates damage on strength and weapon damage alone
+		unsigned int baseDamage = strength + unsigned int(wpn.getDamage()); // This calculates damage on strength and weapon damage alone
 
 		// If a crit is successful, then add 20% damage to the base damage
-		if ((rand() % 100 + 0) < wpn.getCritChance + dexterity * dexterity) {
+		if ((rand() % 100 + 0) < wpn.getCritChance() + unsigned int(dexterity)) {
 			baseDamage = baseDamage * 1.2;
 		}
 
