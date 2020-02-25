@@ -436,11 +436,20 @@ public:
 			baseDamage = baseDamage * 1.2;
 		}
 
+		// Subtract the defense stat from the baseDamage to create the overall damage the opponent gladiator takes
 		damage = baseDamage - target.defence;
 
 		target.adjustHP(-damage); // this will deal the damage to the gladiator
 
 	}
+
+};
+
+class PlayerGladiator : public Gladiator {
+
+};
+
+class npcGladiator : public Gladiator {
 
 };
 
