@@ -4,7 +4,6 @@
 //IMPORTANT NOTICE: This is a link to how to install vcpkg, if you are unable to follow it, drop me a message (Annija) https://www.youtube.com/watch?v=wRnjahwxZ8A.
 
 #include "timeTillFight.h"
-#include "clanFood.h"
 #include <windows.h>
 #include <iostream>
 //conio documentation: https://www.includehelp.com/c-tutorial/c-language-conio-h-in-c-programming-tutorial.aspx
@@ -17,10 +16,12 @@
 #include <locale>
 #include <string>
 #include <cstring>
-#include "healthManagement.h"
 #include <cctype>
 #include "GameClasses.h"
 #include <sstream>
+#include <fstream>
+#include <limits>
+#include "Indicators.h"
 
 
 //Annija Balode
@@ -60,11 +61,6 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
 }
 
 
-#include <fstream>
-#include <iostream>
-#include <limits>
-#include <string>
-#include "Indicators.h"
 
 template <typename T>
 T get_input(const std::string& strQuery);

@@ -5,6 +5,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sstream>
+#include <time.h>
+#include <conio.h>
+#include <string.h>
 
 void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::istream& is4, std::size_t width)
 {

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Old Header Files %28Expired%29">
+      <UniqueIdentifier>{5402cf11-5fa6-4f76-a5d3-e8baa4644617}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main_File.cpp">
@@ -21,15 +24,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="timeTillFight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="clanFood.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="goldManagement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="healthManagement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Gladiator.h">
@@ -58,6 +52,15 @@
     </ClInclude>
     <ClInclude Include="Indicators.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clanFood.h">
+      <Filter>Old Header Files %28Expired%29</Filter>
+    </ClInclude>
+    <ClInclude Include="goldManagement.h">
+      <Filter>Old Header Files %28Expired%29</Filter>
+    </ClInclude>
+    <ClInclude Include="healthManagement.h">
+      <Filter>Old Header Files %28Expired%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
