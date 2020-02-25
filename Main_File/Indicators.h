@@ -6,10 +6,12 @@
 #include <stdlib.h>
 #include <sstream>
 
-void side_by_side(std::istream& is1, std::istream& is2, std::size_t width)
+void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::istream& is4, std::size_t width)
 {
 	std::string line1;
 	std::string line2;
+	std::string line3;
+	std::string line4;
 
 	while (std::getline(is1, line1))
 	{
@@ -20,11 +22,13 @@ void side_by_side(std::istream& is1, std::istream& is2, std::size_t width)
 		if (line1.size() < width)
 			pad = std::string(width - line1.size(), ' ');
 
-		// get same line from second stream
+		// get same line from second and third stream
 		std::getline(is2, line2);
+		std::getline(is3, line3);
+		std::getline(is4, line4);
 
-		// print them size by the side the correct distance (pad)
-		std::cout << line1 << pad << line2 << '\n';
+		// print them side by the side the correct distance (pad)
+		std::cout << line1 << pad << line2 << pad << line3 << pad << line4 <<'\n';
 	}
 
 	// in case second stream has more line than the first
@@ -32,6 +36,18 @@ void side_by_side(std::istream& is1, std::istream& is2, std::size_t width)
 	{
 		auto pad = std::string(width, ' ');
 		std::cout << pad << line2;
+	}
+
+	while (std::getline(is3, line3))
+	{
+		auto pad = std::string(width, ' ');
+		std::cout << pad << line3;
+	}
+
+	while (std::getline(is4, line4))
+	{
+		auto pad = std::string(width, ' ');
+		std::cout << pad << line4;
 	}
 }
 
@@ -75,21 +91,38 @@ int playerGold(std::ostream& os) {
 	}*/
 };
 
-//int foodManagement()
-//{
-//};
+int foodManagement(std::ostream& os)
+{
+	int currentFoodLevel = 50;
+
+	os << "Hunger: " << currentFoodLevel << "/100";
+	return(0);
+};
+
+int waterManagement(std::ostream& os)
+{
+	int currentWaterLevel = 50;
+	os << "Thirst: " << currentWaterLevel << "/100";
+	return(0);
+}
 
 int output()
 {
 	// some stream objects to store the outputs
 	std::stringstream ss1;
 	std::stringstream ss2;
+	std::stringstream ss3;
+	std::stringstream ss4;
 
 	// capture output in stream objects
 	healthManagement(ss1);
 	playerGold(ss2);
+	foodManagement(ss3);
+	waterManagement(ss4);
 
 	// print captured output side by side
-	side_by_side(ss1, ss2, 30);
+	side_by_side(ss1, ss2, ss3, ss4, 30);
 	return (0);
 };
+
+//https://stackoverflow.com/questions/38893113/how-to-display-two-functions-next-to-each-other-in-c
