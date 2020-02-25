@@ -448,15 +448,22 @@ public:
 
 };
 
+// A subclass in order to differenciate player gladiators and npc gladiators
 class PlayerGladiator : public Gladiator {
+	// This variable counts the number of gladiators that are created with this class
 	unsigned int gladiatorsCreated = 0;
 
 private:
 
-	// We don't want this variable touched AT ALL. Let the code it it's thing.
+	// Variable indicates the unique identifier for the gladiator
 	unsigned int gladiatorID;
 
+	// Variable that contains which player the gladiator belongs to (reserved for multiplayer)
+	unsigned int whichPlayer;
+
 public:
+
+	//PlayerGladiator(unsigned int playerNo) {
 	PlayerGladiator() {
 
 		// When a plyaer gladiator is created, the number of gladiators created goes up by one
@@ -464,6 +471,9 @@ public:
 
 		// Assigns the gladiator with a unique identifier for later identification
 		gladiatorID = gladiatorsCreated;
+
+		// Assigns the playerNo to the whichPlayer variable. Won't be used unless we implement multiplayer.
+		//whichPlayer = playerNo; 
 	}
 
 	// This function is for verifying if this object has the ID that the programmer wants
@@ -482,6 +492,7 @@ public:
 
 };
 
+// A subclass in order to differenciate player gladiators and npc gladiators
 class npcGladiator : public Gladiator {
 public:
 
