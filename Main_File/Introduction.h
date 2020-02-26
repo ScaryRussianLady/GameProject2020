@@ -4,6 +4,8 @@
 #include <limits>
 #include <iostream>
 #include <sqlite3.h>
+#include <string>
+#include <functional>
 
 
 //Beginning of code by [Annija Balode 9102828]
@@ -14,6 +16,8 @@ std::string getDesiredUsername();
 std::string getDesiredPassword();
 std::string getNewUsername();
 std::string getNewPassword();
+std::string HashPassword();
+
 void saveUser(const std::string& username, const std::string& password);
 
 void login();
@@ -37,9 +41,24 @@ T getInput(const std::string& strQuery)
     return out;
 }
 
+void HashPassword(std::string const& Combine) {
+    std::string hash = " ";
+
+    const unsigned int VALUE = Combine.length();
+    for (auto Letter : Combine)
+    {
+        srand(VALUE * Letter);
+        hash += 33 + rand() % 92;
+    }
+    std::string passHash = hash;
+}
+
+
 std::string getDesiredPassword()
 {
     std::string password1 = getInput <std::string>("Please enter your desired password.");
+    std::size_t hashPass = std::hash<std::string>{}(password1);
+    std::string hashPass1 = std::to_string(hashPass);
     std::string password2 = getInput <std::string>("Please re-enter your desired password.");
 
     while (password1 != password2) {
@@ -47,8 +66,7 @@ std::string getDesiredPassword()
         password1 = getInput <std::string>("Please enter your desired password.");
         password2 = getInput <std::string>("Please re-enter your desired password.");
     }
-
-    return password1;
+    return hashPass1;
 }
 
 std::string getDesiredUsername()
@@ -67,6 +85,7 @@ std::string getDesiredUsername()
 std::string getNewPassword()
 {
     std::string password1 = getInput <std::string>("Please enter your password.");
+    std::hash<std::string>;
     std::string password2 = getInput <std::string>("Please re-enter your password.");
 
     while (password1 != password2) {
@@ -76,6 +95,11 @@ std::string getNewPassword()
     }
 
     return password1;
+}
+
+inline std::string HashPassword()
+{
+    return std::string();
 }
 
 std::string getNewUsername()
@@ -201,7 +225,7 @@ int setUp()
     std::string password = getDesiredPassword();
     system("CLS");
 
-    singularWordOutput("\nBefore you can begin training your clan, Chief " + usersName + ", you must first be informed on what is expected of you.");
+    singularWordOutput("Before you can begin training your clan, Chief " + usersName + ", you must first be informed on what is expected of you.");
     singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
     singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
     singularWordOutput("\nDon't waste any time Chief! Emperor Macrinus is relying on you to bring victory to our nation!");
@@ -222,14 +246,7 @@ int setUp()
         return (1);
     }
 
-    //sql = "CREATE TABLE USERINFO (" \
-        "USERID INTEGER PRIMARY KEY AUTOINCREMENT," \
-        "USERNAME TEXT NOT NULL," \
-        "PASSWORD TEXT NOT NULL," \
-        "USERFIRSTNAME TEXT NOT NULL, " \
-        "CLANTYPE TEXT NOT NULL, " \
-        "CLANNAME TEXT NOT NULL, " \
-        "NUM_GLADIATORS INTEGER);";
+    //sql = "CREATE TABLE USERINFO (" \"USERID INTEGER PRIMARY KEY AUTOINCREMENT," \"USERNAME TEXT NOT NULL," \"PASSWORD TEXT NOT NULL," \"USERFIRSTNAME TEXT NOT NULL, " \"CLANTYPE TEXT NOT NULL, " \"CLANNAME TEXT NOT NULL, " \"NUM_GLADIATORS INTEGER);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
@@ -239,8 +256,8 @@ int setUp()
     sqlite3_close(db);
     return (0);
 
-
 }
+
 
 int registerUser()
 {
