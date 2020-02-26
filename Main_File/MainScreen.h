@@ -8,3 +8,4 @@ void MainScreen()
 {
 	std::cout << "Days Left: " << timeTillFight() << std::endl;
 }
+

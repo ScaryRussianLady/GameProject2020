@@ -71,7 +71,7 @@ int healthManagement(std::ostream& os)
 
 	os << "Health: " << healthLevel << "/100";
 	return (0);
-};
+}
 
 
 int playerGold(std::ostream& os) {
