@@ -6,7 +6,7 @@
 #include <sqlite3.h>
 #include <string>
 #include <functional>
-
+//https://en.cppreference.com/w/cpp/string/basic_string/hash
 
 //Beginning of code by [Annija Balode 9102828]
 template <typename T>
@@ -16,7 +16,6 @@ std::string getDesiredUsername();
 std::string getDesiredPassword();
 std::string getNewUsername();
 std::string getNewPassword();
-std::string HashPassword();
 
 void saveUser(const std::string& username, const std::string& password);
 
@@ -39,18 +38,6 @@ T getInput(const std::string& strQuery)
     }
 
     return out;
-}
-
-void HashPassword(std::string const& Combine) {
-    std::string hash = " ";
-
-    const unsigned int VALUE = Combine.length();
-    for (auto Letter : Combine)
-    {
-        srand(VALUE * Letter);
-        hash += 33 + rand() % 92;
-    }
-    std::string passHash = hash;
 }
 
 
@@ -101,25 +88,6 @@ std::string getNewPassword()
 
     return hashPass1;
 }
-
-inline std::string HashPassword()
-{
-    return std::string();
-}
-
-std::string getNewUsername()
-{
-    std::string username = getInput <std::string>("\nPlease enter your username:");
-    std::cout << "Username: \"" << username << "\"\n";
-
-    while (getInput <int>("\nConfirm? [0 (NO) | 1 (YES)]") != 1) {
-        username = getInput <std::string>("Please enter your username:");
-        std::cout << "Username: \"" << username << "\"\n";
-    }
-
-    return username;
-}
-
 
 void mainMenu()
 {
