@@ -89,6 +89,20 @@ std::string getNewPassword()
     return hashPass1;
 }
 
+
+std::string getNewUsername()
+{
+    std::string username = getInput <std::string>("\nPlease enter your username:");
+    std::cout << "Username: \"" << username << "\"\n";
+
+    while (getInput <int>("\n Confirm? [0 (NO) | 1 (YES)]") != 1) {
+        username = getInput <std::string>("Please enter your username:");
+        std::cout << "Username: \"" << username << "\"\n";
+    }
+
+    return username;
+}
+
 void mainMenu()
 {
     system("color 0F");
