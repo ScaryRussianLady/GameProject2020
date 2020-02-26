@@ -64,6 +64,8 @@ std::string getDesiredPassword()
     while (password1 != password2) {
         std::cout << "Error! Passwords do not match." "\n";
         password1 = getInput <std::string>("Please enter your desired password.");
+        std::size_t hashPass = std::hash<std::string>{}(password1);
+        std::string hashPass1 = std::to_string(hashPass);
         password2 = getInput <std::string>("Please re-enter your desired password.");
     }
     return hashPass1;
@@ -85,16 +87,19 @@ std::string getDesiredUsername()
 std::string getNewPassword()
 {
     std::string password1 = getInput <std::string>("Please enter your password.");
-    std::hash<std::string>;
+    std::size_t hashPass = std::hash<std::string>{}(password1);
+    std::string hashPass1 = std::to_string(hashPass);
     std::string password2 = getInput <std::string>("Please re-enter your password.");
 
     while (password1 != password2) {
         std::cout << "Error! Passwords do not match." "\n";
         password1 = getInput <std::string>("Please enter your password.");
+        std::size_t hashPass = std::hash<std::string>{}(password1);
+        std::string hashPass1 = std::to_string(hashPass);
         password2 = getInput <std::string>("Please re-enter your password.");
     }
 
-    return password1;
+    return hashPass1;
 }
 
 inline std::string HashPassword()
