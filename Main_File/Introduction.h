@@ -251,6 +251,8 @@ void login()
 {
     std::string username = getNewUsername();
     std::string password = getNewPassword();
+
+    
     std::cout << "You are being logged in!\n" << std::endl;
 }
 
