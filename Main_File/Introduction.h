@@ -119,6 +119,7 @@ void mainMenu()
     case 1:
         //login();
         loginUser();
+        std::cout << "Press any key to continue.." << std::endl;
         _getch();
         break;
     case 2:
@@ -264,14 +265,14 @@ void saveUser(const std::string& username, const std::string& password)
 
 std::string temp;
 
-void login()
+/*void login()
 {
     std::string username = getNewUsername();
     std::string password = getNewPassword();
 
     
     std::cout << "You are being logged in!\n" << std::endl;
-}
+}*/
 
 int loginUser()
 {
@@ -293,7 +294,7 @@ int loginUser()
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'PASSWORD', 'USERFIRSTNAME' , 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + username + "', '" + password + "' ,'" + usersName + "', '" + typeOfClan + "', '" + nameOfClan + "', NULL);";
 
-    sql = "SELECT PASSWORD FROM USERINFO";
+    sql = "SELECT * FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
 
     if (zErrMsg)
     {
@@ -306,6 +307,8 @@ int loginUser()
         std::cout << "Opened Database Successfully!" << std::endl;
     }
     
+    std::cout << password << std::endl;
+
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     sqlite3_close(db);
