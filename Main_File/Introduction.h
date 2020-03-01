@@ -119,6 +119,7 @@ void mainMenu()
     case 1:
         //login();
         loginUser();
+        _getch();
         break;
     case 2:
         registerUser();
@@ -274,8 +275,8 @@ void login()
 
 int loginUser()
 {
-    std::string username = getNewPassword();
-    std::string password = getNewPassword();
+   std::string username = getNewUsername();
+   std::string password = getNewPassword();
 
     sqlite3* db;
     char* zErrMsg = 0;
@@ -289,12 +290,11 @@ int loginUser()
         return (1);
     }
 
-
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-
     //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'PASSWORD', 'USERFIRSTNAME' , 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + username + "', '" + password + "' ,'" + usersName + "', '" + typeOfClan + "', '" + nameOfClan + "', NULL);";
 
-    sql = "SELECT * FROM USERINFO";
+    sql = "SELECT PASSWORD FROM USERINFO";
+
     if (zErrMsg)
     {
         std::cerr << "Error open DB " << sqlite3_errmsg(db) << std::endl;
@@ -305,6 +305,8 @@ int loginUser()
     {
         std::cout << "Opened Database Successfully!" << std::endl;
     }
+    
+
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     sqlite3_close(db);
     return (0);
