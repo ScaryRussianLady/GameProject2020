@@ -22,6 +22,7 @@ void saveUser(const std::string& username, const std::string& password);
 void login();
 int registerUser();
 void mainMenu();
+int loginUser();
 
 
 template <typename T>
@@ -116,7 +117,8 @@ void mainMenu()
     switch (choice)
     {
     case 1:
-        login();
+        //login();
+        loginUser();
         break;
     case 2:
         registerUser();
@@ -268,6 +270,44 @@ void login()
 
     
     std::cout << "You are being logged in!\n" << std::endl;
+}
+
+int loginUser()
+{
+    std::string username = getNewPassword();
+    std::string password = getNewPassword();
+
+    sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+    if (rc)
+    {
+        std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return (1);
+    }
+
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+
+    //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'PASSWORD', 'USERFIRSTNAME' , 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + username + "', '" + password + "' ,'" + usersName + "', '" + typeOfClan + "', '" + nameOfClan + "', NULL);";
+
+    sql = "SELECT * FROM USERINFO";
+    if (zErrMsg)
+    {
+        std::cerr << "Error open DB " << sqlite3_errmsg(db) << std::endl;
+        return (-1);
+    }
+
+    else
+    {
+        std::cout << "Opened Database Successfully!" << std::endl;
+    }
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    sqlite3_close(db);
+    return (0);
 }
 
 //https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
