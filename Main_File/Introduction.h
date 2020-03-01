@@ -263,16 +263,6 @@ void saveUser(const std::string& username, const std::string& password)
     file << password << "\n";
 }
 
-std::string temp;
-
-/*void login()
-{
-    std::string username = getNewUsername();
-    std::string password = getNewPassword();
-
-    
-    std::cout << "You are being logged in!\n" << std::endl;
-}*/
 
 int loginUser()
 {
@@ -292,23 +282,14 @@ int loginUser()
     }
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    //sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'PASSWORD', 'USERFIRSTNAME' , 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + username + "', '" + password + "' ,'" + usersName + "', '" + typeOfClan + "', '" + nameOfClan + "', NULL);";
 
     sql = "SELECT * FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
 
     if (zErrMsg)
     {
-        std::cerr << "Error open DB " << sqlite3_errmsg(db) << std::endl;
+        std::cerr << "Error opening Gladiator Database: " << sqlite3_errmsg(db) << std::endl;
         return (-1);
     }
-
-    else
-    {
-        std::cout << "Opened Database Successfully!" << std::endl;
-    }
-    
-    std::cout << password << std::endl;
-
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     sqlite3_close(db);
