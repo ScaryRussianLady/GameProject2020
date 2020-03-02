@@ -283,7 +283,12 @@ int loginUser()
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
-    sql = "SELECT * FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
+    sql = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
+
+    //Need to create a catch for if the data is not present in the database.
+    std::string pass = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
+ 
+
 
     if (zErrMsg)
     {
@@ -291,7 +296,17 @@ int loginUser()
         return (-1);
     }
 
-    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    //rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    std::string usersPass = sql;
+
+    if (usersPass == pass)
+    {
+        std::cout << "Successfully logged in!" << std::endl;
+    }
+    else
+    {
+        std::cout << "You need to create an account" << std::endl;
+    }
     sqlite3_close(db);
     return (0);
 }
