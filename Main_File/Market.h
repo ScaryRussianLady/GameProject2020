@@ -11,7 +11,7 @@
 // shields, weapons, food, water, medical, supplies
 
 
-int Market(Player& player) {
+int Market(Player& player , Weapon& weapon) {
 
 	int playeritemchoice = 0;
 	int itemAmmount = 0;
@@ -33,14 +33,25 @@ int Market(Player& player) {
 	}
 	if (playeritemchoice == 2) {
 		std::cout << "So your after some food, one barrel of 10 water will cost you 2 gold, want to continue";
-		while (itemAmmount > 0 && player.amountFood + (itemAmmount * 10) > 100) {
+		while (itemAmmount < 1 && player.amountFood + (itemAmmount * 10) > 100) {
 			std::cout << "How many stacks of food would you like";
 			std::cin >> itemAmmount;
 		}
 		cost = itemAmmount * 2;
 		player.amountGold = player.amountGold - cost;
 		player.amountWater = player.amountWater + (itemAmmount * 10);
+	}
+	if (playeritemchoice == 3) {
+		std::cout << "So your after some new weapons";
+		std::cout << "Here's your options" ;
 
+		while (itemAmmount < 1 && itemAmmount > 3) {
+			std::cout << "Which weapon would you like";
+			std::cin >> itemAmmount;
+		}
+		cost = itemAmmount * 2;
+		player.amountGold = player.amountGold - cost;
+		player.amountWater = player.amountWater + (itemAmmount * 10);
 	}
 }
 
