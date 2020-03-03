@@ -223,6 +223,7 @@ private:
 	unsigned char damage;
 	unsigned char attackSpeed;
 	unsigned char critChance;
+	unsigned char cost;
 
 	// This is the limit to which weapons can be improved to
 	const unsigned char MaxQuality = 10;
@@ -240,6 +241,8 @@ public:
 		damage = weaponBaseDamage;
 		attackSpeed = weaponAttackSpeed;
 		critChance = weaponCritChance;
+		cost = quality * 20;
+
 	}
 
 	// The following Getter functions get the private variables and returns it to the programmer
@@ -266,6 +269,8 @@ public:
 	unsigned char getCritChance() {
 		return critChance;
 	}
+	unsigned char getCost() {
+		return cost;
 
 	// Restricts weapons from being improved beyond the limit and scales the weapon stats accordingly
 	void improveWeapon() {
