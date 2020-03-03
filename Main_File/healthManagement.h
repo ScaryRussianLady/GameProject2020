@@ -4,15 +4,15 @@
 #include <string.h>
 #include <stdlib.h>
 
-void healthManagement()
+/*int healthManagement()
 {
 	const int healthLevel = 100;
 
 	if (healthLevel <= 0)
 	{
 		std::cout << "You are dead!" << std::endl;
-		return;
+		return (0);
 	}
 
 	std::cout << "Health: " << healthLevel << "/100\n" << std::endl;
-}
+}*/

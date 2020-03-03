@@ -4,6 +4,7 @@
 #include <vector>
 #include <windows.h>
 
+
 class gladiator {
 public:
 
@@ -14,6 +15,10 @@ public:
 	int hp;
 	int hunger;
 	int thirst;
+	int strength;
+	int agility;
+	int dexterity;
+
 
 	//some other stats probably will be implemented
 
@@ -26,6 +31,9 @@ public:
 	int hpMax = 100;
 	int maxHung = 100;
 	int maxThirst = 100;
+	int strengthMax = 50;
+	float agilityMax = 1;
+	float dexterityMax = 1;
 
 };
 //just testing around with the gladiator class
@@ -56,6 +64,52 @@ int firstGlads() {
 	return 1;
 }
 
-int seeGlads() {
+// [Callum Jones 9406128] Function to train the basic stats of a gladiator
+int trainGladiator() {
+	bool trained = false;
+	int gladChoice = 0;
+	int statChoice = 0;
+	gladiator gladiator[3];
+	std::cout << "Please Choose a gladiator to train from these options";
+	for (int i = 0; i < 3; i++) {
+		std::cout << i << ":" << gladiator[i].allias << std::endl;
+	}
+	std::cin >> gladChoice;
+	while (gladChoice < 1 and gladChoice < 3) {
+		std::cout << "Please enter a valid choice" << std::endl;
+		std::cin >> gladChoice;
+	}
+	
+	std::cout << "These are your chosen gladiators current stats" ;
+	std::cout << gladiator[gladChoice - 1].strength;
+	std::cout << gladiator[gladChoice - 1].agility;
+	std::cout << gladiator[gladChoice - 1].dexterity;
+
+	while (statChoice < 1 and statChoice > 3) {
+		std::cout << "Please choose a stat to train from 1:Strength 2:agility 3:Dexterity"<< std::endl;
+		std::cin >> statChoice;
+	}
+	std::cout << "Ok your chosen stat will be trained";
+	if (statChoice == 1) {
+		gladiator[gladChoice].strength + 2;
+		std::cout << "This gladiators strength stat is now" << gladiator[gladChoice].strength;
+		trained = true;
+	}
+	else if (statChoice == 2) {
+		gladiator[gladChoice].agility + 0.05;
+		std::cout << "This gladiators agility stat is now" << gladiator[gladChoice].agility;
+		trained = true;
+	}
+	else if (statChoice == 3) {
+		gladiator[gladChoice].dexterity + 0.05;
+		std::cout << "This gladiators dexterity stat is now" << gladiator[gladChoice].dexterity;
+		trained = true;
+	}
+	if (trained == true) {
+		gladiator[gladChoice].hunger - 10;
+		gladiator[gladChoice].thirst - 15;
+	}
+	return 1;
+	
 
 }

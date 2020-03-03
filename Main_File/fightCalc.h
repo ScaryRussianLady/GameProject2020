@@ -3,6 +3,8 @@
 
 // Required headerfiles to calculate the fighters
 #include "Gladiator.h"
+#include "GameClasses.h"
+#include "sqlite3.h"
 
 // [START OF CODE BY: CHRISTIAN ]
 
@@ -17,11 +19,14 @@ public:
 	unsigned char plr_hpLost;
 	unsigned char plr_hungerLost;
 	unsigned char plr_thirstLost;
+	unsigned char plr_gladiatorsLostGame;
+	unsigned char plr_gladiatorsLost;
 
-	// The computers's gladiator's losses in stats
+	//The computer's losses.
 	unsigned char comp_hpLost;
-	unsigned char comp_hungerLost;
-	unsigned char comp_thirstLost;
+	//unsigned char comp_hungerLost;
+	//unsigned char comp_thirstLost;
+	unsigned char comp_gladiatorsLostGame;
 };
 
 // [END OF CODE BY: CHRISTIAN ]
@@ -30,9 +35,26 @@ public:
 
 // This function will do the fight calculation and return and object the results
 fightResults fightCalculation(gladiator plr_fighter, gladiator comp_fighter, unsigned char minHealth) {
-	
-	// Can't write more code without knowing how the weapons work
 
+
+	/*
+	INCLUDE DatabaseInfo;
+	INCLUDE player, weapon and gladiator class;
+	gameHealthOfPlayer = currentHealthOfPlayer;
+
+	FOR EVERY gladiator IN player
+		computerGladiatorsNumber = playerGladiatorsNumber;
+	ENDFOR
+
+	FOR EVERY weapon IN player 
+		computerWeapon[] = playerWeapon[];
+		FOR EVERY computerWeapon[]
+			newWeapons = weapon.stats + (randomNumberGenerator); //this will generate a random number between -5 and +5
+		ENDFOR
+	ENDFOR
+
+	*/
+	
 
 
 }
@@ -51,5 +73,4 @@ bool battleOver(unsigned char hp, unsigned char minHealth, int dmg){
 	}
 
 }
-
 // [END OF CODE BY: CHRISTIAN ]

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <windows.h>
 
-int playerGold() {
+/*int playerGold() {
 	int crntGold = 500;
 
 	char market[5];
@@ -24,4 +24,4 @@ int playerGold() {
 		}
 		return 1;
 	}
-}
+}*/

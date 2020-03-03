@@ -5,6 +5,8 @@
 #include <time.h>
 #include <conio.h>
 //#include "clear.h"
+#include "Indicators.h"
+#include <iomanip>
 
 /*
 void timeTillFight() {
@@ -94,67 +96,106 @@ void timeTillFight() {
 }
 */
 
-//A working timer in taking key presses whilst counting. It's not working
+//A working timer in taking key presses whilst counting.
+
+//Start of code [Jamie warnock: ID 9328082]
 //reference: https://www.youtube.com/watch?v=Kddn0MUbn4k 
 
 
-int second = 0, minute = 0, flag = 0;
+
+int second = 0, day = 7, flag = 0;
 bool snap = true;
 
 void printData();
 int selection();
 
 
-int test() {
-	std::string tester;
-	std::cout << "hope and pray for me\n";
-	std::cin >> tester;
+int testCase1() {		//this function is here for display purposes only
+	std::cout << "----------------Market----------------\n ";
+	std::cout << "*Will eventially link this with other function*\n";
+	std::cout << "this is just to show that other functions can be called.";
+	Sleep(3000);
 	return 1;
 }
 
+int testCase2() {		//this function is here for display purposes only
+	std::cout << "----------------Fighers----------------\n ";
+	std::cout << "*Will eventially link this with other function*\n";
+	std::cout << "this is just to show that other functions can be called.";
+	Sleep(3000);
+	return 1;
+}
+int FightDayTest() {		//this function is a placeholder for testing only
+	std::string choice;
+	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
+	std::cout << std::setfill('+') << std::setw(59) << "+";
+	std::cout << "\nit's time for your Gladiators to prove themselves in battle\n\n";
+
+	std::cout << "please select your gladiator:";
+	std::cin >> choice;
+	day = 7;
+	printData();
+	return 1;
+}
+/* Decided to just use the Sleep function instead
 void delay(int ms)  //delay function
 {
 	clock_t timeDelay = ms + clock();    //Step up the difference from clock delay
 	while (timeDelay > clock());         //stop when the clock is higher than time delay
 }
-
+*/
 void counter() {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
-		if (second > 59) {         //after second is greater than 59, reset second and increase 1 minute
-			second = 0; ++minute;
+		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
+			second = 0; day -= 1;
+			system("cls");
+			printData();
 		}
-		printData();           //print out the new data, delay for 1000 millisecond and increase 1 second.
-		delay(1000); second += 1;
+		if (day < 1) {
+			system("CLS");
+			FightDayTest();
+			day = 7;
+		}
+
+      //print out the new data, delay for 1000 millisecond and increase 1 second.
+		Sleep(1000); second += 1;
 	}
 	selection();    //after the user hit the keyboard, call the menu selection
 }
 
 void printData() {   //print data to screen
-	system("cls");      //clear the screen
-	printf("1.Start  2.testFunc  3.Reset  4. End\n");       //menu for user
-	printf("***********************************\n");
-	printf("            %d:%d\n", minute, second);      //output the data
-	printf("***********************************\n");
+	system("CLS");      //clear the screen
+	
+	output();
+	std::cout << std::setfill('+') << std::setw(120) << "+";
+	printf("\nDays Till Fight: %d \n", day);      //output the data
+	printf("[1] View Market | [2] View Fighters | [3] See Inventory | [4] End\n");       //menu for user
 }
 
 int selection() {      // menu selection
 	switch (_getch()) {    //collect input from user
-	case 49: flag = 0; break;        //press 1 set flag to 0 means start
-	case 50: flag = 0; test(); break;        //press 2 set flag to 1 means stop
+	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't
+	case 49: flag = 0; testCase1(); break;		  //press 1 to see testCase1	
+	case 50: flag = 0; testCase2(); break;        //press 2 to see testCase2
 	case 51:
-		minute = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
+		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
+		output();
 		printData();                //print the new data after reset
 		break;
 	case 52: snap = false;  return snap;; break;        //press 4, exit the program
 	}
+	return 1;
 }
 
 
 int timeTillFight()
 {
-	while (snap == true) {             //keep the program running end only if snap is false
+	printData();
+	while (snap == true) 
+	{             //keep the program running end only if snap is false
 		counter();
 	}
 	return 1;
 }
+//End of block [Jamie Warnock: ID 9328082]

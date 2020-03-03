@@ -1,37 +1,135 @@
 #pragma once
 #include <iostream>
-#include <stdlib.h> 
+#include <stdlib.h>
+#include <sqlite3.h>
+#include <stdio.h>
+#include <thread>
+#include <conio.h>
+#include <locale>
+#include <string>
+#include <cstring>
+#include "healthManagement.h"
+#include <cctype>
+#include "GameClasses.h"
+#include "goldManagement.h"
+#include "clanFood.h"
+#include "healthManagement.h"
 
-// [START OF CODE BY: CHRISTIAN ]
+// [START OF CODE BY: CHRISTIAN]
 
 class Player {
 private:
 
+	// Variable for the database
+	//int userID;
+
+	char userName[25];
+	char typeOfClan[25];
+	char nameOfClan[25];
+	std::string stringClan = nameOfClan;
+	std::string stringName = userName;
+	std::string stringTypeClan = typeOfClan;
+
+
 	// These variables are private so that they cannot be changed and break something
-	char name[25];
-	char clanType[25];
-	char clanName[50];
+
+
+	// The number of gladiators the player has
+	unsigned int numOfGladiators;
+
+
+	//#########################################################################
+	//Beginning of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
+	//Function for spelling out words letter by letter.
+	/*void singularWordOutput(const std::string& text)
+	{
+		// loop through each character in the text
+		for (std::size_t i = 0; i < text.size(); ++i)
+		{
+			// output one character
+			// flush to make sure the output is not delayed
+			std::cout << text[i] << std::flush;
+
+			// sleep 30 milliseconds
+			std::this_thread::sleep_for(std::chrono::milliseconds(30));
+		}
+	}*/
+	//End of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
+	//#########################################################################
+
 
 	// This function sets these player variables up
-	void setUp() {
+	/*void setUp() 
+	{
 
+		//#########################################################################
+		//Beginning of code by [Annija Balode 9102828]
 		// This will take the name that the player would like to go by and save it in the player variable
-		std::cout << "Hello Chief, what name would you like to be addressed by? >> ";
-		std::cin.getline(name, 25);
-		name[0] = toupper(name[0]);
+		std::cout << "The Gladiator" << std::endl;
+		std::cout << "-----------------------------------------------------------------------------------------------------" << std::endl;
+		singularWordOutput("Welcome to The Gladiator.\nWhat is your name, Chief?\n");
+		std::cin.getline(userName, 25);
+		std::string users_name = userName;
+		userName[0] = toupper(userName[0]);
+
+		singularWordOutput(std::string(userName) + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
+		singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
+		singularWordOutput("\nWhat would you like to name your clan, Chief " + std::string(userName) + "?\n");
+		std::cin.getline(nameOfClan, 25);
+		singularWordOutput("\nAs the official Chief of " + std::string(nameOfClan) + " you must decide whether you will be Attack or Defence.\n");
+
+
+		while (true)
+		{
+			singularWordOutput("\nWhich one will it be?\n");
+			std::cin.getline(typeOfClan, 25);
+			std::string type_string = typeOfClan;
+			int length = type_string.length();
+
+			for (int i = 0; i < length; i++)
+			{
+				int upperCase = type_string[i];
+				type_string[i] = toupper(upperCase);
+			}
+
+			if (type_string == "ATTACK")
+			{
+				std::cout << "Good, strong choice, all nations need muscle!" << std::endl;
+				break;
+			}
+
+			if (type_string == "DEFENCE")
+			{
+				std::cout << "All nations need defending!" << std::endl;
+				break;
+			}
+
+			else
+			{
+				std::cout << "Try again!" << std::endl;
+				char typeOfClan[25];
+				continue;
+			}
+		}
+
+
+		//End of code by [Annija Balode 9102828]
+		//#########################################################################
+
 
 		// This will get the player's clan type and it will make sure it's either attack of defence
-		while (true) {
+		/*while (true) {
+
 			std::cout << "What type of clan would you like to lead? (Attack or Defence?) >> ";
-			std::cin.getline(clanType, 25);
+			std::cin.getline(typeOfClan, 25);
 
 			// Turns the user's input into all lowercase so it can be checked to see if it's the correct value
-			for (unsigned char i = 0; i < strlen(clanType); i++) {
-				clanType[i] = (tolower(clanType[i]));
+			for (unsigned char i = 0; i < strlen(typeOfClan); i++) {
+				typeOfClan[i] = (tolower(typeOfClan[i]));
 			}
 
 			// Checks if the user's input is correct. If it is, the while loop will break. If not, the user will be asked to do it again
-			if (std::string(clanType) == std::string("attack") || std::string(clanType) == std::string("defence")) {
+			if (std::string(typeOfClan) == std::string("attack") || std::string(typeOfClan) == std::string("defence")) {
 				break;
 			}
 			else {
@@ -40,43 +138,153 @@ private:
 		}
 
 		// This allows for the player to name their clan.
-		std::cout << "And what would you like to name this " << clanType << " type clan of yours, Chief " << name << "? >> ";
-		std::cin.getline(clanName, 25);
-	}
+		std::cout << "And what would you like to name this " << typeOfClan << " type clan of yours, Chief " << userName << "? >> ";
+		std::cin.getline(nameOfClan, 25);
+	}*/
 
 public:
 
 	// Public variables because it makes sense for them to be changed by other's code
-	unsigned int gold;
+	unsigned int amountGold;
 
-	unsigned int food;
-	unsigned int water;
+	unsigned int amountFood;
+	unsigned int amountWater;
+
+	unsigned int amountHealth;
 
 	// Initialisation of the function which calls for the private setup and gives starting gold, food and water
 	// You can change these starting gold, food and water if need be.
-	Player()
+	Player(int ID)
 	{
-		gold = 100; //starting golden
-		food = 100; //starting food
-		water = 100; //starting water
+		//setUp();
+		//#########################################################################
+		//Beginning of code by [Annija Balode 9102828]
+		//Imports the function which manages the amount of gold the user currently has.
+		//amountGold = playerGold(); 
+		//Imports the function which manages the amount of food and water the user currently has.
+		amountFood = 100;
+		amountWater = 100;
+		//Imports the function which manages the amount of health the user currently has.
+		//amountHealth = healthManagement();
 
-		setUp();
+		//#########################################################################
+		//End of code by [Annija Balode 9102828]
+
+		//userID = ID;
+		numOfGladiators = 0;
+
+		
+
+		
+	}
+
+	// Adds another gladiator to the number of gladiators variable
+	void addGladiator() {
+		numOfGladiators = numOfGladiators + 1;
+	}
+
+	// Since name is a private variable, this will be used to get the name from this class
+	unsigned int getGladiatorNum() {
+		return numOfGladiators;
 	}
 
 	// Since name is a private variable, this will be used to get the name from this class
 	char* getName() {
-		return name;
+
+		return userName;
 	}
 
 	// Since clan type is a private variable, this will be used to get the name from this class
 	char* getClanType() {
-		return clanType;
+		return typeOfClan;
 	}
 
 	// Since clan name is a private variable, this will be used to get the name from this class
 	char* getClanName() {
-		return clanName;
+		return nameOfClan;
 	}
+};
+
+// [END OF CODE BY: CHRISTIAN ]
+
+// [START OF CODE BY: CHRISTIAN & ANNIJA]
+
+class Weapon {
+
+private:
+
+	// Name of the weapon
+	std::string name;
+	// Bool indicates the type of weapon this is. If it's an attack type weapon, it's TRUE, if it's defence, it's FALSE
+	bool TypeAttack;
+
+	// These are the weapon stats that will be used in battle calculations
+	unsigned char quality;
+	unsigned char damage;
+	unsigned char attackSpeed;
+	unsigned char critChance;
+
+	// This is the limit to which weapons can be improved to
+	const unsigned char MaxQuality = 10;
+
+public:
+
+	// Initialises the weapon using the input provided by the programmer. After this, the programmer can't change these variables directly
+	Weapon(std::string weaponName, bool isWeaponTypeAttack, unsigned char weaponQuality, unsigned char weaponBaseDamage,
+		unsigned char weaponAttackSpeed, unsigned char weaponCritChance) {
+
+		name = weaponName;
+		TypeAttack = isWeaponTypeAttack;
+
+		quality = weaponQuality;
+		damage = weaponBaseDamage;
+		attackSpeed = weaponAttackSpeed;
+		critChance = weaponCritChance;
+	}
+
+	// The following Getter functions get the private variables and returns it to the programmer
+	std::string getName() {
+		return name;
+	}
+
+	bool getType() {
+		return TypeAttack;
+	}
+
+	unsigned char getQuality() {
+		return quality;
+	}
+
+	unsigned char getDamage() {
+		return damage;
+	}
+
+	unsigned char getAttackSpeed() {
+		return attackSpeed;
+	}
+
+	unsigned char getCritChance() {
+		return critChance;
+	}
+
+	// Restricts weapons from being improved beyond the limit and scales the weapon stats accordingly
+	void improveWeapon() {
+
+		// If the weapon quality is already at it's limit, return and don't go any further
+		if (quality == MaxQuality) {
+			std::cout << "Sorry, this weapon cannot be improved any further!" << std::endl;
+			return;
+		}
+		// If not, increase the quality by one and then begin the improvement scaling calculations
+		quality = quality + 1;
+
+		// Weapon improvement scaling done here (Make these values more suitable if need be)
+		damage = damage + 2;
+		attackSpeed = attackSpeed + 2;
+		critChance = critChance + 1;
+
+	}
+
 };
 
 // [END OF CODE BY: CHRISTIAN ]
@@ -130,6 +338,8 @@ public:
 	unsigned int agility;
 	unsigned int dexterity;
 
+	//
+
 	// Initialises the gladiator class
 	Gladiator() {
 
@@ -159,6 +369,8 @@ public:
 	void adjustHP(int changeValue) {
 		if (hp + changeValue < 0) {
 			hp = 0;
+			// Deconstructs the gladiator class when it dies
+			Gladiator::~Gladiator();
 			return;
 		}
 
@@ -212,6 +424,78 @@ public:
 	unsigned int getThrist() {
 		return thirst;
 	}
+
+	// This section of the code handles attacking conducted by the gladiator
+
+	void gladiatorAttack(Gladiator target, Weapon wpn) {
+
+		int damage; // this will be how much damage the gladiator will deal
+
+		// Damage calculation is done here (this can be alerted to suit the needs of the game)
+		unsigned int baseDamage = strength + unsigned int(wpn.getDamage()); // This calculates damage on strength and weapon damage alone
+
+		// If a crit is successful, then add 20% damage to the base damage
+		if ((rand() % 100 + 0) < wpn.getCritChance() + unsigned int(dexterity)) {
+			baseDamage = baseDamage * 1.2;
+		}
+
+		// Subtract the defense stat from the baseDamage to create the overall damage the opponent gladiator takes
+		damage = baseDamage - target.defence;
+
+		target.adjustHP(-damage); // this will deal the damage to the gladiator
+
+	}
+
+};
+
+// A subclass in order to differenciate player gladiators and npc gladiators
+class PlayerGladiator : public Gladiator {
+	// This variable counts the number of gladiators that are created with this class
+	unsigned int gladiatorsCreated = 0;
+
+private:
+
+	// Variable indicates the unique identifier for the gladiator
+	unsigned int gladiatorID;
+
+	// Variable that contains which player the gladiator belongs to (reserved for multiplayer)
+	unsigned int whichPlayer;
+
+public:
+
+	//PlayerGladiator(unsigned int playerNo) {
+	PlayerGladiator() {
+
+		// When a plyaer gladiator is created, the number of gladiators created goes up by one
+		gladiatorsCreated = gladiatorsCreated + 1;
+
+		// Assigns the gladiator with a unique identifier for later identification
+		gladiatorID = gladiatorsCreated;
+
+		// Assigns the playerNo to the whichPlayer variable. Won't be used unless we implement multiplayer.
+		//whichPlayer = playerNo; 
+	}
+
+	// This function is for verifying if this object has the ID that the programmer wants
+	bool hasID(unsigned int ID) {
+		if (ID == gladiatorID) {
+			return true;
+		}
+		return false;
+	}
+
+	// This function is obsolete to the function above, but here for those who want it
+	// This function will directly return the gladiatorID
+	unsigned int getGladiatorID(){
+		return gladiatorID;
+	}
+
+};
+
+// A subclass in order to differenciate player gladiators and npc gladiators
+class npcGladiator : public Gladiator {
+public:
+
 };
 
 // [END OF CODE BY: CHRISTIAN ]
