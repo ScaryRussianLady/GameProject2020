@@ -44,14 +44,13 @@ int Market(Player& player , Weapon& weapon) {
 	if (playeritemchoice == 3) {
 		std::cout << "So your after some new weapons";
 		std::cout << "Here's your options" ;
-
+		Newweapon = Weapon::Weapon()
 		while (itemAmmount < 1 && itemAmmount > 3) {
 			std::cout << "Which weapon would you like";
 			std::cin >> itemAmmount;
 		}
-		cost = itemAmmount * 2;
+		cost = itemAmmount;
 		player.amountGold = player.amountGold - cost;
-		player.amountWater = player.amountWater + (itemAmmount * 10);
 	}
 }
 
