@@ -241,7 +241,7 @@ public:
 		damage = weaponBaseDamage;
 		attackSpeed = weaponAttackSpeed;
 		critChance = weaponCritChance;
-		cost = quality * 20;
+		cost = weaponQuality * 20;
 
 	}
 
@@ -269,6 +269,7 @@ public:
 	unsigned char getCritChance() {
 		return critChance;
 	}
+	//callum jones added cost based on quality
 	unsigned char getCost() {
 		return cost;
 
