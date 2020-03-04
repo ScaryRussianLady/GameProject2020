@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Required headerfiles to calculate the fighters
-#include "Gladiator.h"
+#include "gladiatorListing.h"
 #include "GameClasses.h"
 #include "sqlite3.h"
 
@@ -42,7 +42,8 @@ void fightDay() {
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
 	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
 
-	std::cout << "Which of your gladiators do you want to send into battle?: ";
+	std::cout << "Which of your gladiators do you want to send into battle?: " << std::endl;
+	showGladiators(15);
 	std::cin >> gladiatorChoice;
 
 	// Verification goes here
@@ -62,7 +63,7 @@ void fightDay() {
 // This function will do the fight calculation and return and object the results
 bool fightCalc(Gladiator plr_fighter, Gladiator comp_fighter, unsigned char minHealth) {
 
-	//ign000r
+	return true;
 
 }
 

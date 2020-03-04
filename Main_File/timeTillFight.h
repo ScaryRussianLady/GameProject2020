@@ -9,6 +9,8 @@
 #include <iomanip>
 #include "gladiatorListing.h"
 
+#include "fightDay.h"
+
 /*
 void timeTillFight() {
 	int count = 7;
@@ -155,7 +157,8 @@ void counter() {
 		}
 		if (day < 1) {
 			system("CLS");
-			FightDayTest();
+			//FightDayTest();
+			fightDay();
 			day = 7;
 		}
 

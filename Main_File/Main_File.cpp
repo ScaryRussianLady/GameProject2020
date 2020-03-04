@@ -16,7 +16,7 @@
 
 //Beginning of code by [Annija Balode 9102828].
 int main()
-{   
+{  
     mainMenu();
     system("CLS");
     MainScreen();
