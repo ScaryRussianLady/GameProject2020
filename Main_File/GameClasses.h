@@ -480,6 +480,7 @@ public:
 class loadGladiator : public Gladiator {
 private:
 
+	int gladiatorID;
 	int playerID;
 
 public:
@@ -512,6 +513,14 @@ public:
 		agility = agil;
 		dexterity = dext;
 
+	}
+
+	int getGladiatorID() {
+		return gladiatorID;
+	}
+
+	int getPlayerID() {
+		return gladiatorID;
 	}
 
 };
