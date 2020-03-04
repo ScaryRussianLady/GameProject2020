@@ -68,6 +68,8 @@ Gladiator createGladiator(int playerID, bool isNPC) {
 
 	PlayerGladiator newGladiatior(playerID);
 
+    saveData(newGladiatior);
 
+    return newGladiatior;
 
 }
