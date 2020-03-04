@@ -166,6 +166,7 @@
     <ClInclude Include="GameClasses.h" />
     <ClInclude Include="GeraldsCode.h" />
     <ClInclude Include="Gladiator.h" />
+    <ClInclude Include="gladiatorListing.h" />
     <ClInclude Include="GladiatorTraining New.h" />
     <ClInclude Include="goldManagement.h" />
     <ClInclude Include="Market.h" />

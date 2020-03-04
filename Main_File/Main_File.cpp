@@ -12,6 +12,7 @@
 #include "Introduction.h"
 
 #include "createGladiator.h"
+#include "gladiatorListing.h"
 
 //Beginning of code by [Annija Balode 9102828].
 int main()
