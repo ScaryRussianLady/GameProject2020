@@ -272,6 +272,7 @@ public:
 	//callum jones added cost based on quality
 	unsigned char getCost() {
 		return cost;
+	}
 
 	// Restricts weapons from being improved beyond the limit and scales the weapon stats accordingly
 	void improveWeapon() {

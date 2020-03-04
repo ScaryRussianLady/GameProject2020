@@ -33,12 +33,12 @@ int main()
     //        {
          //       cin >> x;
       ///      } while (x != 1 && x != 2 &&);
-          / / )
+          // )
   //  else(
     //    center(" Select: ");
         //center(" 1.Play game");
       ///  center("2. Exit");
-        )
+        //)
         
         /// ///do
          ///
