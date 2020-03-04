@@ -52,6 +52,9 @@ void fightDay() {
 
 	// Verification goes here
 
+	// Plugging the data into the fight calculator
+	// fightCalc()
+
 }
 
 // [END OF CODE BY: CHRISTIAN ]

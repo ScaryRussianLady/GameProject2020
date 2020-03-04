@@ -466,7 +466,7 @@ private:
 	unsigned int gladiatorID;
 
 	// Variable that contains which player the gladiator belongs to (reserved for multiplayer)
-	unsigned int whichPlayer;
+	unsigned int playerID;
 
 public:
 
@@ -489,6 +489,10 @@ public:
 			return true;
 		}
 		return false;
+	}
+
+	unsigned int getPlayerID() {
+		return playerID;
 	}
 
 	// This function is obsolete to the function above, but here for those who want it
