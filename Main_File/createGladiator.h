@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameClasses.h"
+#include "Introduction.h"
 
 #include <sstream>
 #include <fstream>
@@ -10,25 +11,6 @@
 #include <string>
 #include <functional>
 
-int callback(void* NotUsed, int argc, char** argv, char** azColName) {
-
-    // int argc: holds the number of results
-    // (array) azColName: holds each column returned
-    // (array) argv: holds each value
-
-    for (int i = 0; i < argc; i++) {
-
-        // Show column name, value, and newline
-        std::cout << azColName[i] << ": " << argv[i] << std::endl;
-
-    }
-
-    // Insert a newline
-    std::cout << std::endl;
-
-    // Return successful
-    return 0;
-}
 
 void saveData(PlayerGladiator gladiatorObj) {
 
@@ -65,6 +47,8 @@ Gladiator createGladiator(int playerID, bool isNPC) {
 
 		return newNPC;
 	}
+
+    std::cout << "wtf";
 
 	PlayerGladiator newGladiatior(playerID);
 

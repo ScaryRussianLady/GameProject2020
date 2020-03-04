@@ -11,9 +11,13 @@
 #include "MainScreen.h"
 #include "Introduction.h"
 
+#include "createGladiator.h"
+
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {   
+    createGladiator(15, false);
+
     mainMenu();
     system("CLS");
     MainScreen();
