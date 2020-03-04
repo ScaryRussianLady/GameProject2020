@@ -6,38 +6,16 @@
 #include "GameClasses.h"
 #include "sqlite3.h"
 
-// [START OF CODE BY: CHRISTIAN ]
-
-// This function will store the results of the fight calculations
-class fightResults {
-public:
-
-	// TRUE means that the player won, FALSE means that the player lost
-	bool win;
-	
-	// The player's gladiator's losses in stats
-	unsigned char plr_hpLost;
-	unsigned char plr_hungerLost;
-	unsigned char plr_thirstLost;
-	unsigned char plr_gladiatorsLostGame;
-	unsigned char plr_gladiatorsLost;
-
-	//The computer's losses.
-	unsigned char comp_hpLost;
-	//unsigned char comp_hungerLost;
-	//unsigned char comp_thirstLost;
-	unsigned char comp_gladiatorsLostGame;
-};
-
-// [END OF CODE BY: CHRISTIAN ]
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <conio.h>
+#include "Indicators.h"
+#include <iomanip>
 
 // [START OF CODE BY: CHRISTIAN ]
 
-// This function will do the fight calculation and return and object the results
-fightResults fightCalculation(gladiator plr_fighter, gladiator comp_fighter, unsigned char minHealth) {
-
-
-	/*
+/*
 	INCLUDE DatabaseInfo;
 	INCLUDE player, weapon and gladiator class;
 	gameHealthOfPlayer = currentHealthOfPlayer;
@@ -46,7 +24,7 @@ fightResults fightCalculation(gladiator plr_fighter, gladiator comp_fighter, uns
 		computerGladiatorsNumber = playerGladiatorsNumber;
 	ENDFOR
 
-	FOR EVERY weapon IN player 
+	FOR EVERY weapon IN player
 		computerWeapon[] = playerWeapon[];
 		FOR EVERY computerWeapon[]
 			newWeapons = weapon.stats + (randomNumberGenerator); //this will generate a random number between -5 and +5
@@ -54,8 +32,34 @@ fightResults fightCalculation(gladiator plr_fighter, gladiator comp_fighter, uns
 	ENDFOR
 
 	*/
-	
 
+// [START OF CODE BY: CHRISTIAN ]
+
+void fightDay() {
+	std::string gladiatorChoice;
+	std::string weaponChoice;
+
+	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
+	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
+
+	std::cout << "Which of your gladiators do you want to send into battle?: ";
+	std::cin >> gladiatorChoice;
+
+	// Verification goes here
+	
+	std::cout << "What weapon do you want your gladiator to bring with them?: ";
+	std::cin >> weaponChoice;
+
+	// Verification goes here
+
+}
+
+// [END OF CODE BY: CHRISTIAN ]
+
+// This function will do the fight calculation and return and object the results
+bool fightCalc(Gladiator plr_fighter, Gladiator comp_fighter, unsigned char minHealth) {
+
+	//ign000r
 
 }
 
