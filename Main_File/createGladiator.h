@@ -33,7 +33,7 @@ void saveData(PlayerGladiator gladiatorObj) {
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
-    sql = "INSERT INTO PlayerGladiators ('gladiatorID', 'playerID', 'firstName', 'surname' , 'nickname', 'hp', 'hunger', 'thirst', 'strength', 'defence', 'agility', 'dexterity') VALUES (NULL, '" + std::to_string(gladiatorObj.getPlayerID()) + "', '" + gladiatorObj.getName("firstname") + "' ,'" + gladiatorObj.getName("surname") + "', '" + gladiatorObj.nickname + "', '" + std::to_string(gladiatorObj.getHealth()) + "', '" + std::to_string(gladiatorObj.getHunger()) + "', '" + std::to_string(gladiatorObj.getThrist()) + "', '" + std::to_string(gladiatorObj.strength) + "', '" + std::to_string(gladiatorObj.defence) + "', '" + std::to_string(gladiatorObj.agility) + "', '" + std::to_string(gladiatorObj.dexterity) + "', NULL);";
+    sql = "INSERT INTO PlayerGladiators ('gladiatorID', 'playerID', 'firstName', 'surname' , 'nickname', 'hp', 'hunger', 'thirst', 'strength', 'defence', 'agility', 'dexterity') VALUES (NULL, '" + std::to_string(gladiatorObj.getPlayerID()) + "', '" + gladiatorObj.getName("firstname") + "' ,'" + gladiatorObj.getName("surname") + "', '" + gladiatorObj.nickname + "', " + std::to_string(gladiatorObj.getHealth()) + ", " + std::to_string(gladiatorObj.getHunger()) + ", " + std::to_string(gladiatorObj.getThrist()) + ", " + std::to_string(gladiatorObj.strength) + ", " + std::to_string(gladiatorObj.defence) + ", " + std::to_string(gladiatorObj.agility) + ", " + std::to_string(gladiatorObj.dexterity) + ");";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     sqlite3_close(db);
@@ -47,8 +47,6 @@ Gladiator createGladiator(int playerID, bool isNPC) {
 
 		return newNPC;
 	}
-
-    std::cout << "wtf";
 
 	PlayerGladiator newGladiatior(playerID);
 
