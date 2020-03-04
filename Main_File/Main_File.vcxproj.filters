@@ -29,9 +29,6 @@
     <ClInclude Include="GladiatorTraining New.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fightCalc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Downloads\sqlite3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -67,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="Gladiator.h">
       <Filter>Old Header Files %28Expired%29</Filter>
+    </ClInclude>
+    <ClInclude Include="fightDay.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
