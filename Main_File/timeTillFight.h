@@ -7,6 +7,7 @@
 //#include "clear.h"
 #include "Indicators.h"
 #include <iomanip>
+#include "gladiatorListing.h"
 
 /*
 void timeTillFight() {
