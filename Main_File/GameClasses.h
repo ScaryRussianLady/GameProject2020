@@ -299,7 +299,7 @@ public:
 // [START OF CODE BY: CHRISTIAN ]
 
 class Gladiator {
-private:
+protected:
 
 	// private variables so that they cannot be changed.
 	// std::string so that they can be made random easily in later code.
@@ -476,9 +476,43 @@ public:
 	}
 };
 
-// A subclass in order to differenciate player gladiators and npc gladiators
-class npcGladiator : public Gladiator {
+// A subclass in order for database information to be pushed to a gladiator class
+class loadGladiator : public Gladiator {
+private:
+
+	int playerID;
+
 public:
+
+	loadGladiator(int gladID, 
+		int plrID, 
+		std::string fname, 
+		std::string sname, 
+		std::string nickname, 
+		int hitpoints, 
+		int hung, 
+		int thir, 
+		int streng,
+		int def,
+		int agil,
+		int dext) {
+		 
+		gladiatorID = gladID;
+		playerID = plrID;
+
+		firstname = fname;
+		surname = sname;
+
+		hp = hitpoints;
+		hunger = hung;
+		thirst = thir;
+
+		strength = streng;
+		defence = def;
+		agility = agil;
+		dexterity = dext;
+
+	}
 
 };
 
