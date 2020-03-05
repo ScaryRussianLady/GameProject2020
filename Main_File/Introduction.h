@@ -123,7 +123,7 @@ int mainMenu()
         userid = loginUser();
         std::cout << "Press any key to continue.." << std::endl;
         return userid;
-        _getch();
+        //_getch();
         break;
     case 2:
         registerUser();
