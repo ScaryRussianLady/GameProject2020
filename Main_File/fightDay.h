@@ -42,7 +42,7 @@ void fightDay(int userid) {
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
 	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
 
-	std::cout << "Which of your gladiators do you want to send into battle?: " << std::endl;
+	std::cout << "\nWhich of your gladiators do you want to send into battle?: " << std::endl;
 	showGladiators(userid);
 	std::cin >> gladiatorChoice;
 

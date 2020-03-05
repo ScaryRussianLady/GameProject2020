@@ -13,11 +13,23 @@ int gladiatorCounter = 1;
 int printGladiators(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0; i < argc; i++) {
 
-        if (i % 2 == 1) {
+        if (i % 9 != 0) {
             continue;
         }
         
         std::cout << "[" << gladiatorCounter << "] " << argv[i] << " " << argv[i+1] << std::endl;
+
+        std::cout << "Health : " << argv[i + 2] << "/100 | ";
+        std::cout << "Hunger : " << argv[i + 3] << "/100 | ";
+        std::cout << "Thirst : " << argv[i + 4] << "/100" << std::endl;
+
+        std::cout << "Strength  : " << argv[i + 5] << " | ";
+        std::cout << "Defence   : " << argv[i + 6] << " | ";
+        std::cout << "Agility   : " << argv[i + 7] << " | ";
+        std::cout << "Dexterity : " << argv[i + 8] << std::endl;
+
+
+
         
         gladiatorCounter++;
     }
@@ -47,7 +59,7 @@ void showGladiators(int playerID) {
         return;
     }
 
-    sql = "SELECT firstName AS 'First Name', surname AS 'Last Name' FROM PlayerGladiators WHERE playerID ="+ std::to_string(playerID) + ";";
+    sql = "SELECT firstName, surname, hp, hunger, thirst, strength, defence, agility, dexterity FROM PlayerGladiators WHERE playerID ="+ std::to_string(playerID) + ";";
 
     rc = sqlite3_exec(db, sql.c_str(), printGladiators, 0, &zErrMsg);
 
