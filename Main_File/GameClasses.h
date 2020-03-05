@@ -480,12 +480,14 @@ public:
 class loadGladiator : public Gladiator {
 private:
 
+	int assignedNo;
 	int gladiatorID;
 	int playerID;
 
 public:
 
-	loadGladiator(int gladID, 
+	loadGladiator(int assignedNo,
+		int gladID, 
 		int plrID, 
 		std::string fname, 
 		std::string sname, 
