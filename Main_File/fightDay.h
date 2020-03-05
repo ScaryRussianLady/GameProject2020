@@ -39,14 +39,30 @@ void fightDay(int userid) {
 	std::string gladiatorChoice;
 	std::string weaponChoice;
 
+	std::string yesNo;
+
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
 	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
 
-	std::cout << "\nWhich of your gladiators do you want to send into battle?: \n" << std::endl;
-	showGladiators(userid, 0);
-	std::cin >> gladiatorChoice;
+	while (true) {
+		std::cout << "\nWhich of your gladiators do you want to send into battle?: \n" << std::endl;
+		showGladiators(userid, 0);
+		std::cin >> gladiatorChoice;
 
-	// Verification goes here
+		system("CLS");
+
+		// Verification goes here
+		std::cout << "You have selected:\n" << std::endl;
+		showGladiators(userid, std::stoi(gladiatorChoice));
+		std::cout << "Is this the gladiator you wanted to select? YES[1] NO[0]\n" << std::endl;
+		std::cin >> yesNo;
+
+		system("CLS");
+
+		if (std::stoi(yesNo) == 1) {
+			break;
+		}
+	}
 	
 	std::cout << "\nWhat weapon do you want your gladiator to bring with them?: \n" << std::endl;
 	std::cin >> weaponChoice;

@@ -123,7 +123,7 @@ int testCase1() {		//this function is here for display purposes only
 
 int showFightersCase(int userid) {		//this function is here for display purposes only
 	std::cout << "----------------Fighers----------------\n";
-	showGladiators(userid, 3);
+	showGladiators(userid, 0);
 	//std::cout << "*Will eventially link this with other function*\n";
 	//std::cout << "this is just to show that other functions can be called.";
 	Sleep(3000);

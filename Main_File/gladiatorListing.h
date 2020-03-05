@@ -20,8 +20,10 @@ int printGladiators(void* NotUsed, int argc, char** argv, char** azColName) {
 
         gladiatorCounter++;
 
-        if (gladiatorCounter != selNum) {
-            continue;
+        if (selNum != 0) {
+            if (gladiatorCounter != selNum) {
+                continue;
+            }
         }
 
         std::cout << "[" << gladiatorCounter << "] " << argv[i] << " " << argv[i+1] << std::endl;
