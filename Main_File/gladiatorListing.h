@@ -9,14 +9,21 @@
 #include "sqlite3.h"
 #include "Introduction.h"
 
-int gladiatorCounter = 1;
+int gladiatorCounter = 0;
+int selNum;
 int printGladiators(void* NotUsed, int argc, char** argv, char** azColName) {
-    for (int i = 0; i < argc; i++) {
+    for (int i = 0 ; i < argc; i++) {
 
         if (i % 9 != 0) {
             continue;
         }
-        
+
+        gladiatorCounter++;
+
+        if (gladiatorCounter != selNum) {
+            continue;
+        }
+
         std::cout << "[" << gladiatorCounter << "] " << argv[i] << " " << argv[i+1] << std::endl;
 
         std::cout << "Health : " << argv[i + 2] << "/100 | ";
@@ -28,21 +35,21 @@ int printGladiators(void* NotUsed, int argc, char** argv, char** azColName) {
         std::cout << "Agility   : " << argv[i + 7] << " | ";
         std::cout << "Dexterity : " << argv[i + 8] << std::endl;
 
-
-
+        std::cout << std::endl;
         
-        gladiatorCounter++;
     }
-
-    // Insert a newline
-    std::cout << std::endl;
 
     // Return successful
     return 0;
 }
 
-void showGladiators(int playerID) {
-    gladiatorCounter = 1;
+void showGladiators(int playerID, int selectedNum) {
+
+    
+    selNum = selectedNum;
+    
+
+    gladiatorCounter = 0;
 
     std::string Data;
 

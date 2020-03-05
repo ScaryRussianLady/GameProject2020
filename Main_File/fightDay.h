@@ -43,7 +43,7 @@ void fightDay(int userid) {
 	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
 
 	std::cout << "\nWhich of your gladiators do you want to send into battle?: \n" << std::endl;
-	showGladiators(userid);
+	showGladiators(userid, 0);
 	std::cin >> gladiatorChoice;
 
 	// Verification goes here
