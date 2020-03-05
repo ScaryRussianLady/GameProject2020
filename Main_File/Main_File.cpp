@@ -22,13 +22,9 @@ int main()
 {  
     userID = mainMenu();
 
-    std::cout << userID << std::endl;
-    
-    Sleep(10000);
-
     system("CLS");
 
-    MainScreen();
+    MainScreen(userID);
 
     return (0);
 }

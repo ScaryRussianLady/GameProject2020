@@ -147,7 +147,7 @@ void delay(int ms)  //delay function
 	while (timeDelay > clock());         //stop when the clock is higher than time delay
 }
 */
-void counter() {
+void counter(int userid) {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
 		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
@@ -158,7 +158,7 @@ void counter() {
 		if (day < 1) {
 			system("CLS");
 			//FightDayTest();
-			fightDay();
+			fightDay(userid);
 			day = 7;
 		}
 
@@ -193,12 +193,12 @@ int selection() {      // menu selection
 }
 
 
-int timeTillFight()
+int timeTillFight(int userid)
 {
 	printData();
 	while (snap == true) 
 	{             //keep the program running end only if snap is false
-		counter();
+		counter(userid);
 	}
 	return 1;
 }

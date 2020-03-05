@@ -4,9 +4,9 @@
 #include "timeTillFight.h"
 
 
-void MainScreen()
+void MainScreen(int userid)
 {
-	std::cout << "Days Left: " << timeTillFight() << std::endl;
+	std::cout << "Days Left: " << timeTillFight(userid) << std::endl;
    //{
    // int x = 0;
    // if (getSaved() == true)
