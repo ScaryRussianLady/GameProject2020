@@ -50,7 +50,7 @@ struct gladiatorData {
     int plrId;
 
     std::string fn;
-    std::string ls;
+    std::string ln;
     std::string nn;
 
     int hp;
@@ -70,7 +70,7 @@ gladiatorData gladStruct;
 int getGladData(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0; i < argc; i++) {
 
-        if (i % 9 != 0) {
+        if (i % 12 != 0) {
             continue;
         }
 
@@ -88,10 +88,8 @@ int getGladData(void* NotUsed, int argc, char** argv, char** azColName) {
 
         gladStruct.plrId = std::stoi(argv[i + 1]);
 
-
         gladStruct.fn = std::string(argv[i + 2]);
-
-        gladStruct.ls = std::string(argv[i + 3]);
+        gladStruct.ln = std::string(argv[i + 3]);
         gladStruct.nn = std::string(argv[i + 4]);
 
         gladStruct.hp = std::stoi(argv[i + 5]);
@@ -105,9 +103,9 @@ int getGladData(void* NotUsed, int argc, char** argv, char** azColName) {
 
         //std::cout << "I ahte this" << typeid(gladStruct.gladId).name() << std::endl;
 
-        break;
+        //std::cout << gladStruct.plrId << std::endl;
 
-        std::cout << gladStruct.fn << std::endl;
+        break;
     }
 
     // Return successful
@@ -136,7 +134,7 @@ gladiatorData importGladiatorData(int playerID, int selectedNum) {
         //return;
     }
 
-    sql = "SELECT gladiatorID, playerID, nickname, firstName, surname, hp, hunger, thirst, strength, defence, agility, dexterity FROM PlayerGladiators WHERE playerID =" + std::to_string(playerID) + ";";
+    sql = "SELECT gladiatorID, playerID, firstName, surname, nickname, hp, hunger, thirst, strength, defence, agility, dexterity FROM PlayerGladiators WHERE playerID =" + std::to_string(playerID) + ";";
 
     rc = sqlite3_exec(db, sql.c_str(), getGladData, 0, &zErrMsg);
 

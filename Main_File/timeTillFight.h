@@ -106,7 +106,7 @@ void timeTillFight() {
 
 
 
-int second = 0, day = 7, flag = 0;
+int second = 0, day = 1, flag = 0;
 bool snap = true;
 
 void printData();
@@ -160,7 +160,7 @@ void counter(int userid) {
 			system("CLS");
 			//FightDayTest();
 			fightDay(userid);
-			day = 7;
+			day = 1;
 		}
 
       //print out the new data, delay for 1000 millisecond and increase 1 second.

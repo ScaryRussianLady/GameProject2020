@@ -63,7 +63,12 @@ void fightDay(int userid) {
 
 		if (std::stoi(yesNo) == 1) {
 			gladData = importGladiatorData(userid, std::stoi(gladiatorChoice));
-			std::cout << "This the dude" << gladData.plrId << std::endl;
+			//std::cout << "This the dude" << gladData.nn << std::endl;
+
+			loadGladiator plrGlad(
+				gladData.gladId, gladData.plrId, gladData.fn, gladData.ln, gladData.nn, gladData.hp, gladData.hng, gladData.thr, 
+				gladData.stg, gladData.def, gladData.agi, gladData.dex);
+
 			break;
 		}
 	}
