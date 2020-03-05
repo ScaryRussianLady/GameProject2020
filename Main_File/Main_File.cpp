@@ -14,11 +14,20 @@
 #include "createGladiator.h"
 #include "gladiatorListing.h"
 
+// Variable which stores the userID once the player logs in
+int userID;
+
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {  
-    mainMenu();
+    userID = mainMenu();
+
+    std::cout << userID << std::endl;
+    
+    Sleep(10000);
+
     system("CLS");
+
     MainScreen();
 
     return (0);
