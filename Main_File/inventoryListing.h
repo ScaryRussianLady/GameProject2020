@@ -12,18 +12,17 @@ std::string typeOfClan;
 int plrID;
 
 int printWeaponStats(void* NotUsed, int argc, char** argv, char** azColName) {
-    std::cout << "HEREEEE" << std::endl;
 
     for (int i = 0; i < argc; i++) {
 
 
-        //if (i % 4 != 0) {
-         //   continue;
-        //}
+        if (i % 4 != 0) {
+            continue;
+        }
 
-        std::cout << "Quality              : " << argv[i] << " | ";
-        std::cout << "Damage               : " << argv[i + 1] << " | ";
-        std::cout << "Attack Speed         : " << argv[i + 2] << " | ";
+        std::cout << "Quality         : " << argv[i] << " | ";
+        std::cout << "Damage          : " << argv[i + 1] << " | ";
+        std::cout << "Attack Speed    : " << argv[i + 2] << " | ";
         std::cout << "Crit/Block Chance    : " << argv[i + 3] << std::endl;
 
         std::cout << std::endl;
@@ -75,14 +74,22 @@ int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
             continue;
         }
 
-        std::cout << "[" << i + 1 << "] " << argv[i] << std::endl;
+        if (argv[i] == NULL) { std::cout << "[EMPTY INVENTORY]" << std::endl; return 0; }
+
+        std::cout << "[" << i + 1<< "] " << argv[i] << std::endl;
         showWeaponStats(std::string(argv[i]));
+
+        if (argv[i + 1] == NULL) {return 0;}
 
         std::cout << "[" << i + 2 << "] " << argv[i + 1] << std::endl;
         showWeaponStats(std::string(argv[i+1]));
 
+        if (argv[i + 2] == NULL) { return 0; }
+
         std::cout << "[" << i + 3 << "] " << argv[i + 2] << std::endl;
         showWeaponStats(std::string(argv[i+2]));
+
+        if (argv[i + 3] == NULL) { return 0; }
 
         std::cout << "[" << i + 4 << "] " << argv[i + 3] << std::endl;
         showWeaponStats(std::string(argv[i+3]));

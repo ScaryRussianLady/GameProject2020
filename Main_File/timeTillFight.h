@@ -129,6 +129,16 @@ int showFightersCase(int userid) {		//this function is here for display purposes
 	Sleep(3000);
 	return 1;
 }
+
+int showInventoryCase(int userid) {		//this function is here for display purposes only
+	std::cout << "---------------Inventory---------------\n";
+	showInventory(userid, 0, "Defence");
+	//std::cout << "*Will eventially link this with other function*\n";
+	//std::cout << "this is just to show that other functions can be called.";
+	Sleep(3000);
+	return 1;
+}
+
 int FightDayTest() {		//this function is a placeholder for testing only
 	std::string choice;
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
@@ -183,7 +193,7 @@ int selection(int userid) {      // menu selection
 	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't
 	case 49: flag = 0; testCase1(); break;		  //press 1 to see testCase1	
 	case 50: flag = 0; showFightersCase(userid); break;        //press 2 to see showFightersCase
-	case 51:
+	case 51: flag = 0; showInventoryCase(userid); break; // press 3 to see ShowInventoryCase
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		output();
 		printData();                //print the new data after reset
