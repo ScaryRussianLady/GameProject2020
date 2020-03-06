@@ -239,6 +239,12 @@ int setUp()
 
     //sql = "CREATE TABLE USERINFO (" \"USERID INTEGER PRIMARY KEY AUTOINCREMENT," \"USERNAME TEXT NOT NULL," \"PASSWORD TEXT NOT NULL," \"USERFIRSTNAME TEXT NOT NULL, " \"CLANTYPE TEXT NOT NULL, " \"CLANNAME TEXT NOT NULL, " \"NUM_GLADIATORS INTEGER);";
 
+    sql = "CREATE TABLE INVENTORY (" \
+        "INVENTORYONE TEXT," \
+        "INVENTORYTWO TEXT," \
+        "INVENTORYTHREE TEXT," \
+        "INTENTORYFOUR TEXT);";
+
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
     sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'PASSWORD', 'USERFIRSTNAME' , 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + username + "', '" + password + "' ,'" + usersName + "', '" + typeOfClan + "', '" + nameOfClan + "', NULL);";
