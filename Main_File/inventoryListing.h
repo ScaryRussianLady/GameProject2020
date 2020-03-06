@@ -11,21 +11,24 @@
 int inventoryCounter = 0;
 //int selNum;
 int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
+    std::cout << "Test" << std::endl;
     for (int i = 0; i < argc; i++) {
 
-        if (i % 4 != 0) {
-            continue;
-        }
+        std::cout << "Test2" << std::endl;
+
+        //if (i % 4 != 0) {
+        //    continue;
+        //}
 
         inventoryCounter++;
 
-        if (selNum != 0) {
-            if (inventoryCounter != selNum) {
-                continue;
-            }
-        }
+        //if (selNum != 0) {
+        //    if (inventoryCounter != selNum) {
+        //        continue;
+        //    }
+        //}
 
-        std::cout << "[" << inventoryCounter << "] " << std::endl;
+        std::cout << "[" << inventoryCounter << "] " << argv[i] << std::endl;
 
         std::cout << std::endl;
 
@@ -36,7 +39,6 @@ int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
 }
 
 void showInventory(int playerID, int selectedNum) {
-
 
     selNum = selectedNum;
 
@@ -57,10 +59,9 @@ void showInventory(int playerID, int selectedNum) {
         return;
     }
 
-    sql = "SELECT INVENTORYONE, INVENTORYTWO, INVENTORYTHREE, INVENTORYFOUR FROM INVENTORY WHERE playerID =" + std::to_string(playerID) + ";";
+    sql = "SELECT INVENTORYONE, INVENTORYTWO, INVENTORYTHREE, INVENTORYFOUR FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
 
     rc = sqlite3_exec(db, sql.c_str(), printInventory, 0, &zErrMsg);
-
 
     sqlite3_close(db);
     return;
