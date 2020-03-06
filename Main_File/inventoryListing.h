@@ -16,17 +16,17 @@ int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
 
         std::cout << "Test2" << std::endl;
 
-        //if (i % 4 != 0) {
-        //    continue;
-        //}
+        if (i % 4 != 0) {
+            continue;
+        }
 
         inventoryCounter++;
 
-        //if (selNum != 0) {
-        //    if (inventoryCounter != selNum) {
-        //        continue;
-        //    }
-        //}
+        if (selNum != 0) {
+            if (inventoryCounter != selNum) {
+                continue;
+           }
+        }
 
         std::cout << "[" << inventoryCounter << "] " << argv[i] << std::endl;
 
