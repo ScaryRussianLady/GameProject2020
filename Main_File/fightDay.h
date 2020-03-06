@@ -75,7 +75,7 @@ void fightDay(int userid) {
 	}
 	
 	std::cout << "\nWhat weapon do you want your gladiator to bring with them?: \n" << std::endl;
-	showInventory(userid, 0);
+	showInventory(userid, 0, "Defence");
 
 	std::cin >> weaponChoice;
 
