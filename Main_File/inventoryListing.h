@@ -11,24 +11,17 @@
 int inventoryCounter = 0;
 //int selNum;
 int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
-    std::cout << "Test" << std::endl;
     for (int i = 0; i < argc; i++) {
 
-        std::cout << "Test2" << std::endl;
 
         if (i % 4 != 0) {
             continue;
         }
 
-        inventoryCounter++;
-
-        if (selNum != 0) {
-            if (inventoryCounter != selNum) {
-                continue;
-           }
-        }
-
-        std::cout << "[" << inventoryCounter << "] " << argv[i] << std::endl;
+        std::cout << "[" << i + 1 << "] " << argv[i] << std::endl;
+        std::cout << "[" << i + 2 << "] " << argv[i + 1] << std::endl;
+        std::cout << "[" << i + 3 << "] " << argv[i + 2] << std::endl;
+        std::cout << "[" << i + 4 << "] " << argv[i + 3] << std::endl;
 
         std::cout << std::endl;
 
