@@ -176,6 +176,7 @@
     <ClInclude Include="MainScreen.h" />
     <ClInclude Include="test_header.h" />
     <ClInclude Include="timeTillFight.h" />
+    <ClInclude Include="inventoryListing.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GladiatorDatabase.db" />
