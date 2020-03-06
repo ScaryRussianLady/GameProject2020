@@ -7,6 +7,9 @@
 //#include "clear.h"
 #include "Indicators.h"
 #include <iomanip>
+#include "gladiatorListing.h"
+
+#include "fightDay.h"
 
 /*
 void timeTillFight() {
@@ -103,11 +106,11 @@ void timeTillFight() {
 
 
 
-int second = 0, day = 7, flag = 0;
+int second = 0, day = 1, flag = 0;
 bool snap = true;
 
 void printData();
-int selection();
+int selection(int userid);
 
 
 int testCase1() {		//this function is here for display purposes only
@@ -118,10 +121,11 @@ int testCase1() {		//this function is here for display purposes only
 	return 1;
 }
 
-int testCase2() {		//this function is here for display purposes only
-	std::cout << "----------------Fighers----------------\n ";
-	std::cout << "*Will eventially link this with other function*\n";
-	std::cout << "this is just to show that other functions can be called.";
+int showFightersCase(int userid) {		//this function is here for display purposes only
+	std::cout << "----------------Fighers----------------\n";
+	showGladiators(userid, 0);
+	//std::cout << "*Will eventially link this with other function*\n";
+	//std::cout << "this is just to show that other functions can be called.";
 	Sleep(3000);
 	return 1;
 }
@@ -144,7 +148,7 @@ void delay(int ms)  //delay function
 	while (timeDelay > clock());         //stop when the clock is higher than time delay
 }
 */
-void counter() {
+void counter(int userid) {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
 		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
@@ -154,14 +158,15 @@ void counter() {
 		}
 		if (day < 1) {
 			system("CLS");
-			FightDayTest();
-			day = 7;
+			//FightDayTest();
+			fightDay(userid);
+			day = 1;
 		}
 
       //print out the new data, delay for 1000 millisecond and increase 1 second.
 		Sleep(1000); second += 1;
 	}
-	selection();    //after the user hit the keyboard, call the menu selection
+	selection(userid);    //after the user hit the keyboard, call the menu selection
 }
 
 void printData() {   //print data to screen
@@ -173,11 +178,11 @@ void printData() {   //print data to screen
 	printf("[1] View Market | [2] View Fighters | [3] See Inventory | [4] End\n");       //menu for user
 }
 
-int selection() {      // menu selection
+int selection(int userid) {      // menu selection
 	switch (_getch()) {    //collect input from user
 	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't
 	case 49: flag = 0; testCase1(); break;		  //press 1 to see testCase1	
-	case 50: flag = 0; testCase2(); break;        //press 2 to see testCase2
+	case 50: flag = 0; showFightersCase(userid); break;        //press 2 to see showFightersCase
 	case 51:
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		output();
@@ -189,12 +194,12 @@ int selection() {      // menu selection
 }
 
 
-int timeTillFight()
+int timeTillFight(int userid)
 {
 	printData();
 	while (snap == true) 
 	{             //keep the program running end only if snap is false
-		counter();
+		counter(userid);
 	}
 	return 1;
 }

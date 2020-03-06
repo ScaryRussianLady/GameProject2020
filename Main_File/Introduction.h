@@ -21,7 +21,7 @@ void saveUser(const std::string& username, const std::string& password);
 
 void login();
 int registerUser();
-void mainMenu();
+int mainMenu();
 int loginUser();
 
 
@@ -104,8 +104,10 @@ std::string getNewUsername()
     return username;
 }
 
-void mainMenu()
+int mainMenu()
 {
+    int userid;
+
     system("color 0F");
     std::cout << "The Gladiator" << std::endl;
     std::cout << std::setfill('+') << std::setw(120) << "+";
@@ -118,12 +120,14 @@ void mainMenu()
     {
     case 1:
         //login();
-        loginUser();
+        userid = loginUser();
         std::cout << "Press any key to continue.." << std::endl;
-        _getch();
+        return userid;
+        //_getch();
         break;
     case 2:
         registerUser();
+        return 0;
         break;
     }
 
@@ -263,11 +267,38 @@ void saveUser(const std::string& username, const std::string& password)
     file << password << "\n";
 }
 
+int userGlobal;
+int callbackSingleData(void* NotUsed, int argc, char** argv, char** azColName) {
+
+    std::string s = argv[0];
+    int g = std::stoi(s);
+
+    userGlobal = g;
+    return 0;
+}
+
+int collectUserID(std::string username){
+
+    sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+
+    sql = "SELECT USERID FROM USERINFO WHERE USERNAME ='" + username + "'";
+
+    rc = sqlite3_exec(db, sql.c_str(), callbackSingleData, 0, &zErrMsg);
+
+    return userGlobal;
+}
+
 
 int loginUser()
 {
    std::string username = getNewUsername();
    std::string password = getNewPassword();
+
+   int userID = collectUserID(username);
 
     sqlite3* db;
     char* zErrMsg = 0;
@@ -287,8 +318,6 @@ int loginUser()
 
     //Need to create a catch for if the data is not present in the database.
     std::string pass = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
- 
-
 
     if (zErrMsg)
     {
@@ -308,7 +337,8 @@ int loginUser()
         std::cout << "You need to create an account" << std::endl;
     }
     sqlite3_close(db);
-    return (0);
+    //return (0);
+    return userID;
 }
 
 //https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program

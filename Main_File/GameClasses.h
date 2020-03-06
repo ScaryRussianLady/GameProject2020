@@ -223,6 +223,7 @@ private:
 	unsigned char damage;
 	unsigned char attackSpeed;
 	unsigned char critChance;
+	unsigned char cost;
 
 	// This is the limit to which weapons can be improved to
 	const unsigned char MaxQuality = 10;
@@ -240,6 +241,8 @@ public:
 		damage = weaponBaseDamage;
 		attackSpeed = weaponAttackSpeed;
 		critChance = weaponCritChance;
+		cost = weaponQuality * 20;
+
 	}
 
 	// The following Getter functions get the private variables and returns it to the programmer
@@ -265,6 +268,10 @@ public:
 
 	unsigned char getCritChance() {
 		return critChance;
+	}
+	//callum jones added cost based on quality
+	unsigned char getCost() {
+		return cost;
 	}
 
 	// Restricts weapons from being improved beyond the limit and scales the weapon stats accordingly
@@ -292,7 +299,7 @@ public:
 // [START OF CODE BY: CHRISTIAN ]
 
 class Gladiator {
-private:
+protected:
 
 	// private variables so that they cannot be changed.
 	// std::string so that they can be made random easily in later code.
@@ -450,51 +457,72 @@ public:
 
 // A subclass in order to differenciate player gladiators and npc gladiators
 class PlayerGladiator : public Gladiator {
-	// This variable counts the number of gladiators that are created with this class
-	unsigned int gladiatorsCreated = 0;
 
 private:
 
-	// Variable indicates the unique identifier for the gladiator
-	unsigned int gladiatorID;
-
 	// Variable that contains which player the gladiator belongs to (reserved for multiplayer)
-	unsigned int whichPlayer;
+	int playerID;
 
 public:
 
-	//PlayerGladiator(unsigned int playerNo) {
-	PlayerGladiator() {
+	PlayerGladiator(int ID) {
 
-		// When a plyaer gladiator is created, the number of gladiators created goes up by one
-		gladiatorsCreated = gladiatorsCreated + 1;
-
-		// Assigns the gladiator with a unique identifier for later identification
-		gladiatorID = gladiatorsCreated;
-
-		// Assigns the playerNo to the whichPlayer variable. Won't be used unless we implement multiplayer.
-		//whichPlayer = playerNo; 
+		// Assign's the player's ID to this variable for identification of who owns the gladiator
+		playerID = ID;
 	}
 
-	// This function is for verifying if this object has the ID that the programmer wants
-	bool hasID(unsigned int ID) {
-		if (ID == gladiatorID) {
-			return true;
-		}
-		return false;
+	int getPlayerID() {
+		return playerID;
+	}
+};
+
+// A subclass in order for database information to be pushed to a gladiator class
+class loadGladiator : public Gladiator {
+private:
+
+	int gladiatorID;
+	int playerID;
+
+public:
+
+	loadGladiator(
+		int gladID, 
+		int plrID, 
+		std::string fname, 
+		std::string sname, 
+		std::string nickname, 
+		int hitpoints, 
+		int hung, 
+		int thir, 
+		int streng,
+		int def,
+		int agil,
+		int dext) {
+		 
+		gladiatorID = gladID;
+		playerID = plrID;
+
+		firstname = fname;
+		surname = sname;
+
+		hp = hitpoints;
+		hunger = hung;
+		thirst = thir;
+
+		strength = streng;
+		defence = def;
+		agility = agil;
+		dexterity = dext;
+
 	}
 
-	// This function is obsolete to the function above, but here for those who want it
-	// This function will directly return the gladiatorID
-	unsigned int getGladiatorID(){
+	int getGladiatorID() {
 		return gladiatorID;
 	}
 
-};
-
-// A subclass in order to differenciate player gladiators and npc gladiators
-class npcGladiator : public Gladiator {
-public:
+	int getPlayerID() {
+		return gladiatorID;
+	}
 
 };
 

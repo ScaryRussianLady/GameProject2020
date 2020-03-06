@@ -161,13 +161,15 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Downloads\sqlite3.h" />
     <ClInclude Include="clanFood.h" />
-    <ClInclude Include="fightCalc.h" />
+    <ClInclude Include="createGladiator.h" />
+    <ClInclude Include="fightDay.h" />
     <ClInclude Include="GameClasses.h" />
     <ClInclude Include="GeraldsCode.h" />
     <ClInclude Include="Gladiator.h" />
+    <ClInclude Include="gladiatorListing.h" />
     <ClInclude Include="GladiatorTraining New.h" />
     <ClInclude Include="goldManagement.h" />
-    <ClInclude Include="gameTime.h" />
+    <ClInclude Include="Market.h" />
     <ClInclude Include="healthManagement.h" />
     <ClInclude Include="Indicators.h" />
     <ClInclude Include="Introduction.h" />

@@ -1,4 +1,5 @@
 #include "pch.h"
+#include <iostream>
 #include "CppUnitTest.h"
 
 #include "../Main_File/test_header.h"
@@ -7,25 +8,15 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTestingFile
 {
-	TEST_CLASS(Test_Header)
+	TEST_CLASS(create_gladiatior_test)
 	{
 	public:
 		
 		TEST_METHOD(Is_Ten)
 		{
+			std::cout << "TEST" << std::endl;
+
 			Assert::IsTrue(isItTen(10), L"Must be true");
-		}
-		TEST_METHOD(Is_Minus_Ten)
-		{
-			Assert::IsFalse(isItTen(-10), L"Must be false");
-		}
-		TEST_METHOD(Is_Nine)
-		{
-			Assert::IsFalse(isItTen(9), L"Must be false");
-		}
-		TEST_METHOD(Is_Eleven)
-		{
-			Assert::IsFalse(isItTen(11), L"Must be false");
 		}
 	};
 }
