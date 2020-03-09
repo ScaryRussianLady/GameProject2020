@@ -106,7 +106,7 @@ void timeTillFight() {
 
 
 
-int second = 0, day = 1, flag = 0;
+int second = 0, day = 7, flag = 0;
 bool snap = true;
 
 void printData();
@@ -170,7 +170,7 @@ void counter(int userid, std::string clanType) {
 			system("CLS");
 			//FightDayTest();
 			fightDay(userid, clanType);
-			day = 1;
+			day = 7;
 		}
 
       //print out the new data, delay for 1000 millisecond and increase 1 second.

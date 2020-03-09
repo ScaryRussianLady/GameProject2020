@@ -25,8 +25,6 @@ int main()
     userID = mainMenu();
     clanType = getClanType(userID);
 
-    std::cout << clanType << std::endl;
-
     system("CLS");
 
     MainScreen(userID, clanType);

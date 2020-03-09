@@ -37,6 +37,7 @@
 // [START OF CODE BY: CHRISTIAN ]
 
 void fightDay(int userid, std::string clanType) {
+
 	std::string gladiatorChoice;
 	std::string weaponChoice;
 
@@ -87,19 +88,21 @@ void fightDay(int userid, std::string clanType) {
 		std::cout << "Is this the weapon you wanted to select?\nYES[1] NO[0]\n" << std::endl;
 		std::cin >> yesNo;
 
+		system("CLS");
+
 		if (std::stoi(yesNo) == 1) {
 
 			wpnData = showInventory(userid, std::stoi(weaponChoice), clanType, true);
 			
 			Weapon plrWeap(wpnData.name, wpnData.quality, wpnData.damage, wpnData.attackSpeed, wpnData.critChance);
 
-			std::cout << "Damn" << int(plrWeap.getDamage()) << std::endl;
-
 			break;
 		}
 	}
 
-	// Verification goes here
+	singularWordOutput("THEN,\nLET\nTHE\nBATTLE\nBEGIN!!!\n");
+
+	system("CLS");
 
 	// Plugging the data into the fight calculator
 	// fightCalc()

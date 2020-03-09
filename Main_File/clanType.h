@@ -14,6 +14,7 @@ std::string clanOfType;
 int getClan(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0; i < argc; i++) {
 
+        //std::cout << "HELLO" << argv[i] << std::endl;
         clanOfType = std::string(argv[i]);
 
     }
@@ -38,7 +39,7 @@ std::string getClanType(int playerID) {
         //return;
     }
 
-    sql = "SELECT CLANTYPE FROM USERINFO WHERE playerID =" + std::to_string(playerID) + ";";
+    sql = "SELECT CLANTYPE FROM USERINFO WHERE USERID =" + std::to_string(playerID) + ";";
 
     rc = sqlite3_exec(db, sql.c_str(), getClan, 0, &zErrMsg);
 
