@@ -110,7 +110,7 @@ int second = 0, day = 1, flag = 0;
 bool snap = true;
 
 void printData();
-int selection(int userid);
+int selection(int userid, std::string clanType);
 
 
 int testCase1() {		//this function is here for display purposes only
@@ -130,9 +130,9 @@ int showFightersCase(int userid) {		//this function is here for display purposes
 	return 1;
 }
 
-int showInventoryCase(int userid) {		//this function is here for display purposes only
+int showInventoryCase(int userid, std::string clanType) {		//this function is here for display purposes only
 	std::cout << "---------------Inventory---------------\n";
-	showInventory(userid, 0, "Defence", false);
+	showInventory(userid, 0, clanType, false);
 	//std::cout << "*Will eventially link this with other function*\n";
 	//std::cout << "this is just to show that other functions can be called.";
 	Sleep(3000);
@@ -158,7 +158,7 @@ void delay(int ms)  //delay function
 	while (timeDelay > clock());         //stop when the clock is higher than time delay
 }
 */
-void counter(int userid) {
+void counter(int userid, std::string clanType) {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
 		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
@@ -169,14 +169,14 @@ void counter(int userid) {
 		if (day < 1) {
 			system("CLS");
 			//FightDayTest();
-			fightDay(userid);
+			fightDay(userid, clanType);
 			day = 1;
 		}
 
       //print out the new data, delay for 1000 millisecond and increase 1 second.
 		Sleep(1000); second += 1;
 	}
-	selection(userid);    //after the user hit the keyboard, call the menu selection
+	selection(userid, clanType);    //after the user hit the keyboard, call the menu selection
 }
 
 void printData() {   //print data to screen
@@ -188,12 +188,12 @@ void printData() {   //print data to screen
 	printf("[1] View Market | [2] View Fighters | [3] See Inventory | [4] End\n");       //menu for user
 }
 
-int selection(int userid) {      // menu selection
+int selection(int userid, std::string clanType) {      // menu selection
 	switch (_getch()) {    //collect input from user
 	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't
 	case 49: flag = 0; testCase1(); break;		  //press 1 to see testCase1	
 	case 50: flag = 0; showFightersCase(userid); break;        //press 2 to see showFightersCase
-	case 51: flag = 0; showInventoryCase(userid); break; // press 3 to see ShowInventoryCase
+	case 51: flag = 0; showInventoryCase(userid, clanType); break; // press 3 to see ShowInventoryCase
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		output();
 		printData();                //print the new data after reset
@@ -204,12 +204,12 @@ int selection(int userid) {      // menu selection
 }
 
 
-int timeTillFight(int userid)
+int timeTillFight(int userid, std::string clanType)
 {
 	printData();
 	while (snap == true) 
 	{             //keep the program running end only if snap is false
-		counter(userid);
+		counter(userid, clanType);
 	}
 	return 1;
 }

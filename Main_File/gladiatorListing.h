@@ -141,8 +141,6 @@ gladiatorData importGladiatorData(int playerID, int selectedNum) {
 
     sqlite3_close(db);
 
-    //std::cout << "fuck off " << gladStruct.gladId << std::endl;
-
     return gladStruct;
 }
 

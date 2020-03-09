@@ -36,7 +36,7 @@
 
 // [START OF CODE BY: CHRISTIAN ]
 
-void fightDay(int userid) {
+void fightDay(int userid, std::string clanType) {
 	std::string gladiatorChoice;
 	std::string weaponChoice;
 
@@ -77,19 +77,19 @@ void fightDay(int userid) {
 	
 	while (true) {
 		std::cout << "\nWhat weapon do you want your gladiator to bring with them?: \n" << std::endl;
-		showInventory(userid, 0, "Defence", false);
+		showInventory(userid, 0, clanType, false);
 		std::cin >> weaponChoice;
 
 		system("CLS");
 
 		std::cout << "You have selected:\n" << std::endl;
-		showInventory(userid, std::stoi(weaponChoice), "Defence", false);
+		showInventory(userid, std::stoi(weaponChoice), clanType, false);
 		std::cout << "Is this the weapon you wanted to select?\nYES[1] NO[0]\n" << std::endl;
 		std::cin >> yesNo;
 
 		if (std::stoi(yesNo) == 1) {
 
-			wpnData = showInventory(userid, std::stoi(weaponChoice), "Defence", true);
+			wpnData = showInventory(userid, std::stoi(weaponChoice), clanType, true);
 			
 			Weapon plrWeap(wpnData.name, wpnData.quality, wpnData.damage, wpnData.attackSpeed, wpnData.critChance);
 
