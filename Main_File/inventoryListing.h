@@ -64,8 +64,64 @@ void showWeaponStats(std::string weaponName) {
     return;
 }
 
+struct weaponData {
 
-//int selNum;
+    std::string name;
+
+    int quality;
+    int damage;
+    int attackSpeed;
+    int critChance;
+    //int cost;
+
+};
+
+weaponData weaponStats;
+
+int exportStats(void* NotUsed, int argc, char** argv, char** azColName) {
+
+    for (int i = 0; i < argc; i++) {
+
+        weaponStats.name = std::string(argv[i]);
+        weaponStats.quality = std::stoi(argv[i + 1]);
+        weaponStats.damage = std::stoi(argv[i + 2]);
+        weaponStats.attackSpeed = std::stoi(argv[i + 3]);
+        weaponStats.critChance = std::stoi(argv[i + 4]);
+        //weaponStats.cost = std::stoi(argv[i + 5]);
+
+        return 0;
+    }
+}
+
+int getWeaponStats(void* NotUsed, int argc, char** argv, char** azColName) {
+    
+    std::string Data;
+
+    sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+
+    for (int i = 0; i < argc; i++) {
+
+        rc = sqlite3_open("GladiatorDatabase.db", &db);
+
+        if (typeOfClan == "Attack") {
+            sql = "SELECT weapon_name, quality, damage, attack_speed, critical_chance FROM Attack WHERE weapon_name = '" + std::string(argv[i]) + "';";
+        }
+        else if (typeOfClan == "Defence") {
+            sql = "SELECT weapon_name, quality, damage, attack_speed, block_chance FROM Defence WHERE weapon_name = '" + std::string(argv[i]) + "';";
+        }
+
+    }
+
+    rc = sqlite3_exec(db, sql.c_str(), exportStats, 0, &zErrMsg);
+
+    return 0;
+}
+
+//int selNum3;
 int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0; i < argc; i++) {
 
@@ -102,13 +158,15 @@ int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
-void showInventory(int playerID, int selectedNum, std::string clanType) {
+weaponData showInventory(int playerID, int selectedNum, std::string clanType, bool getStats) {
+
+    weaponData returnStats;
 
     typeOfClan = clanType;
 
     plrID = playerID;
 
-    selNum = selectedNum;
+    //selNum3 = selectedNum;
 
     std::string Data;
 
@@ -122,13 +180,37 @@ void showInventory(int playerID, int selectedNum, std::string clanType) {
     {
         std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_close(db);
-        return;
+        return returnStats;
     }
 
-    sql = "SELECT INVENTORYONE, INVENTORYTWO, INVENTORYTHREE, INVENTORYFOUR FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
+    if (selectedNum == 1) {
+        sql = "SELECT INVENTORYONE FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
+    }
+    else if (selectedNum == 2){
+        sql = "SELECT INVENTORYTWO FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
+    }
+    else if (selectedNum == 3) {
+        sql = "SELECT INVENTORYTHREE FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
+    }
+    else if (selectedNum == 4) {
+        sql = "SELECT INVENTORYFOUR FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
+    }
+    else {
+        sql = "SELECT INVENTORYONE, INVENTORYTWO, INVENTORYTHREE, INVENTORYFOUR FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
+    }
 
-    rc = sqlite3_exec(db, sql.c_str(), printInventory, 0, &zErrMsg);
+    //sql = "SELECT INVENTORYONE, INVENTORYTWO, INVENTORYTHREE, INVENTORYFOUR FROM INVENTORY WHERE PLAYERID =" + std::to_string(playerID) + ";";
+
+    if (getStats == false) {
+
+        rc = sqlite3_exec(db, sql.c_str(), printInventory, 0, &zErrMsg);
+    }
+    else {
+        rc = sqlite3_exec(db, sql.c_str(), getWeaponStats, 0, &zErrMsg);
+    }
 
     sqlite3_close(db);
-    return;
+
+    returnStats = weaponStats;
+    return returnStats;
 }

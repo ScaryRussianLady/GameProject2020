@@ -132,7 +132,7 @@ int showFightersCase(int userid) {		//this function is here for display purposes
 
 int showInventoryCase(int userid) {		//this function is here for display purposes only
 	std::cout << "---------------Inventory---------------\n";
-	showInventory(userid, 0, "Defence");
+	showInventory(userid, 0, "Defence", false);
 	//std::cout << "*Will eventially link this with other function*\n";
 	//std::cout << "this is just to show that other functions can be called.";
 	Sleep(3000);

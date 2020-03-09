@@ -43,6 +43,7 @@ void fightDay(int userid) {
 	std::string yesNo;
 
 	gladiatorData gladData;
+	weaponData wpnData;
 
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
 	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
@@ -74,10 +75,29 @@ void fightDay(int userid) {
 		}
 	}
 	
-	std::cout << "\nWhat weapon do you want your gladiator to bring with them?: \n" << std::endl;
-	showInventory(userid, 0, "Defence");
+	while (true) {
+		std::cout << "\nWhat weapon do you want your gladiator to bring with them?: \n" << std::endl;
+		showInventory(userid, 0, "Defence", false);
+		std::cin >> weaponChoice;
 
-	std::cin >> weaponChoice;
+		system("CLS");
+
+		std::cout << "You have selected:\n" << std::endl;
+		showInventory(userid, std::stoi(weaponChoice), "Defence", false);
+		std::cout << "Is this the weapon you wanted to select?\nYES[1] NO[0]\n" << std::endl;
+		std::cin >> yesNo;
+
+		if (std::stoi(yesNo) == 1) {
+
+			wpnData = showInventory(userid, std::stoi(weaponChoice), "Defence", true);
+			
+			Weapon plrWeap(wpnData.name, wpnData.quality, wpnData.damage, wpnData.attackSpeed, wpnData.critChance);
+
+			std::cout << "Damn" << int(plrWeap.getDamage()) << std::endl;
+
+			break;
+		}
+	}
 
 	// Verification goes here
 

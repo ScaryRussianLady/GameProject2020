@@ -231,11 +231,10 @@ private:
 public:
 
 	// Initialises the weapon using the input provided by the programmer. After this, the programmer can't change these variables directly
-	Weapon(std::string weaponName, bool isWeaponTypeAttack, unsigned char weaponQuality, unsigned char weaponBaseDamage,
+	Weapon(std::string weaponName, unsigned char weaponQuality, unsigned char weaponBaseDamage,
 		unsigned char weaponAttackSpeed, unsigned char weaponCritChance) {
 
 		name = weaponName;
-		TypeAttack = isWeaponTypeAttack;
 
 		quality = weaponQuality;
 		damage = weaponBaseDamage;
