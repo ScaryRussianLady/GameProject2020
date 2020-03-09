@@ -27,9 +27,9 @@ int main()
 
     std::cout << clanType << std::endl;
 
-    //system("CLS");
+    system("CLS");
 
-    //MainScreen(userID, clanType);
+    MainScreen(userID, clanType);
 
     return (0);
 }

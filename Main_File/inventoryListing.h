@@ -107,10 +107,10 @@ int getWeaponStats(void* NotUsed, int argc, char** argv, char** azColName) {
 
         rc = sqlite3_open("GladiatorDatabase.db", &db);
 
-        if (typeOfClan == "Attack") {
+        if (typeOfClan == "attack") {
             sql = "SELECT weapon_name, quality, damage, attack_speed, critical_chance FROM Attack WHERE weapon_name = '" + std::string(argv[i]) + "';";
         }
-        else if (typeOfClan == "Defence") {
+        else if (typeOfClan == "defence") {
             sql = "SELECT weapon_name, quality, damage, attack_speed, block_chance FROM Defence WHERE weapon_name = '" + std::string(argv[i]) + "';";
         }
 
