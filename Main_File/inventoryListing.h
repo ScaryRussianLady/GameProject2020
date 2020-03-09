@@ -50,10 +50,10 @@ void showWeaponStats(std::string weaponName) {
         return;
     }
 
-    if (typeOfClan == "Attack") {
+    if (typeOfClan == "attack") {
         sql = "SELECT quality, damage, attack_speed, critical_chance FROM Attack WHERE weapon_name = '" + weaponName + "';";
     }
-    else if (typeOfClan == "Defence") {
+    else if (typeOfClan == "defence") {
         sql = "SELECT quality, damage, attack_speed, block_chance FROM Defence WHERE weapon_name = '" + weaponName + "';";
     }
 
