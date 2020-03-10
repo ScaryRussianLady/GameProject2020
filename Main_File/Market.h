@@ -20,6 +20,7 @@ int Market(Player& player , Weapon& weapon1 , Weapon& weapon2) {
 		std::cout << "1:Food" << std::endl;
 		std::cout << "2:Water" << std::endl;
 		std::cout << "3:Weapons" << std::endl;
+		std::cout << "4 Visit the forge" << std::endl;
 		std::cin >> playeritemchoice;
 	}
 	if (playeritemchoice == 1) {
@@ -31,11 +32,15 @@ int Market(Player& player , Weapon& weapon1 , Weapon& weapon2) {
 	else if (playeritemchoice == 3) {
 		buyweapon(player , weapon1 , weapon2);
 	}
+	else if (playeritemchoice == 4) {
+		forge(player);
+	}
 	std::cout << "Thank you for your custom today";
 }
 
-int forge(Player &player) {
+int forge(Player &player , Weapon & weapon) {
 	int playerChoice = 0;
+	int weaponChoice = 0;
 	std::cout<< "Welcome to the forge how can we help yout today" << std::endl;
 	std::cout << "1: improve weapon " << std::endl;
 	std::cout << "2: scrap a weapon " << std::endl;
@@ -45,6 +50,21 @@ int forge(Player &player) {
 	}
 	if (playerChoice == 1) {
 		std::cout << "Which weapon would you like to improve";
+		for (int i = 0; i < player.getWeaponNum; i++) {
+			std::cout << i , player.weapons[i];
+		}
+		std::cin >> weaponChoice;
+		int costToImprove = player.weapons[weaponChoice].getQuality * 7;
+		if (player.amountGold > costToImprove) {
+			std::cout << "you cant afford to improve this weapon";
+		}
+		else if (player.weapons[weaponChoice].getQuality = 10) {
+			std::cout << "you cant improve this weapon it is already at its highest quality";
+		}
+		else {
+			player.weapons[weaponChoice].improveWeapon;
+		}
+		
 	}
 	if (playerChoice == 2) {
 		std::cout << "which weapon would you like to scrap";
@@ -52,7 +72,7 @@ int forge(Player &player) {
 
 }
 
-int buyweapon( Player &player,  Weapon &weapon1 , Weapon &weapon2){
+void buyweapon( Player &player,  Weapon &weapon1 , Weapon &weapon2){
 	int weaponChoice = 0;
 	std::cout << "So your after a new weapon";
 	std::cout << "Here's your options";
@@ -64,15 +84,19 @@ int buyweapon( Player &player,  Weapon &weapon1 , Weapon &weapon2){
 	}
 	if (weaponChoice == 1) {
 		player.amountGold = player.amountGold - weapon1.getCost;
+		player.addWeapon;
+		player.weapons[player.getWeaponNum] = weapon1;
+
 	}
 	else if (weaponChoice == 2) {
 		player.amountGold = player.amountGold - weapon2.getCost;
-		return ;
+		player.addWeapon;
+		player.weapons[player.getWeaponNum] = weapon2;
 	}
 }
 
 
-int buyFood(Player &player) {
+void buyFood( Player &player) {
 	int itemAmmount = 0;
 	int cost = 0;
 	std::cout << "So your after some food, one stack of 5 food will cost you 2 gold, want to continue";
@@ -83,10 +107,9 @@ int buyFood(Player &player) {
 	cost = itemAmmount * 2;
 	player.amountGold = player.amountGold - cost;
 	player.amountFood = player.amountFood + (itemAmmount * 5);
-	return ;
 }
 
-int buyWater(Player& player) {
+void buyWater(Player& player) {
 	int itemAmmount = 0;
 	int cost = 0;
 	std::cout << "So your after some food, one barrel of 10 water will cost you 2 gold, want to continue";
@@ -97,5 +120,5 @@ int buyWater(Player& player) {
 	cost = itemAmmount * 2;
 	player.amountGold = player.amountGold - cost;
 	player.amountWater = player.amountWater + (itemAmmount * 10);
-	return;
+
 }
