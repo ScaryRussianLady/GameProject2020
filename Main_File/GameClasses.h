@@ -36,6 +36,7 @@ private:
 
 	// The number of gladiators the player has
 	unsigned int numOfGladiators;
+	unsigned int numOfWeapons;
 
 
 	//#########################################################################
@@ -172,6 +173,7 @@ public:
 
 		//userID = ID;
 		numOfGladiators = 0;
+		numOfWeapons = 0;
 
 		
 
@@ -181,6 +183,11 @@ public:
 	// Adds another gladiator to the number of gladiators variable
 	void addGladiator() {
 		numOfGladiators = numOfGladiators + 1;
+	}
+
+	//Callum Jones adds another weapon
+	void addWeapon() {
+		numOfWeapons = numOfWeapons + 1;
 	}
 
 	// Since name is a private variable, this will be used to get the name from this class
@@ -232,7 +239,7 @@ public:
 
 	// Initialises the weapon using the input provided by the programmer. After this, the programmer can't change these variables directly
 	Weapon(std::string weaponName, unsigned char weaponQuality, unsigned char weaponBaseDamage,
-		unsigned char weaponAttackSpeed, unsigned char weaponCritChance) {
+		unsigned char weaponAttackSpeed, unsigned char weaponCritChance, ) {
 
 		name = weaponName;
 
