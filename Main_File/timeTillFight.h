@@ -163,7 +163,7 @@ void counter(int userid, std::string clanType) {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
 		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
-			second = 0; day -= 1;
+			second = 0; day -= 1; resourceLevel -= 5;
 			system("cls");
 			printData();
 		}
