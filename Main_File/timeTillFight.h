@@ -9,6 +9,8 @@
 #include <iomanip>
 #include "gladiatorListing.h"
 
+#include "fightDay.h"
+
 /*
 void timeTillFight() {
 	int count = 7;
@@ -108,7 +110,7 @@ int second = 0, day = 7, flag = 0;
 bool snap = true;
 
 void printData();
-int selection();
+int selection(int userid, std::string clanType);
 
 
 int testCase1() {		//this function is here for display purposes only
@@ -119,13 +121,24 @@ int testCase1() {		//this function is here for display purposes only
 	return 1;
 }
 
-int testCase2() {		//this function is here for display purposes only
-	std::cout << "----------------Fighers----------------\n ";
-	std::cout << "*Will eventially link this with other function*\n";
-	std::cout << "this is just to show that other functions can be called.";
+int showFightersCase(int userid) {		//this function is here for display purposes only
+	std::cout << "----------------Fighers----------------\n";
+	showGladiators(userid, 0);
+	//std::cout << "*Will eventially link this with other function*\n";
+	//std::cout << "this is just to show that other functions can be called.";
 	Sleep(3000);
 	return 1;
 }
+
+int showInventoryCase(int userid, std::string clanType) {		//this function is here for display purposes only
+	std::cout << "---------------Inventory---------------\n";
+	showInventory(userid, 0, clanType, false);
+	//std::cout << "*Will eventially link this with other function*\n";
+	//std::cout << "this is just to show that other functions can be called.";
+	Sleep(3000);
+	return 1;
+}
+
 int FightDayTest() {		//this function is a placeholder for testing only
 	std::string choice;
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
@@ -145,7 +158,7 @@ void delay(int ms)  //delay function
 	while (timeDelay > clock());         //stop when the clock is higher than time delay
 }
 */
-void counter() {
+void counter(int userid, std::string clanType) {
 	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
 
 		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
@@ -155,14 +168,15 @@ void counter() {
 		}
 		if (day < 1) {
 			system("CLS");
-			FightDayTest();
+			//FightDayTest();
+			fightDay(userid, clanType);
 			day = 7;
 		}
 
       //print out the new data, delay for 1000 millisecond and increase 1 second.
 		Sleep(1000); second += 1;
 	}
-	selection();    //after the user hit the keyboard, call the menu selection
+	selection(userid, clanType);    //after the user hit the keyboard, call the menu selection
 }
 
 void printData() {   //print data to screen
@@ -174,12 +188,12 @@ void printData() {   //print data to screen
 	printf("[1] View Market | [2] View Fighters | [3] See Inventory | [4] End\n");       //menu for user
 }
 
-int selection() {      // menu selection
+int selection(int userid, std::string clanType) {      // menu selection
 	switch (_getch()) {    //collect input from user
 	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't
 	case 49: flag = 0; testCase1(); break;		  //press 1 to see testCase1	
-	case 50: flag = 0; testCase2(); break;        //press 2 to see testCase2
-	case 51:
+	case 50: flag = 0; showFightersCase(userid); break;        //press 2 to see showFightersCase
+	case 51: flag = 0; showInventoryCase(userid, clanType); break; // press 3 to see ShowInventoryCase
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop
 		output();
 		printData();                //print the new data after reset
@@ -190,12 +204,12 @@ int selection() {      // menu selection
 }
 
 
-int timeTillFight()
+int timeTillFight(int userid, std::string clanType)
 {
 	printData();
 	while (snap == true) 
 	{             //keep the program running end only if snap is false
-		counter();
+		counter(userid, clanType);
 	}
 	return 1;
 }

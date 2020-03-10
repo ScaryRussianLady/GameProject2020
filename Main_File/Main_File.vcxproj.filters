@@ -74,6 +74,12 @@
     <ClInclude Include="gladiatorListing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inventoryListing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clanType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -231,11 +231,10 @@ private:
 public:
 
 	// Initialises the weapon using the input provided by the programmer. After this, the programmer can't change these variables directly
-	Weapon(std::string weaponName, bool isWeaponTypeAttack, unsigned char weaponQuality, unsigned char weaponBaseDamage,
+	Weapon(std::string weaponName, unsigned char weaponQuality, unsigned char weaponBaseDamage,
 		unsigned char weaponAttackSpeed, unsigned char weaponCritChance) {
 
 		name = weaponName;
-		TypeAttack = isWeaponTypeAttack;
 
 		quality = weaponQuality;
 		damage = weaponBaseDamage;
@@ -299,7 +298,7 @@ public:
 // [START OF CODE BY: CHRISTIAN ]
 
 class Gladiator {
-private:
+protected:
 
 	// private variables so that they cannot be changed.
 	// std::string so that they can be made random easily in later code.
@@ -476,9 +475,53 @@ public:
 	}
 };
 
-// A subclass in order to differenciate player gladiators and npc gladiators
-class npcGladiator : public Gladiator {
+// A subclass in order for database information to be pushed to a gladiator class
+class loadGladiator : public Gladiator {
+private:
+
+	int gladiatorID;
+	int playerID;
+
 public:
+
+	loadGladiator(
+		int gladID, 
+		int plrID, 
+		std::string fname, 
+		std::string sname, 
+		std::string nickname, 
+		int hitpoints, 
+		int hung, 
+		int thir, 
+		int streng,
+		int def,
+		int agil,
+		int dext) {
+		 
+		gladiatorID = gladID;
+		playerID = plrID;
+
+		firstname = fname;
+		surname = sname;
+
+		hp = hitpoints;
+		hunger = hung;
+		thirst = thir;
+
+		strength = streng;
+		defence = def;
+		agility = agil;
+		dexterity = dext;
+
+	}
+
+	int getGladiatorID() {
+		return gladiatorID;
+	}
+
+	int getPlayerID() {
+		return gladiatorID;
+	}
 
 };
 

@@ -40,6 +40,59 @@ void saveData(PlayerGladiator gladiatorObj) {
     return;
 }
 
+void updateData(loadGladiator gladiatorObj, std::string attribute) {
+
+    std::string value;
+
+    sqlite3* db;
+    char* zErrMsg = 0;
+    int rc;
+    std::string sql;
+    rc = sqlite3_open("GladiatorDatabase.db", &db);
+
+    if (rc)
+    {
+        std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return;
+    }
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+
+    if (attribute == "hp") {
+        value = std::to_string(gladiatorObj.getHealth());
+    }
+    else if (attribute == "hunger") {
+        value = std::to_string(gladiatorObj.getHunger());
+    }
+    else if (attribute == "thirst") {
+        value = std::to_string(gladiatorObj.getThrist());
+    }
+    else if (attribute == "strength") {
+        value = std::to_string(gladiatorObj.strength);
+    }
+    else if (attribute == "defence") {
+        value = std::to_string(gladiatorObj.defence);
+    }
+    else if (attribute == "agility") {
+        value = std::to_string(gladiatorObj.agility);
+    }
+    else if (attribute == "dexterity") {
+        value = std::to_string(gladiatorObj.dexterity);
+    }
+    else if (attribute == "nickname") {
+        value = gladiatorObj.nickname;
+    }
+
+    sql = "UPDATE PlayerGladiators SET " + attribute + " = " + value + " WHERE gladiatorID = " + std::to_string(gladiatorObj.getGladiatorID()) + ";";
+
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    sqlite3_close(db);
+    return;
+}
+
+
+
 Gladiator createGladiator(int playerID, bool isNPC) {
 
 	if (isNPC == true) {

@@ -174,8 +174,10 @@
     <ClInclude Include="Indicators.h" />
     <ClInclude Include="Introduction.h" />
     <ClInclude Include="MainScreen.h" />
+    <ClInclude Include="clanType.h" />
     <ClInclude Include="test_header.h" />
     <ClInclude Include="timeTillFight.h" />
+    <ClInclude Include="inventoryListing.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GladiatorDatabase.db" />

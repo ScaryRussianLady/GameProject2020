@@ -2,7 +2,8 @@
 #include <iostream>
 
 // Required headerfiles to calculate the fighters
-#include "Gladiator.h"
+#include "gladiatorListing.h"
+#include "inventoryListing.h"
 #include "GameClasses.h"
 #include "sqlite3.h"
 
@@ -35,22 +36,73 @@
 
 // [START OF CODE BY: CHRISTIAN ]
 
-void fightDay() {
+void fightDay(int userid, std::string clanType) {
+
 	std::string gladiatorChoice;
 	std::string weaponChoice;
+
+	std::string yesNo;
+
+	gladiatorData gladData;
+	weaponData wpnData;
 
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
 	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
 
-	std::cout << "Which of your gladiators do you want to send into battle?: ";
-	std::cin >> gladiatorChoice;
+	while (true) {
+		std::cout << "\nWhich of your gladiators do you want to send into battle?: \n" << std::endl;
+		showGladiators(userid, 0);
+		std::cin >> gladiatorChoice;
 
-	// Verification goes here
+		system("CLS");
+
+		// Verification goes here
+		std::cout << "You have selected:\n" << std::endl;
+		showGladiators(userid, std::stoi(gladiatorChoice));
+		std::cout << "Is this the gladiator you wanted to select?\nYES[1] NO[0]\n" << std::endl;
+		std::cin >> yesNo;
+
+		system("CLS");
+
+		if (std::stoi(yesNo) == 1) {
+			gladData = importGladiatorData(userid, std::stoi(gladiatorChoice));
+			//std::cout << "This the dude" << gladData.nn << std::endl;
+
+			loadGladiator plrGlad(
+				gladData.gladId, gladData.plrId, gladData.fn, gladData.ln, gladData.nn, gladData.hp, gladData.hng, gladData.thr, 
+				gladData.stg, gladData.def, gladData.agi, gladData.dex);
+
+			break;
+		}
+	}
 	
-	std::cout << "What weapon do you want your gladiator to bring with them?: ";
-	std::cin >> weaponChoice;
+	while (true) {
+		std::cout << "\nWhat weapon do you want your gladiator to bring with them?: \n" << std::endl;
+		showInventory(userid, 0, clanType, false);
+		std::cin >> weaponChoice;
 
-	// Verification goes here
+		system("CLS");
+
+		std::cout << "You have selected:\n" << std::endl;
+		showInventory(userid, std::stoi(weaponChoice), clanType, false);
+		std::cout << "Is this the weapon you wanted to select?\nYES[1] NO[0]\n" << std::endl;
+		std::cin >> yesNo;
+
+		system("CLS");
+
+		if (std::stoi(yesNo) == 1) {
+
+			wpnData = showInventory(userid, std::stoi(weaponChoice), clanType, true);
+			
+			Weapon plrWeap(wpnData.name, wpnData.quality, wpnData.damage, wpnData.attackSpeed, wpnData.critChance);
+
+			break;
+		}
+	}
+
+	singularWordOutput("THEN,\nLET\nTHE\nBATTLE\nBEGIN!!!\n");
+
+	system("CLS");
 
 	// Plugging the data into the fight calculator
 	// fightCalc()
@@ -62,7 +114,7 @@ void fightDay() {
 // This function will do the fight calculation and return and object the results
 bool fightCalc(Gladiator plr_fighter, Gladiator comp_fighter, unsigned char minHealth) {
 
-	//ign000r
+	return true;
 
 }
 

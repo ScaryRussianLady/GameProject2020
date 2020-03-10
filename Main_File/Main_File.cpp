@@ -13,13 +13,21 @@
 
 #include "createGladiator.h"
 #include "gladiatorListing.h"
+#include "clanType.h"
+
+// Variable which stores the userID once the player logs in
+int userID;
+std::string clanType;
 
 //Beginning of code by [Annija Balode 9102828].
 int main()
-{   
-    mainMenu();
+{  
+    userID = mainMenu();
+    clanType = getClanType(userID);
+
     system("CLS");
-    MainScreen();
+
+    MainScreen(userID, clanType);
 
     return (0);
 }
