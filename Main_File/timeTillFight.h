@@ -108,6 +108,7 @@ void timeTillFight() {
 
 int second = 0, day = 7, flag = 0;
 bool snap = true;
+int resourceLevel = 50;
 
 void printData();
 int selection(int userid, std::string clanType);
@@ -178,6 +179,13 @@ void counter(int userid, std::string clanType) {
 	}
 	selection(userid, clanType);    //after the user hit the keyboard, call the menu selection
 }
+
+void print(int& x) {
+	x = resourceLevel;
+}
+
+
+
 
 void printData() {   //print data to screen
 	system("CLS");      //clear the screen

@@ -100,11 +100,12 @@ int playerGold(std::ostream& os) {
 	}*/
 };
 
+void print(int& x);
 
 int foodManagement(std::ostream& os)
 {
 	int currentFoodLevel = 50;
-
+	print(currentFoodLevel);
 	os << "Hunger: " << currentFoodLevel << "/100";
 	return(0);
 };
@@ -113,9 +114,11 @@ int foodManagement(std::ostream& os)
 int waterManagement(std::ostream& os)
 {
 	int currentWaterLevel = 50;
+	print(currentWaterLevel);
 	os << "Thirst: " << currentWaterLevel << "/100";
 	return(0);
 }
+
 
 int output()
 {
