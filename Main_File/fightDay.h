@@ -111,8 +111,8 @@ void fightDay(int userid, std::string clanType) {
 
 // [END OF CODE BY: CHRISTIAN ]
 
-// This function will do the fight calculation and return and object the results
-bool fightCalc(Gladiator plr_fighter, Gladiator comp_fighter, unsigned char minHealth) {
+// This function will do the fight calculation and return a bool value. TRUE = Player wins | FALSE = Player doesn't win
+bool fightCalc(Gladiator plr_fighter, Weapon plr_weapon, Gladiator comp_fighter, Weapon comp_weapon, unsigned char minHealth) {
 
 	return true;
 
