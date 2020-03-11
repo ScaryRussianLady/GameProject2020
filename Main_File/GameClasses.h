@@ -154,7 +154,7 @@ public:
 
 	unsigned int amountHealth;
 	const int cap = 10;
-	Weapon weapons[10];
+	//Weapon weapons[10];
 
 	// Initialisation of the function which calls for the private setup and gives starting gold, food and water
 	// You can change these starting gold, food and water if need be.
@@ -246,7 +246,7 @@ public:
 
 	// Initialises the weapon using the input provided by the programmer. After this, the programmer can't change these variables directly
 	Weapon(std::string weaponName, unsigned char weaponQuality, unsigned char weaponBaseDamage,
-		unsigned char weaponAttackSpeed, unsigned char weaponCritChance, ) {
+		unsigned char weaponAttackSpeed, unsigned char weaponCritChance) {
 
 		name = weaponName;
 
