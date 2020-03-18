@@ -15,8 +15,9 @@
 #include "goldManagement.h"
 #include "clanFood.h"
 #include "healthManagement.h"
+#include <vector>
 
-// [START OF CODE BY: CHRISTIAN]
+// [START OF CODE BY: CHRISTIAN & ANNIJA]
 
 class Player {
 private:
@@ -30,6 +31,7 @@ private:
 	std::string stringClan = nameOfClan;
 	std::string stringName = userName;
 	std::string stringTypeClan = typeOfClan;
+	
 	
 
 	// These variables are private so that they cannot be changed and break something
@@ -154,6 +156,7 @@ public:
 
 	unsigned int amountHealth;
 	const int cap = 10;
+	static std::vector<std::string> weapons;
 	//Weapon weapons[10];
 
 	// Initialisation of the function which calls for the private setup and gives starting gold, food and water

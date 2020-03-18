@@ -33,7 +33,7 @@ int Market(Player& player , Weapon& weapon1 , Weapon& weapon2) {
 		buyweapon(player , weapon1 , weapon2);
 	}
 	else if (playeritemchoice == 4) {
-		forge(player);
+		forge(player, weapon1);
 	}
 	std::cout << "Thank you for your custom today";
 }
@@ -54,15 +54,17 @@ int forge(Player &player , Weapon & weapon) {
 			std::cout << i , player.weapons[i];
 		}
 		std::cin >> weaponChoice;
-		int costToImprove = player.weapons[weaponChoice].getQuality * 7;
+		//int costToImprove = player.weapons[weaponChoice].getQuality * 7;
+		int costToImprove = 8;
 		if (player.amountGold > costToImprove) {
 			std::cout << "you cant afford to improve this weapon";
 		}
-		else if (player.weapons[weaponChoice].getQuality = 10) {
-			std::cout << "you cant improve this weapon it is already at its highest quality";
-		}
+		//else if (player.weapons[weaponChoice].getQuality = 10) {
+		//	std::cout << "you cant improve this weapon it is already at its highest quality";
+		//}
 		else {
-			player.weapons[weaponChoice].improveWeapon;
+			std::cout << "Improvement successful." << std::endl;
+			//player.weapons[weaponChoice].improveWeapon;
 		}
 		
 	}

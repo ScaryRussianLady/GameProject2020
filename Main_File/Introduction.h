@@ -19,7 +19,6 @@ std::string getNewPassword();
 
 void saveUser(const std::string& username, const std::string& password);
 
-void login();
 int registerUser();
 int mainMenu();
 int loginUser();

@@ -10,6 +10,7 @@
 #include "gladiatorListing.h"
 
 #include "fightDay.h"
+#include "GameClasses.h"
 
 /*
 void timeTillFight() {
@@ -115,6 +116,7 @@ int selection(int userid, std::string clanType);
 
 
 int testCase1() {		//this function is here for display purposes only
+	
 	std::cout << "----------------Market----------------\n ";
 	std::cout << "*Will eventially link this with other function*\n";
 	std::cout << "this is just to show that other functions can be called.";
