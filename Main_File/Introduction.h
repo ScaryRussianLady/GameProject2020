@@ -6,9 +6,9 @@
 #include <sqlite3.h>
 #include <string>
 #include <functional>
-//https://en.cppreference.com/w/cpp/string/basic_string/hash
+//research from: https://en.cppreference.com/w/cpp/string/basic_string/hash
 
-//Beginning of code by [Annija Balode 9102828]
+//Beginning of code by [Annija Balode 9102828] and referenced from https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program.
 template <typename T>
 T getInput(const std::string& strQuery);
 
