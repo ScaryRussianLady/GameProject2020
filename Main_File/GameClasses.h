@@ -17,12 +17,12 @@
 #include "healthManagement.h"
 #include <vector>
 
-// [START OF CODE BY: CHRISTIAN & ANNIJA]
+//Beginning of code by Christian and Annija [9102828]
 
 class Player {
 private:
-
-	// Variable for the database
+	//These variables are private so that they cannot be changed and break something.
+	//Variable for the database
 	//int userID;
 
 	char userName[25];
@@ -31,18 +31,13 @@ private:
 	std::string stringClan = nameOfClan;
 	std::string stringName = userName;
 	std::string stringTypeClan = typeOfClan;
-	
-	
-
-	// These variables are private so that they cannot be changed and break something
 
 
-	// The number of gladiators the player has
+	//The number of gladiators the player has which can be stored in the database.
 	unsigned int numOfGladiators;
 	unsigned int numOfWeapons;
 
 
-	//#########################################################################
 	//Beginning of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
 	//Function for spelling out words letter by letter.
 	/*void singularWordOutput(const std::string& text)
@@ -59,14 +54,11 @@ private:
 		}
 	}*/
 	//End of code by [Annija Balode 9102828] and referenced from https://stackoverflow.com/questions/30426205/c-print-one-letter-at-the-time-how-to with adjustments.
-	//#########################################################################
 
 
 	// This function sets these player variables up
 	/*void setUp() 
 	{
-
-		//#########################################################################
 		//Beginning of code by [Annija Balode 9102828]
 		// This will take the name that the player would like to go by and save it in the player variable
 		std::cout << "The Gladiator" << std::endl;
@@ -118,7 +110,6 @@ private:
 
 
 		//End of code by [Annija Balode 9102828]
-		//#########################################################################
 
 
 		// This will get the player's clan type and it will make sure it's either attack of defence
@@ -148,7 +139,7 @@ private:
 
 public:
 
-	// Public variables because it makes sense for them to be changed by other's code
+	//Public variables because it makes sense for them to be changed by other code whilst the game pogresses.
 	unsigned int amountGold;
 
 	unsigned int amountFood;
@@ -156,6 +147,8 @@ public:
 
 	unsigned int amountHealth;
 	const int cap = 10;
+
+	//A vector for storing different weapons the player holds.
 	static std::vector<std::string> weapons;
 	//Weapon weapons[10];
 
@@ -164,7 +157,6 @@ public:
 	Player(int ID)
 	{
 		//setUp();
-		//#########################################################################
 		//Beginning of code by [Annija Balode 9102828]
 		//Imports the function which manages the amount of gold the user currently has.
 		//amountGold = playerGold(); 
@@ -174,7 +166,6 @@ public:
 		//Imports the function which manages the amount of health the user currently has.
 		//amountHealth = healthManagement();
 
-		//#########################################################################
 		//End of code by [Annija Balode 9102828]
 
 		//userID = ID;
@@ -186,12 +177,12 @@ public:
 		
 	}
 
-	// Adds another gladiator to the number of gladiators variable
+	//Adds another gladiator to the number of gladiators variable.
 	void addGladiator() {
 		numOfGladiators = numOfGladiators + 1;
 	}
 
-	//Callum Jones adds another weapon
+	//Code by Callum Jones to add weapons.
 	void addWeapon() {
 		numOfWeapons = numOfWeapons + 1;
 	}
@@ -222,9 +213,9 @@ public:
 	}
 };
 
-// [END OF CODE BY: CHRISTIAN ]
+//End of code by Christian and Annija [9102828]
 
-// [START OF CODE BY: CHRISTIAN & ANNIJA]
+//Beginning of code by Christian and Annija [9102828]
 
 class Weapon {
 
@@ -261,7 +252,7 @@ public:
 
 	}
 
-	// The following Getter functions get the private variables and returns it to the programmer
+	// The following Getter functions get the private variables and returns them.
 	std::string getName() {
 		return name;
 	}
@@ -310,7 +301,7 @@ public:
 
 };
 
-// [END OF CODE BY: CHRISTIAN ]
+//End of code by Christian & Annija [9102828]
 
 // [START OF CODE BY: CHRISTIAN ]
 
