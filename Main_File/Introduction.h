@@ -290,9 +290,11 @@ int registerUser()
     file << password << "\n";
 }*/
 
+// [START OF CODE BY: CHRISTIAN]
+
 int userGlobal;
 
-
+// This function gets this data so that it can be returned to other classes
 int callbackSingleData(void* NotUsed, int argc, char** argv, char** azColName) {
 
     std::string s = argv[0];
@@ -300,7 +302,6 @@ int callbackSingleData(void* NotUsed, int argc, char** argv, char** azColName) {
     userGlobal = g;
     return 0;
 }
-
 
 //A function for retreiving the user ID according to the username for use in the other classes.
 int collectUserID(std::string username){
@@ -319,6 +320,8 @@ int collectUserID(std::string username){
 
     return userGlobal;
 }
+
+// [END OF CODE BY: CHRISTIAN]
 
 //A function for logging in the user, retrieving their username and password then checking against the database.
 int loginUser()

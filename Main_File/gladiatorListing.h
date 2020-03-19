@@ -9,8 +9,12 @@
 #include "sqlite3.h"
 #include "Introduction.h"
 
+// [START OF CODE BY: CHRISTIAN]
+
 int gladiatorCounter = 0;
 int selNum;
+
+// This function will go through the gladiators in the database and print them
 int printGladiators(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0 ; i < argc; i++) {
 
@@ -26,6 +30,7 @@ int printGladiators(void* NotUsed, int argc, char** argv, char** azColName) {
             }
         }
 
+        // This will print the gladiator's information
         std::cout << "[" << gladiatorCounter << "] " << argv[i] << " " << argv[i+1] << std::endl;
 
         std::cout << "Health : " << argv[i + 2] << "/100 | ";
@@ -45,6 +50,7 @@ int printGladiators(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
+// This struct is to store data of the gladiator to make the gladiator's objects in the fightDay.h file
 struct gladiatorData {
     int gladId;
     int plrId;
@@ -67,6 +73,7 @@ int gladiatorCounter2 = 0;
 int selNum2;
 gladiatorData gladStruct;
 
+// This function gets the data of the gladiator
 int getGladData(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0; i < argc; i++) {
 
@@ -112,7 +119,7 @@ int getGladData(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
-
+// This function imports the data from the database using the other call back functions and returns it as the struct that stores the data
 gladiatorData importGladiatorData(int playerID, int selectedNum) {
    
     selNum2 = selectedNum;
@@ -144,6 +151,7 @@ gladiatorData importGladiatorData(int playerID, int selectedNum) {
     return gladStruct;
 }
 
+// This function simply just uses SQL to show the gladiators.
 void showGladiators(int playerID, int selectedNum) {
 
     
@@ -176,4 +184,4 @@ void showGladiators(int playerID, int selectedNum) {
     return;
 }
 
-
+// [END OF CODE BY: CHRISTIAN]

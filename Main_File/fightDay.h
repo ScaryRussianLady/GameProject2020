@@ -150,39 +150,25 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 	}
 }
 
-/*
-	INCLUDE DatabaseInfo;
-	INCLUDE player, weapon and gladiator class;
-	gameHealthOfPlayer = currentHealthOfPlayer;
-
-	FOR EVERY gladiator IN player
-		computerGladiatorsNumber = playerGladiatorsNumber;
-	ENDFOR
-
-	FOR EVERY weapon IN player
-		computerWeapon[] = playerWeapon[];
-		FOR EVERY computerWeapon[]
-			newWeapons = weapon.stats + (randomNumberGenerator); //this will generate a random number between -5 and +5
-		ENDFOR
-	ENDFOR
-
-	*/
-
 // [START OF CODE BY: CHRISTIAN ]
 
+// This function is used to prepare for the fight calculation by taking the user's Id and clan type and collecting information based off of this information
 void fightDay(int userid, std::string clanType) {
 
+	// initialising the variables that will be used for gladiator and weapon selection
 	std::string gladiatorChoice;
 	std::string weaponChoice;
 
 	std::string yesNo;
 
+	// These the the data structures that the data will be put in before being put into temporary objects
 	gladiatorData gladData;
 	weaponData wpnData;
 
 	std::cout << std::setfill('+') << std::setw(60) << "FIGHT DAY";
 	std::cout << std::setfill('+') << std::setw(59) << "+" << std::endl;
 
+	// this while loop asks the player which gladiator they want to select. if they accidentally select one they don't want to, they can go back and select again
 	while (true) {
 		std::cout << "\nWhich of your gladiators do you want to send into battle?: \n" << std::endl;
 		showGladiators(userid, 0);
@@ -205,7 +191,8 @@ void fightDay(int userid, std::string clanType) {
 			break;
 		}
 	}
-	
+
+	// This while loop asks for which wepaon the user wants to select. if the wrong one is select, the loop goes back and asks the user to select again.
 	while (true) {
 		std::cout << "\nWhat weapon do you want your gladiator to bring with them?: \n" << std::endl;
 		showInventory(userid, 0, clanType, false);
@@ -233,6 +220,8 @@ void fightDay(int userid, std::string clanType) {
 
 	system("CLS");
 
+	// Objects for the player and npc are created here to be used in the fight calculation function
+
 	//Create plr objects
 	loadGladiator plrGlad(
 		gladData.gladId, gladData.plrId, gladData.fn, gladData.ln, gladData.nn, gladData.hp, gladData.hng, gladData.thr,
@@ -245,10 +234,13 @@ void fightDay(int userid, std::string clanType) {
 	Weapon npcWeap("Gladius", 1, 7, 2, 20);
 
 	// Plugging the data into the fight calculator
+	// true = the fight was won
+	// false = the fight was lost
 	bool win = fightCalc(plrGlad, plrWeap, npcGlad, npcWeap, 0);
 
 	std::cout << std::endl;
 
+	// depending on the win/loss status, the player is told if they won or lost the fight
 	if (win == true) {
 		singularWordOutput("Your gladiator has won this fight!");
 		Sleep(3000);
@@ -271,6 +263,7 @@ bool battleOver(int hp, int minHealth, int dmg);
 
 // [START OF CODE BY: CHRISTIAN ]
 
+// this function calculates whether damage will end a fight depending on what the minimum health is. if the minimum health is 0, fights will go to the death.
 bool battleOver(int hp, int minHealth, int dmg){
 	
 	if (hp - dmg <= minHealth) {

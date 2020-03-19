@@ -9,12 +9,15 @@
 #include "sqlite3.h"
 #include "Introduction.h"
 
+// [START OF CODE BY: CHRISTIAN]
+
 std::string clanOfType;
 
+// This callback function returns the clanType from the database of the player
 int getClan(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0; i < argc; i++) {
 
-        //std::cout << "HELLO" << argv[i] << std::endl;
+        // This stores the clanType into the variable TypeOfClan
         clanOfType = std::string(argv[i]);
 
     }
@@ -22,6 +25,7 @@ int getClan(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
+// This function opens the database and allows SQL to be input into the database through C++
 std::string getClanType(int playerID) {
 
     std::string Data;
@@ -38,7 +42,8 @@ std::string getClanType(int playerID) {
         sqlite3_close(db);
         //return;
     }
-
+    
+    // This SQL here creates a query to search for the user's clantype depending on their playerID which is input into thise function
     sql = "SELECT CLANTYPE FROM USERINFO WHERE USERID =" + std::to_string(playerID) + ";";
 
     rc = sqlite3_exec(db, sql.c_str(), getClan, 0, &zErrMsg);
@@ -48,5 +53,8 @@ std::string getClanType(int playerID) {
 
     Data = clanOfType;
 
+    // The type of clan is then returned
     return Data;
 }
+
+// [END OF CODE BY: CHRISTIAN]

@@ -8,9 +8,12 @@
 #include "sqlite3.h"
 #include "Introduction.h"
 
+// [START OF CODE BY: CHRISTIAN]
+
 std::string typeOfClan;
 int plrID;
 
+// prints the stats of a weapon in the database.
 int printWeaponStats(void* NotUsed, int argc, char** argv, char** azColName) {
 
     for (int i = 0; i < argc; i++) {
@@ -33,6 +36,7 @@ int printWeaponStats(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
+// shows the weapon stats of a weapon in the database that matches the name of the argument
 void showWeaponStats(std::string weaponName) {
 
     std::string Data;
@@ -64,6 +68,7 @@ void showWeaponStats(std::string weaponName) {
     return;
 }
 
+// struct to store the weapon stats from the database to be turned into an object
 struct weaponData {
 
     std::string name;
@@ -78,6 +83,7 @@ struct weaponData {
 
 weaponData weaponStats;
 
+// exports these weapon stats into a struct
 int exportStats(void* NotUsed, int argc, char** argv, char** azColName) {
 
     for (int i = 0; i < argc; i++) {
@@ -93,6 +99,7 @@ int exportStats(void* NotUsed, int argc, char** argv, char** azColName) {
     }
 }
 
+// gets the stats from the weapon database
 int getWeaponStats(void* NotUsed, int argc, char** argv, char** azColName) {
     
     std::string Data;
@@ -122,6 +129,7 @@ int getWeaponStats(void* NotUsed, int argc, char** argv, char** azColName) {
 }
 
 //int selNum3;
+// prints what is inside of the inventory slots on  the database as well as their stats
 int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
     for (int i = 0; i < argc; i++) {
 
@@ -158,6 +166,7 @@ int printInventory(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
+// Function shows what is inside of the inventory slots in the database
 weaponData showInventory(int playerID, int selectedNum, std::string clanType, bool getStats) {
 
     weaponData returnStats;
@@ -214,3 +223,5 @@ weaponData showInventory(int playerID, int selectedNum, std::string clanType, bo
     returnStats = weaponStats;
     return returnStats;
 }
+
+// [END OF CODE BY: CHRISTIAN]
