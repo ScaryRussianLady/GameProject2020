@@ -350,8 +350,8 @@ int loginUser()
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
     //Selects the appropriate password and username from the database, however the password being retreived is the hashed version.
-    sql = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
-
+    sql = "SELECT PASSWORD FROM USERINFO WHERE EXISTS(SELECT 1 FROM USERINFO WHERE ='" + password + "' AND USERNAME ='" + username + "')";
+    
     //Need to create a catch for if the data is not present in the database.
     //std::string pass = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
 
@@ -363,7 +363,8 @@ int loginUser()
 
     //rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     std::string usersPass = sql;
-    std::cout << usersPass + "\n" + password << std::endl;
+    //std::cout << usersPass + "\n" + password << std::endl;
+    std::cout << sql << std::endl;
 
     if (usersPass == password)
     {
