@@ -158,28 +158,22 @@ void singularWordOutput(const std::string& text)
     }
 }
 
-int callback(void* NotUsed, int argc, char** argv, char** azColName) {
-
-    // int argc: holds the number of results
-    // (array) azColName: holds each column returned
-    // (array) argv: holds each value
-
-    for (int i = 0; i < argc; i++) {
-
-        // Show column name, value, and newline
+//The following functions holds the number of results, holds each column that is returned and the value.
+int callback(void* NotUsed, int argc, char** argv, char** azColName) 
+{
+    for (int i = 0; i < argc; i++) 
+    {
+        //Shows the column name and value.
         std::cout << azColName[i] << ": " << argv[i] << std::endl;
 
     }
 
-    // Insert a newline
+    //Inserst a new line for every new data piece.
     std::cout << std::endl;
-
-    // Return successful
-    return 0;
+   
+    return(0);
 }
 
-//#########################################################################
-//Beginning of code by [Annija Balode 9102828]
 //A function that sets the user up if it is their first time playing the game (registering).
 int setUp()
 {
@@ -298,6 +292,7 @@ int registerUser()
 
 int userGlobal;
 
+
 int callbackSingleData(void* NotUsed, int argc, char** argv, char** azColName) {
 
     std::string s = argv[0];
@@ -337,6 +332,8 @@ int loginUser()
     char* zErrMsg = 0;
     int rc;
     std::string sql;
+
+    //Once again, opens the database and throws an error if there are any problems.
     rc = sqlite3_open("GladiatorDatabase.db", &db);
     if (rc)
     {
@@ -346,11 +343,12 @@ int loginUser()
         _getch();
     }
 
+    //Prints the output of the SQL statement.
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
     //Selects the appropriate password and username from the database, however the password being retreived is the hashed version.
-    sql = "SELECT PASSWORD, USERNAME FROM USERINFO WHERE EXISTS(SELECT * FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "')";
-    
+    //sql = "SELECT PASSWORD, USERNAME FROM USERINFO WHERE EXISTS(SELECT * FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "')";
+    sql = "SELECT USERNAME, PASSWORD FROM USERINFO WHERE PASSWORD = '" + password + "'";
 
     //Need to create a catch for if the data is not present in the database.
     //std::string pass = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
@@ -361,18 +359,20 @@ int loginUser()
         return (-1);
     }
 
-    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    //rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     //std::string usersPass = sql;
     //std::cout << usersPass + "\n" + password << std::endl;
     //std::cout << sql << std::endl;
     int num = rc;
-    std::cout << num << std::endl;
+    //std::cout << num << std::endl;
+    //std::string idk = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     
    
+    //Checks the return value of the password and username, then provides the user with whether they need to create an account or can log in.
     if (num = 0)
     {
         std::cout << "You need to create an account" << std::endl;
-        _getch();
+        registerUser();
     }
 
     if (num = 1)
@@ -382,12 +382,13 @@ int loginUser()
     }
     sqlite3_close(db);
     //return (0);
+    _getch();
     return userID;
+
 }
 
-//https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program
 
-//End of code by [Annija Balode 9102828]
+//End of code by [Annija Balode 9102828] and referenced from https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program.
 
 
 
