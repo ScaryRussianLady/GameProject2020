@@ -72,6 +72,7 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 				}
 
 				plr_fighter.adjustHP(-(comp_damage + critBonus));
+				updateData(plr_fighter, "hp");
 				std::cout << comp_fighter.getName("full") << " has landed a strike on " << plr_fighter.getName("full") << " dealing " << comp_damage + critBonus << " points of damage!" << std::endl;
 
 				if (critBonus != 0) {
@@ -100,6 +101,7 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 				}
 
 				plr_fighter.adjustHP(-(comp_damage + critBonus));
+				updateData(plr_fighter, "hp");
 				std::cout << comp_fighter.getName("full") << " has landed a strike on " << plr_fighter.getName("full") << " dealing " << comp_damage + critBonus << " points of damage!" << std::endl;
 
 				if (critBonus != 0) {
@@ -244,6 +246,8 @@ void fightDay(int userid, std::string clanType) {
 
 	// Plugging the data into the fight calculator
 	bool win = fightCalc(plrGlad, plrWeap, npcGlad, npcWeap, 0);
+
+	std::cout << std::endl;
 
 	if (win == true) {
 		singularWordOutput("Your gladiator has won this fight!");
