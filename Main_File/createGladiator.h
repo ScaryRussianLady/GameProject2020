@@ -11,6 +11,8 @@
 #include <string>
 #include <functional>
 
+// [START OF CODE BY: CHRISTIAN]
+
 // This function takes the gladiatorobject created in another function and saves it to the database using SQL commands
 void saveData(PlayerGladiator gladiatorObj) {
 
@@ -111,3 +113,5 @@ Gladiator createGladiator(int playerID, bool isNPC) {
     return newGladiatior;
 
 }
+
+// [END OF CODE BY: CHRISTIAN]
