@@ -57,6 +57,8 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 				}
 
 			}
+			Sleep(3000);
+			std::cout << std::endl;
 			// comp second
 			if ((rand() % 100 + 1) < plr_fighter.agility) {
 				// DODGED
@@ -85,7 +87,6 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 
 		}
 		else {
-			Sleep(2500);
 			// comp first
 			if ((rand() % 100 + 1) < plr_fighter.agility) {
 				// DODGED
@@ -111,6 +112,8 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 				}
 
 			}
+			Sleep(3000);
+			std::cout << std::endl;
 
 			//plr second
 			if ((rand() % 100 + 1) < comp_fighter.agility) {
@@ -139,7 +142,9 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 			}
 		}
 
-		Sleep(2500);
+		Sleep(3000);
+		std::cout << std::endl;
+
 	}
 }
 
@@ -241,11 +246,15 @@ void fightDay(int userid, std::string clanType) {
 	bool win = fightCalc(plrGlad, plrWeap, npcGlad, npcWeap, 0);
 
 	if (win == true) {
-		std::cout << "You have won this fight!" << std::endl;
+		singularWordOutput("Your gladiator has won this fight!");
+		Sleep(3000)
 	}
 	else {
-		std::cout << "You have lost this fight!" << std::endl;
+		singularWordOutput("Your gladiator has won this fight!");
+		Sleep(3000)
 	}
+
+	system("cls")
 
 }
 
