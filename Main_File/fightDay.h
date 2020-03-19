@@ -16,6 +16,133 @@
 
 // [START OF CODE BY: CHRISTIAN ]
 
+bool battleOver(int hp, int minHealth, int dmg);
+
+// This function will do the fight calculation and return a bool value. TRUE = Player wins | FALSE = Player doesn't win
+bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_fighter, Weapon comp_weapon, int minHealth) {
+
+	// if this variable is true, then the battle will end
+	bool over = false;
+	int plr_damage = round((int(plr_fighter.strength) + int(plr_weapon.getDamage())) * (100 - comp_fighter.defence));
+	int comp_damage = round((int(comp_fighter.strength) + int(comp_weapon.getDamage())) * (100 - plr_fighter.defence));
+
+	// Fight happens in here until a gladiator reaches minimum health
+
+	while (over == false) {
+
+		// if the player's gladiator fights first
+		if (plr_fighter.dexterity * int(plr_weapon.getAttackSpeed()) > comp_fighter.dexterity* int(comp_weapon.getAttackSpeed())) {
+			// plr first
+			if ((rand() % 100 + 1) < comp_fighter.agility) {
+				// DODGED
+				std::cout << comp_fighter.getName("full") << " has dodged " << plr_fighter.getName("full") << "'s attack!" << std::endl;
+			}
+			else {
+				int critBonus = 0;
+
+				if ((rand() % 100 + 1) < int(plr_weapon.getCritChance())) {
+					critBonus = round(plr_damage * 0.40);
+				}
+
+				comp_fighter.adjustHP(-(plr_damage + critBonus));
+				std::cout << plr_fighter.getName("full") << " has landed a strike on " << comp_fighter.getName("full") << " dealing " << plr_damage + critBonus << " points of damage!" << std::endl;
+
+				if (critBonus != 0) {
+					std::cout << "It was a critical strike!" << std::endl;
+				}
+
+				if (battleOver(int(comp_fighter.getHealth()), minHealth, plr_damage + critBonus) == true) {
+					std::cout << "Thus winning the fight!" << std::endl;
+					return true;
+				}
+
+			}
+			// comp second
+			if ((rand() % 100 + 1) < plr_fighter.agility) {
+				// DODGED
+				std::cout << plr_fighter.getName("full") << " has dodged " << comp_fighter.getName("full") << "'s attack!" << std::endl;
+			}
+			else {
+				int critBonus = 0;
+
+				if ((rand() % 100 + 1) < int(comp_weapon.getCritChance())) {
+					critBonus = round(comp_damage * 0.40);
+				}
+
+				plr_fighter.adjustHP(-(comp_damage + critBonus));
+				std::cout << comp_fighter.getName("full") << " has landed a strike on " << plr_fighter.getName("full") << " dealing " << comp_damage + critBonus << " points of damage!" << std::endl;
+
+				if (critBonus != 0) {
+					std::cout << "It was a critical strike!" << std::endl;
+				}
+
+				if (battleOver(int(plr_fighter.getHealth()), minHealth, comp_damage + critBonus) == true) {
+					std::cout << "Thus winning the fight!" << std::endl;
+					return false;
+				}
+
+			}
+
+		}
+		else {
+			// comp first
+			if ((rand() % 100 + 1) < plr_fighter.agility) {
+				// DODGED
+				std::cout << plr_fighter.getName("full") << " has dodged " << comp_fighter.getName("full") << "'s attack!" << std::endl;
+			}
+			else {
+				int critBonus = 0;
+
+				if ((rand() % 100 + 1) < int(comp_weapon.getCritChance())) {
+					critBonus = round(comp_damage * 0.40);
+				}
+
+				plr_fighter.adjustHP(-(comp_damage + critBonus));
+				std::cout << comp_fighter.getName("full") << " has landed a strike on " << plr_fighter.getName("full") << " dealing " << comp_damage + critBonus << " points of damage!" << std::endl;
+
+				if (critBonus != 0) {
+					std::cout << "It was a critical strike!" << std::endl;
+				}
+
+				if (battleOver(int(plr_fighter.getHealth()), minHealth, comp_damage + critBonus) == true) {
+					std::cout << "Thus winning the fight!" << std::endl;
+					return false;
+				}
+
+			}
+
+			//plr second
+			if ((rand() % 100 + 1) < comp_fighter.agility) {
+				// DODGED
+				std::cout << comp_fighter.getName("full") << " has dodged " << plr_fighter.getName("full") << "'s attack!" << std::endl;
+			}
+			else {
+				int critBonus = 0;
+
+				if ((rand() % 100 + 1) < int(plr_weapon.getCritChance())) {
+					critBonus = round(plr_damage * 0.40);
+				}
+
+				comp_fighter.adjustHP(-(plr_damage + critBonus));
+				std::cout << plr_fighter.getName("full") << " has landed a strike on " << comp_fighter.getName("full") << " dealing " << plr_damage + critBonus << " points of damage!" << std::endl;
+
+				if (critBonus != 0) {
+					std::cout << "It was a critical strike!" << std::endl;
+				}
+
+				if (battleOver(int(comp_fighter.getHealth()), minHealth, plr_damage + critBonus) == true) {
+					std::cout << "Thus winning the fight!" << std::endl;
+					return true;
+				}
+
+			}
+		}
+
+		std::string n;
+		std::cin >> n;
+	}
+}
+
 /*
 	INCLUDE DatabaseInfo;
 	INCLUDE player, weapon and gladiator class;
@@ -68,10 +195,6 @@ void fightDay(int userid, std::string clanType) {
 			gladData = importGladiatorData(userid, std::stoi(gladiatorChoice));
 			//std::cout << "This the dude" << gladData.nn << std::endl;
 
-			loadGladiator plrGlad(
-				gladData.gladId, gladData.plrId, gladData.fn, gladData.ln, gladData.nn, gladData.hp, gladData.hng, gladData.thr, 
-				gladData.stg, gladData.def, gladData.agi, gladData.dex);
-
 			break;
 		}
 	}
@@ -93,8 +216,7 @@ void fightDay(int userid, std::string clanType) {
 		if (std::stoi(yesNo) == 1) {
 
 			wpnData = showInventory(userid, std::stoi(weaponChoice), clanType, true);
-			
-			Weapon plrWeap(wpnData.name, wpnData.quality, wpnData.damage, wpnData.attackSpeed, wpnData.critChance);
+	
 
 			break;
 		}
@@ -104,27 +226,41 @@ void fightDay(int userid, std::string clanType) {
 
 	system("CLS");
 
+	//Create plr objects
+	loadGladiator plrGlad(
+		gladData.gladId, gladData.plrId, gladData.fn, gladData.ln, gladData.nn, gladData.hp, gladData.hng, gladData.thr,
+		gladData.stg, gladData.def, gladData.agi, gladData.dex);
+	Weapon plrWeap(wpnData.name, wpnData.quality, wpnData.damage, wpnData.attackSpeed, wpnData.critChance);
+
+
+	//Create NPC objects
+	Gladiator npcGlad = createGladiator(0, true);
+	Weapon npcWeap("Gladius", 1, 7, 2, 20);
+
 	// Plugging the data into the fight calculator
-	// fightCalc()
+	bool win = fightCalc(plrGlad, plrWeap, npcGlad, npcWeap, 0);
+
+	if (win == true) {
+		std::cout << "You have won this fight!" << std::endl;
+	}
+	else {
+		std::cout << "You have lost this fight!" << std::endl;
+	}
 
 }
 
 // [END OF CODE BY: CHRISTIAN ]
 
-// This function will do the fight calculation and return a bool value. TRUE = Player wins | FALSE = Player doesn't win
-bool fightCalc(Gladiator plr_fighter, Weapon plr_weapon, Gladiator comp_fighter, Weapon comp_weapon, unsigned char minHealth) {
+bool battleOver(int hp, int minHealth, int dmg);
 
-	return true;
-
-}
 
 // [END OF CODE BY: CHRISTIAN ]
 
 // [START OF CODE BY: CHRISTIAN ]
 
-bool battleOver(unsigned char hp, unsigned char minHealth, int dmg){
+bool battleOver(int hp, int minHealth, int dmg){
 	
-	if (hp - dmg < minHealth) {
+	if (hp - dmg <= minHealth) {
 		return true;
 	}
 	else {

@@ -10,6 +10,7 @@
 #include "GameClasses.h"
 #include "MainScreen.h"
 #include "Introduction.h"
+#include "fightDay.h"
 
 #include "createGladiator.h"
 #include "gladiatorListing.h"
