@@ -14,8 +14,8 @@ T getInput(const std::string& strQuery);
 
 std::string getDesiredUsername();
 std::string getDesiredPassword();
-std::string getNewUsername();
-std::string getNewPassword();
+std::string getLoginUsername();
+std::string getLoginPassword();
 
 void saveUser(const std::string& username, const std::string& password);
 
@@ -68,6 +68,8 @@ std::string getDesiredUsername()
     std::string username = getInput <std::string>("\nPlease enter your desired username:");
     std::cout << "Username: \"" << username << "\"\n";
 
+    //Ensure that the user is able to choose a different username if they change their mind last name.
+    //This is a confirmation stage.
     while (getInput <int>("\n Confirm? [0 (NO) | 1 (YES)]") != 1) {
         username = getInput <std::string>("Please enter your desired username:");
         std::cout << "Username: \"" << username << "\"\n";
@@ -76,7 +78,8 @@ std::string getDesiredUsername()
     return username;
 }
 
-std::string getNewPassword()
+//The same function as previously seen when retrieving a password, just with slightly different wording for logging in instead of registering.
+std::string getLoginPassword()
 {
     std::string password1 = getInput <std::string>("Please enter your password.");
     std::size_t hashPass = std::hash<std::string>{}(password1);
@@ -94,8 +97,8 @@ std::string getNewPassword()
     return hashPass1;
 }
 
-
-std::string getNewUsername()
+//Same function as seen previously for retrieving the username, just different wording for logging in instead of registering.
+std::string getLoginUsername()
 {
     std::string username = getInput <std::string>("\nPlease enter your username:");
     std::cout << "Username: \"" << username << "\"\n";
@@ -108,25 +111,29 @@ std::string getNewUsername()
     return username;
 }
 
+//A function to display the main menu which gives the user two options: login or register depending on whether they have played before or not.
 int mainMenu()
 {
-    int userid;
+    int userIdentity;
 
     system("color 0F");
+    //Gives the title of the game and fills the spaces with a symbol for a more aesthetic look.
     std::cout << "The Gladiator" << std::endl;
     std::cout << std::setfill('+') << std::setw(120) << "+";
-    int choice = getInput <int>(
+    int usersChoice = getInput <int>(
         "Welcome to The Gladiator!\n\nFirst of all, would you like to Login or Register, Chief?" "\n"
         "[1] Login" "\n"
         "[2] Register");
 
-    switch (choice)
+
+    //A switch case depending on which number the user inputs, this will run the certain function necessary.
+    switch (usersChoice)
     {
     case 1:
         //login();
-        userid = loginUser();
+        userIdentity = loginUser();
         std::cout << "Press any key to continue.." << std::endl;
-        return userid;
+        return userIdentity;
         //_getch();
         break;
     case 2:
@@ -137,16 +144,17 @@ int mainMenu()
 
 }
 
+
+//A function for outputting letter by letter no matter what the string of text is.
 void singularWordOutput(const std::string& text)
 {
-    // loop through each character in the text
+    //The following loops through each character in the text.
     for (std::size_t i = 0; i < text.size(); ++i)
     {
-        // output one character
-        // flush to make sure the output is not delayed
+        //Outputs one character at a time and flushes to ensure there is no delay.
         std::cout << text[i] << std::flush;
 
-        // sleep 30 milliseconds
+        //Sleeps for 30 milliseconds to visually show that the characters are being displayed one at a time.
         std::this_thread::sleep_for(std::chrono::milliseconds(30));
     }
 }
@@ -171,16 +179,16 @@ int callback(void* NotUsed, int argc, char** argv, char** azColName) {
     return 0;
 }
 
-
+//#########################################################################
+//Beginning of code by [Annija Balode 9102828]
+//A function that sets the user up if it is their first time playing the game (registering).
 int setUp()
 {
     system("CLS");
-    //#########################################################################
-    //Beginning of code by [Annija Balode 9102828]
-    // This will take the name that the player would like to go by and save it in the player variable
+   
+    //Following lines of code gather important information about the user, their name, what name they want for their clan and the type they wish to be.
     std::string usersName = getInput <std::string>("Let's get you registered! First things first though, what is your name, Chief?\n");
     usersName[0] = toupper(usersName[0]);
-
     singularWordOutput(usersName + "! Emperor Macrinus is setting up new camps for Gladiators to train in!\n");
     singularWordOutput("It says on this rock here that he has now put you in charge of this camp,\nyour first order is to give it a name...\n");
     std::string nameOfClan = getInput <std::string>("\nWhat would you like to name your clan, Chief " + usersName + "?\n");
@@ -188,12 +196,14 @@ int setUp()
     singularWordOutput("\nAs the official Chief of " + nameOfClan + " you must decide whether you will be Attack or Defence.\n");
     std::string typeOfClan = getInput <std::string>("\nWhich one will it be?\n");
 
+    //A while loop to ensure that the user only chooses attack or defence, giving the appropriate response depending on which one they have chosen.
     while (true)
     {
         
         std::string type_string = typeOfClan;
         int length = type_string.length();
 
+        //Changes each character of the text to uppercase for more efficient checking.
         for (int i = 0; i < length; i++)
         {
             int upperCase = type_string[i];
@@ -220,10 +230,12 @@ int setUp()
         }
     }
 
+    //Gathers the username and password from the user by branching off to the appropriate functions.
     std::string username = getDesiredUsername();
     std::string password = getDesiredPassword();
     system("CLS");
 
+    //Simple breakdown of the game and how things will work when they begin.
     singularWordOutput("Before you can begin training your clan, Chief " + usersName + ", you must first be informed on what is expected of you.");
     singularWordOutput("\nWhen you begin, you will have 7 days to prepare your gladiators for your next fight.\nDuring this preparation time, you must ensure that your thirst and hunger levels are kept up, \nyou don't want your clan to die of starvation or dehydration!");
     singularWordOutput("\nYou will be given 500 pieces of gold to begin your training.");
@@ -233,6 +245,8 @@ int setUp()
     _getch();
     //saveUser(username, password);
 
+
+    //The following opens the database and ensures that there are no errors, if there are any, these are printed out.
     sqlite3* db;
     char* zErrMsg = 0;
     int rc;
@@ -244,10 +258,12 @@ int setUp()
         sqlite3_close(db);
         return (1);
     }
-
+    
+    //Simply creates the table that is required for the user info, this has been commented out as it does not need creating every time the program is ran. But this is how it was created.
     //sql = "CREATE TABLE USERINFO (" \"USERID INTEGER PRIMARY KEY AUTOINCREMENT," \"USERNAME TEXT NOT NULL," \"PASSWORD TEXT NOT NULL," \"USERFIRSTNAME TEXT NOT NULL, " \"CLANTYPE TEXT NOT NULL, " \"CLANNAME TEXT NOT NULL, " \"NUM_GLADIATORS INTEGER);";
 
-    sql = "CREATE TABLE INVENTORY (" \
+    //The same concept, however, it is a table for the inventory the user is holding.
+    //sql = "CREATE TABLE INVENTORY (" \
         "INVENTORYONE TEXT," \
         "INVENTORYTWO TEXT," \
         "INVENTORYTHREE TEXT," \
@@ -255,6 +271,7 @@ int setUp()
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
+    //Everything that the user has provided to the game gets inserted into the database so this way the user can login and retrieve all their information.
     sql = "INSERT INTO USERINFO ('USERID', 'USERNAME', 'PASSWORD', 'USERFIRSTNAME' , 'CLANTYPE', 'CLANNAME', 'NUM_GLADIATORS') VALUES (NULL, '" + username + "', '" + password + "' ,'" + usersName + "', '" + typeOfClan + "', '" + nameOfClan + "', NULL);";
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
@@ -264,35 +281,42 @@ int setUp()
 }
 
 
+//Function for registering the user, takes them to the setUp() function.
 int registerUser()
 {
     setUp();
     return(0);
 }
 
-void saveUser(const std::string& username, const std::string& password)
+//This function was originally used to save the users details as a text file for testing to ensure everything was being saved correctly.
+//After this, it was moved to database with SQL.
+/*void saveUser(const std::string& username, const std::string& password)
 {
     std::string filename = username + ".txt";
     std::ofstream file(filename);
     file << password << "\n";
-}
+}*/
 
 int userGlobal;
+
 int callbackSingleData(void* NotUsed, int argc, char** argv, char** azColName) {
 
     std::string s = argv[0];
     int g = std::stoi(s);
-
     userGlobal = g;
     return 0;
 }
 
+
+//A function for retreiving the user ID according to the username for use in the other classes.
 int collectUserID(std::string username){
 
     sqlite3* db;
     char* zErrMsg = 0;
     int rc;
     std::string sql;
+    
+    //Opens the database and selects the user ID depending on what username has been provided.
     rc = sqlite3_open("GladiatorDatabase.db", &db);
 
     sql = "SELECT USERID FROM USERINFO WHERE USERNAME ='" + username + "'";
@@ -302,11 +326,11 @@ int collectUserID(std::string username){
     return userGlobal;
 }
 
-
+//A function for logging in the user, retrieving their username and password then checking against the database.
 int loginUser()
 {
-   std::string username = getNewUsername();
-   std::string password = getNewPassword();
+   std::string username = getLoginUsername();
+   std::string password = getLoginPassword();
 
    int userID = collectUserID(username);
 
@@ -322,12 +346,14 @@ int loginUser()
         return (1);
     }
 
+
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
+    //Selects the appropriate password and username from the database, however the password being retreived is the hashed version.
     sql = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
 
     //Need to create a catch for if the data is not present in the database.
-    std::string pass = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
+    //std::string pass = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
 
     if (zErrMsg)
     {
@@ -337,14 +363,18 @@ int loginUser()
 
     //rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     std::string usersPass = sql;
+    std::cout << usersPass + "\n" + password << std::endl;
 
-    if (usersPass == pass)
+    if (usersPass == password)
     {
+        
         std::cout << "Successfully logged in!" << std::endl;
+        _getch();
     }
     else
     {
         std::cout << "You need to create an account" << std::endl;
+        _getch();
     }
     sqlite3_close(db);
     //return (0);
