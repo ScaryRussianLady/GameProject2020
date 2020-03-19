@@ -132,9 +132,8 @@ int mainMenu()
     case 1:
         //login();
         userIdentity = loginUser();
-        std::cout << "Press any key to continue.." << std::endl;
         return userIdentity;
-        //_getch();
+        _getch();
         break;
     case 2:
         registerUser();
@@ -344,14 +343,15 @@ int loginUser()
         std::cout << "Database error: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_close(db);
         return (1);
+        _getch();
     }
-
 
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 
     //Selects the appropriate password and username from the database, however the password being retreived is the hashed version.
-    sql = "SELECT PASSWORD FROM USERINFO WHERE EXISTS(SELECT 1 FROM USERINFO WHERE ='" + password + "' AND USERNAME ='" + username + "')";
+    sql = "SELECT PASSWORD, USERNAME FROM USERINFO WHERE EXISTS(SELECT * FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "')";
     
+
     //Need to create a catch for if the data is not present in the database.
     //std::string pass = "SELECT PASSWORD FROM USERINFO WHERE PASSWORD ='" + password + "' AND USERNAME ='" + username + "'";
 
@@ -361,20 +361,23 @@ int loginUser()
         return (-1);
     }
 
-    //rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    std::string usersPass = sql;
+    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    //std::string usersPass = sql;
     //std::cout << usersPass + "\n" + password << std::endl;
-    std::cout << sql << std::endl;
-
-    if (usersPass == password)
-    {
-        
-        std::cout << "Successfully logged in!" << std::endl;
-        _getch();
-    }
-    else
+    //std::cout << sql << std::endl;
+    int num = rc;
+    std::cout << num << std::endl;
+    
+   
+    if (num = 0)
     {
         std::cout << "You need to create an account" << std::endl;
+        _getch();
+    }
+
+    if (num = 1)
+    {
+        std::cout << "Successfully logged in!" << std::endl;
         _getch();
     }
     sqlite3_close(db);
