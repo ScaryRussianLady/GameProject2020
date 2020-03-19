@@ -22,6 +22,7 @@ std::string clanType;
 //Beginning of code by [Annija Balode 9102828].
 int main()
 {  
+    //Brings up the main menu for the user, along with their user ID.
     userID = mainMenu();
     clanType = getClanType(userID);
 
@@ -31,6 +32,8 @@ int main()
 
     return (0);
 }
+//End of code by [Annija Balode 9102828]
+
 ///void main()
 //{//
     //int x = 0;
