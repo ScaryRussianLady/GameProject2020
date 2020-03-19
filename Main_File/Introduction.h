@@ -41,13 +41,17 @@ T getInput(const std::string& strQuery)
 }
 
 
+//The following function retrieves the desired password by the user when creating an account for the game.
 std::string getDesiredPassword()
 {
+    //The password gets checked twice to ensure that they are entering the details correctly.
     std::string password1 = getInput <std::string>("Please enter your desired password.");
+    //This gets hashed which can be pushed to the database. Avoids anybody knowing the password when accessing the database.
     std::size_t hashPass = std::hash<std::string>{}(password1);
     std::string hashPass1 = std::to_string(hashPass);
     std::string password2 = getInput <std::string>("Please re-enter your desired password.");
 
+    //If the passwords do not match, the user enters a while loop till they have matching passwords.
     while (password1 != password2) {
         std::cout << "Error! Passwords do not match." "\n";
         password1 = getInput <std::string>("Please enter your desired password.");
@@ -58,6 +62,7 @@ std::string getDesiredPassword()
     return hashPass1;
 }
 
+//This functions retrieves the desired username for the user when creating an account for the game.
 std::string getDesiredUsername()
 {
     std::string username = getInput <std::string>("\nPlease enter your desired username:");
