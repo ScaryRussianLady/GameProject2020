@@ -247,14 +247,14 @@ void fightDay(int userid, std::string clanType) {
 
 	if (win == true) {
 		singularWordOutput("Your gladiator has won this fight!");
-		Sleep(3000)
+		Sleep(3000);
 	}
 	else {
 		singularWordOutput("Your gladiator has won this fight!");
-		Sleep(3000)
+		Sleep(3000);
 	}
 
-	system("cls")
+	system("cls");
 
 }
 
