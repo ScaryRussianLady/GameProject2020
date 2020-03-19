@@ -323,10 +323,10 @@ int collectUserID(std::string username){
 //A function for logging in the user, retrieving their username and password then checking against the database.
 int loginUser()
 {
-   std::string username = getLoginUsername();
-   std::string password = getLoginPassword();
+    std::string username = getLoginUsername();
+    std::string password = getLoginPassword();
 
-   int userID = collectUserID(username);
+    int userID = collectUserID(username);
 
     sqlite3* db;
     char* zErrMsg = 0;
@@ -366,8 +366,8 @@ int loginUser()
     int num = rc;
     //std::cout << num << std::endl;
     //std::string idk = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
-    
-   
+
+
     //Checks the return value of the password and username, then provides the user with whether they need to create an account or can log in.
     if (num = 0)
     {
@@ -384,9 +384,7 @@ int loginUser()
     //return (0);
     _getch();
     return userID;
-
 }
-
 
 //End of code by [Annija Balode 9102828] and referenced from https://codereview.stackexchange.com/questions/124194/user-registration-and-login-program.
 
