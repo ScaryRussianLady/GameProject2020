@@ -3,10 +3,15 @@
 #include "Indicators.h"
 #include "timeTillFight.h"
 
-
+//Beginning of code by [Annija Balode 9102828]
 void MainScreen(int userid, std::string clanType)
 {
-	std::cout << "Days Left: " << timeTillFight(userid, clanType) << std::endl;
+    std::cout << "Days Left: " << timeTillFight(userid, clanType) << std::endl;
+
+}
+//End of code by [Annija Balode 9102828]
+
+   //Beginning of code by [Rishikesh]
    //{
    // int x = 0;
    // if (getSaved() == true)
@@ -28,5 +33,5 @@ void MainScreen(int userid, std::string clanType)
 
    //         cin >> x;
    //         } while (x != 1 && x);      )
-}
+   //End of code by [Rishikesh]
 
