@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <Windows.h>
 #include <string.h>
@@ -10,6 +9,8 @@
 
 
 //Beginning of code by [Annija Balode 9102828]
+//Function for placing separate functions side by side, referenced from https://stackoverflow.com/questions/38893113/how-to-display-two-functions-next-to-each-other-in-c
+
 void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::istream& is4, std::size_t width)
 {
 	std::string line1;
@@ -20,23 +21,22 @@ void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::
 
 	while (std::getline(is1, line1))
 	{
-		std::string pad;
+		std::string padAmount;
 
-		// ensure we add enough padding to make the distance
-		// the same regardless of line length
+		//Ensures there is enough padding to make the distance equal throughout no matter what.
 		if (line1.size() < width)
-			pad = std::string(width - line1.size(), ' ');
+			padAmount = std::string(width - line1.size(), ' ');
 
-		// get same line from second and third stream
+		//Gets the same line from second, third and fourth stream.
 		std::getline(is2, line2);
 		std::getline(is3, line3);
 		std::getline(is4, line4);
 
-		// print them side by the side the correct distance (pad)
-		std::cout << line1 << pad << line2 << pad << line3 << pad << line4 << '\n';
+		//Prints all functions side by side with the correct padding.
+		std::cout << line1 << padAmount << line2 << padAmount << line3 << padAmount << line4 << '\n';
 	}
 
-	// in case second stream has more line than the first
+	//The following while loops are just in case one of the streams include more lines than the first.
 	while (std::getline(is2, line2))
 	{
 		auto pad = std::string(width, ' ');
@@ -58,10 +58,12 @@ void side_by_side(std::istream& is1, std::istream& is2, std::istream& is3, std::
 }
 
 
+//A function that manages the health of the user. These are the initial values.
 int healthManagement(std::ostream& os)
 {
 	const int healthLevel = 100;
 
+	//If health goes below zero, everything on the screen is cleared and the user is notified that they are dead.
 	if (healthLevel <= 0)
 	{
 		system("CLS");
@@ -74,6 +76,7 @@ int healthManagement(std::ostream& os)
 }
 
 
+//A function that tells the user how much gold they currently have. They begin with 50 pieces.
 int playerGold(std::ostream& os) {
 	int currentGold = 500;
 
@@ -102,6 +105,7 @@ int playerGold(std::ostream& os) {
 
 void print(int& x);
 
+//A function that shows the current hunger level of the user. The initial value is given as 50.
 int foodManagement(std::ostream& os)
 {
 	int currentFoodLevel = 50;
@@ -110,7 +114,7 @@ int foodManagement(std::ostream& os)
 	return(0);
 };
 
-
+//Same concept as the hunger level but for thirst instead.
 int waterManagement(std::ostream& os)
 {
 	int currentWaterLevel = 50;
@@ -120,25 +124,25 @@ int waterManagement(std::ostream& os)
 }
 
 
+//A function which takes all of the functions above and prints them out in streams so that they can be printed side by side.
 int output()
 {
-	// some stream objects to store the outputs
+	//Stream objects to store the outputs.
 	std::stringstream ss1;
 	std::stringstream ss2;
 	std::stringstream ss3;
 	std::stringstream ss4;
 	std::stringstream ss5;
 
-	// capture output in stream objects
+	//Puts the objects in stream outputs.
 	healthManagement(ss1);
 	playerGold(ss2);
 	foodManagement(ss3);
 	waterManagement(ss4);
 
-	// print captured output side by side
+	//Prints the outputs side by side.
 	side_by_side(ss1, ss2, ss3, ss4, 30);
 	return (0);
 };
 
-//https://stackoverflow.com/questions/38893113/how-to-display-two-functions-next-to-each-other-in-c
 //End of code by [Annija Balode 9102828]
