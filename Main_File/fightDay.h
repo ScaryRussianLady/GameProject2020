@@ -84,10 +84,8 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 			}
 
 		}
-
-		Sleep(2500);
-
 		else {
+			Sleep(2500);
 			// comp first
 			if ((rand() % 100 + 1) < plr_fighter.agility) {
 				// DODGED
