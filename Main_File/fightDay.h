@@ -23,8 +23,8 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 
 	// if this variable is true, then the battle will end
 	bool over = false;
-	int plr_damage = round((int(plr_fighter.strength) + int(plr_weapon.getDamage())) * (100 - comp_fighter.defence));
-	int comp_damage = round((int(comp_fighter.strength) + int(comp_weapon.getDamage())) * (100 - plr_fighter.defence));
+	int plr_damage = round((int(plr_fighter.strength) + int(plr_weapon.getDamage())) * (100 - comp_fighter.defence)/100);
+	int comp_damage = round((int(comp_fighter.strength) + int(comp_weapon.getDamage())) * (100 - plr_fighter.defence)/100);
 
 	// Fight happens in here until a gladiator reaches minimum health
 
@@ -84,6 +84,9 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 			}
 
 		}
+
+		Sleep(2500);
+
 		else {
 			// comp first
 			if ((rand() % 100 + 1) < plr_fighter.agility) {
@@ -138,8 +141,7 @@ bool fightCalc(loadGladiator plr_fighter, Weapon plr_weapon, Gladiator comp_figh
 			}
 		}
 
-		std::string n;
-		std::cin >> n;
+		Sleep(2500);
 	}
 }
 
