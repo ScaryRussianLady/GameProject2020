@@ -127,20 +127,20 @@ int waterManagement(std::ostream& os)
 //A function which takes all of the functions above and prints them out in streams so that they can be printed side by side.
 int output()
 {
-	// some stream objects to store the outputs
+	//Stream objects to store the outputs.
 	std::stringstream ss1;
 	std::stringstream ss2;
 	std::stringstream ss3;
 	std::stringstream ss4;
 	std::stringstream ss5;
 
-	// capture output in stream objects
+	//Puts the objects in stream outputs.
 	healthManagement(ss1);
 	playerGold(ss2);
 	foodManagement(ss3);
 	waterManagement(ss4);
 
-	// print captured output side by side
+	//Prints the outputs side by side.
 	side_by_side(ss1, ss2, ss3, ss4, 30);
 	return (0);
 };
