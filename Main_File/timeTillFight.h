@@ -39,7 +39,7 @@ void timeTillFight() {
 }
 */
 
-// the function below is broken atm
+// the function below is broken at the moment
 /*
 void timeTillFight() {
 	int count = 7;
@@ -124,7 +124,7 @@ int testCase1() {		//this function is here for display purposes only
 	return 1;
 }
 
-int showFightersCase(int userid) {		//this function is here for display purposes only
+int showFightersCase(int userid) {		
 	std::cout << "----------------Fighers----------------\n";
 	showGladiators(userid, 0);
 	//std::cout << "*Will eventially link this with other function*\n";
@@ -133,7 +133,7 @@ int showFightersCase(int userid) {		//this function is here for display purposes
 	return 1;
 }
 
-int showInventoryCase(int userid, std::string clanType) {		//this function is here for display purposes only
+int showInventoryCase(int userid, std::string clanType) {		
 	std::cout << "---------------Inventory---------------\n";
 	showInventory(userid, 0, clanType, false);
 	//std::cout << "*Will eventially link this with other function*\n";
@@ -162,9 +162,9 @@ void delay(int ms)  //delay function
 }
 */
 void counter(int userid, std::string clanType) {
-	while (not(_kbhit()) && flag == 0) {     //keep looping while the user didn't hit any key and flag is 0
+	while (not(_kbhit()) && flag == 0) {     //keep looping while the user hasn't hit any key and flag is 0
 
-		if (second > 1) {         //after second is greater than 5, reset second and increase 1 day
+		if (second > 1) {         //after second is greater than 1 (for now), reset second and decrease 1 day
 			second = 0; day -= 1; resourceLevel -= 5;
 			system("cls");
 			printData();
@@ -200,8 +200,8 @@ void printData() {   //print data to screen
 
 int selection(int userid, std::string clanType) {      // menu selection
 	switch (_getch()) {    //collect input from user
-	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't
-	case 49: flag = 0; testCase1(); break;		  //press 1 to see testCase1	
+	case 48: flag = 0; break;        //press 0 set flag to 0 means start. incase clock stops for some reason. it shouldn't.
+	case 49: flag = 0; testCase1(); break;		  //press 1 to see test case 1
 	case 50: flag = 0; showFightersCase(userid); break;        //press 2 to see showFightersCase
 	case 51: flag = 0; showInventoryCase(userid, clanType); break; // press 3 to see ShowInventoryCase
 		day = second = 0; flag = 1; //press 3 reset everything, set flag to 1 means stop

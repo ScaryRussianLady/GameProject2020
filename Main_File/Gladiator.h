@@ -4,7 +4,7 @@
 #include <vector>
 #include <windows.h>
 
-
+//Start of code [Jamie warnock: ID 9328082]
 class gladiator {
 public:
 
@@ -63,6 +63,8 @@ int firstGlads() {
 		}
 	return 1;
 }
+//End of block [Jamie Warnock: ID 9328082]
+
 
 // [Callum Jones 9406128] Function to train the basic stats of a gladiator
 int trainGladiator() {
